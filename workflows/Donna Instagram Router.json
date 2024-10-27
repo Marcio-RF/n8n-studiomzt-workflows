@@ -1,0 +1,150 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook GET": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook POST": {
+      "main": [
+        [
+          {
+            "node": "Contests Test",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Contests Prod",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-23T00:20:45.274Z",
+  "id": "snU4BfiRRFvJ6KVc",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Donna Instagram Router",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.query['hub.challenge'] }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "8574fd0f-9516-45b8-86be-85251376a8e3",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1040,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n.studiomzt.com.br/webhook-test/instagram-contests",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.body }}",
+        "options": {}
+      },
+      "id": "7c99dae2-1c87-4daa-be3c-e6d6a784ed5a",
+      "name": "Contests Test",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1240,
+        580
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Qse9GD9RrYaMOoaS",
+          "name": "Donna Instagram Webhook"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n.studiomzt.com.br/webhook/instagram-contests",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.body }}",
+        "options": {}
+      },
+      "id": "286c9df3-e213-47b3-9b4e-a2dd6bad9566",
+      "name": "Contests Prod",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1240,
+        860
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Qse9GD9RrYaMOoaS",
+          "name": "Donna Instagram Webhook"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "meta-webhook",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "03fc551a-18d1-44e6-bec3-d966dc8689da",
+      "name": "Webhook GET",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        820,
+        300
+      ],
+      "webhookId": "0fcb710d-e537-403e-b2f0-b5742f5f4a1e"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "meta-webhook",
+        "options": {}
+      },
+      "id": "f034208c-b3e7-4397-a907-fb646420de7c",
+      "name": "Webhook POST",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        820,
+        740
+      ],
+      "webhookId": "0fcb710d-e537-403e-b2f0-b5742f5f4a1e"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2024-10-23T02:20:48.000Z",
+  "versionId": "e2b482fc-9c96-4b48-aed7-3ab572b40a91"
+}
