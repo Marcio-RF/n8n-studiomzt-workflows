@@ -1,0 +1,481 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "Redis2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Data": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Initial Data": {
+      "main": [
+        [
+          {
+            "node": "Set Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Set Initial Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Redis3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis3": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Set Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-02T23:00:01.102Z",
+  "id": "zt28pU9uVLKcnFDr",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Bling Inadimplentes",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "e289f1c3-4cbf-4826-a587-8c035e6cf677",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        360,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.bling.com.br/Api/v3/oauth/token",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "grant_type",
+              "value": "refresh_token"
+            },
+            {
+              "name": "refresh_token",
+              "value": "={{ $json.erpRefreshToken }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "813b8247-fe8c-4f1f-8b0e-f6204bb6f9d9",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        800,
+        360
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Vi5JK5FC1TGO0loE",
+          "name": "Bling Clientapp Base64"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "erpRefreshToken",
+        "key": "erp_refresh_token",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "9bec3fc0-0ae7-4130-a2ac-830c3654a36d",
+      "name": "Redis",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        580,
+        360
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "erp_access_token",
+        "value": "={{ $json.access_token }}",
+        "keyType": "string"
+      },
+      "id": "22769d2e-0b12-4417-8609-5f7b6387c1dc",
+      "name": "Redis1",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        360
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "erp_refresh_token",
+        "value": "={{ $('HTTP Request').item.json.refresh_token }}"
+      },
+      "id": "1cc168db-9f99-42e9-b9d2-c56908435845",
+      "name": "Redis2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        360
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.bling.com.br/Api/v3/contas/receber?pagina={{ $json.currentPage }}&limite=100&situacoes[]=1&tipoFiltroData=V&dataInicial=2024-01-01&dataFinal=2024-10-10&situacoes[]=3",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Redis2').item.json.access_token }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fa8ee266-f223-4d25-a0dc-40844ed1dd1f",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2220,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d698e123-28f7-460d-b475-e8fe9b5d980b",
+              "leftValue": "={{ $('HTTP Request1').item.json.data.length }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2193e8e0-6623-43be-8821-56027340dbaa",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2900,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0c7ad0e1-f5b8-4b82-a3a0-fa80413aac2d",
+              "name": "currentPage",
+              "value": "={{ $json.currentPage }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "16a30481-d26e-452c-b0f7-2a0307e24418",
+      "name": "Set Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1960,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f0721ba1-2e81-4851-9d60-59e1c5ac906d",
+              "name": "currentPage",
+              "value": "=1",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d167bf5c-53b5-40c6-826a-b9ba702a9486",
+      "name": "Set Initial Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1680,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "098c5d1c-381e-4c0c-8068-698dd4c99494",
+              "name": "dataKey",
+              "value": "=data.{{ $now.toMillis() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5e63f7e9-162f-4abb-a2c4-78b38b90e02c",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1460,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "9de5358d-3a4a-4b68-8de6-c04eb6170684",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2440,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $('Edit Fields1').item.json.dataKey }}",
+        "messageData": "={{ JSON.stringify($json) }}",
+        "tail": true
+      },
+      "id": "34cae486-4ec5-4c66-9562-e34bca16e5bf",
+      "name": "Redis3",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2660,
+        360
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "8ce6ea2a-c549-4557-9be5-89acf3370432",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3180,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "15293a2d-eaac-4e72-b1c5-194bb64088b3",
+              "name": "currentPage",
+              "value": "={{ $('Set Data').item.json.currentPage + 1 }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "44b0304d-2531-4d87-b0b3-9dfd628b8ebe",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3180,
+        620
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-10-05T22:41:50.000Z",
+  "versionId": "3a442892-f224-470d-b4d5-84ff7c1d38b9"
+}
