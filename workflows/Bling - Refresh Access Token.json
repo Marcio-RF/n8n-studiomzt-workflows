@@ -1,0 +1,226 @@
+{
+  "active": true,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "Redis2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-05T22:42:10.175Z",
+  "id": "jYBRNjQqbvZotirP",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Bling - Refresh Access Token",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.bling.com.br/Api/v3/oauth/token",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "grant_type",
+              "value": "refresh_token"
+            },
+            {
+              "name": "refresh_token",
+              "value": "={{ $json.erpRefreshToken }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b28e5d7f-1c6b-46db-b7e6-a894e023c7e9",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        740,
+        340
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Vi5JK5FC1TGO0loE",
+          "name": "Bling Clientapp Base64"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "erpRefreshToken",
+        "key": "erp_refresh_token",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "dc7d7c0d-d63b-44e0-a3c3-efc314ca35e9",
+      "name": "Redis",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        520,
+        340
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "erp_access_token",
+        "value": "={{ $json.access_token }}",
+        "keyType": "string"
+      },
+      "id": "2efd4b6d-0a0a-44d4-8033-da12231ea946",
+      "name": "Redis1",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        960,
+        340
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "erp_refresh_token",
+        "value": "={{ $('HTTP Request').item.json.refresh_token }}"
+      },
+      "id": "6463c695-23fa-472e-a50a-47f24ec189ad",
+      "name": "Redis2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        340
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e3efcee1-e4ee-451e-8ea7-22af7318a442",
+              "name": "access_token",
+              "value": "={{ $json.access_token }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "35a774e2-b4b7-40b2-9940-182d428271b7",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1400,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "id": "dfeba660-d63b-4290-bd0e-eeb4c51b1596",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        320,
+        340
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-10-09T20:46:26.000Z",
+  "versionId": "ecf89b46-43bc-448c-a760-9c5bd9cc99a6"
+}
