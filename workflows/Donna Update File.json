@@ -1,0 +1,120 @@
+{
+  "active": true,
+  "connections": {
+    "HTTP Request38": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request38",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-21T00:02:38.831Z",
+  "id": "ofj9V0eHjgb8vj57",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Donna Update File",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://backend.donnadoro.com.br/files/{{ $json.body.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "folder",
+              "value": "={{ $json.body.folder }}"
+            },
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "file"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "da481b80-875b-432d-9a25-4cd4c660f105",
+      "name": "HTTP Request38",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1020,
+        360
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gv2igb7M3jLaZsnR",
+          "name": "Donna.Doro.API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "id": "5ae7617c-daa8-46d2-ad79-8b3caa34a4e6",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1240,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "968e53fc-693b-4518-a569-40f5e8140862",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "b016a3e4-78a8-4126-9b57-ba47a76e271d",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        820,
+        360
+      ],
+      "webhookId": "968e53fc-693b-4518-a569-40f5e8140862",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "zdUM2yFKiS1sddU9",
+          "name": "Donna Upload File Flow"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-10-21T00:06:31.000Z",
+  "versionId": "d77488b8-af9f-4107-8651-7b21f3bccb8b"
+}
