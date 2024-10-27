@@ -1,0 +1,308 @@
+{
+  "active": false,
+  "connections": {
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis2": {
+      "main": [
+        [
+          {
+            "node": "Messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Redis2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-15T22:45:47.271Z",
+  "id": "enVSRgY715jkwqAW",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Debounc Messages",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "=temp.{{ $json.body.data.key.remoteJid }}",
+        "messageData": "={{ JSON.stringify($json.body.data) }}",
+        "tail": true
+      },
+      "id": "75899666-56d9-4c96-98f0-9e72b5bef421",
+      "name": "Redis",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        420
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5 - WhatsApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "=messages",
+        "key": "=temp.{{ $('Execute Workflow Trigger').item.json.body.data.key.remoteJid }}",
+        "options": {}
+      },
+      "id": "d43054f8-4da6-4fb0-9aa3-afde1e539282",
+      "name": "Redis1",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        420
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5 - WhatsApp"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "f912d67f-76b8-4c3b-befe-9c8ea3246e3c",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2200,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "id": "a7a101eb-49d3-4283-b782-6fcf1e53274a",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2200,
+        600
+      ],
+      "webhookId": "c338cd7f-0af6-4218-b3a3-e1f01cdb856d"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=temp.{{ $('Execute Workflow Trigger').item.json.body.data.key.remoteJid }}"
+      },
+      "id": "21a0796c-6832-496e-8798-b61d2bafe302",
+      "name": "Redis2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2020,
+        420
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5 - WhatsApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d87b85f2-844a-4f49-aa71-4cafcd634ae7",
+              "name": "messages",
+              "value": "={{ $json.messages.map(m => JSON.parse(m).message.conversation).join(\"\\n\") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dd83a34a-1168-49c8-af74-74bfde024601",
+      "name": "Messages",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2260,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d38c0d7e-7e9c-4d77-9b07-328867d2c6b6",
+        "options": {}
+      },
+      "id": "23ba4424-bb69-4f64-894c-781007d7d02f",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        700
+      ],
+      "webhookId": "d38c0d7e-7e9c-4d77-9b07-328867d2c6b6"
+    },
+    {
+      "parameters": {},
+      "id": "195bd540-409c-4972-892e-d041f0e299ea",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ JSON.parse($json.messages.first()).key.id }}",
+                    "rightValue": "={{ $('Execute Workflow Trigger').item.json.body.data.key.id }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "NOOP"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9c8e9246-3935-42de-a3e4-07086c80f8ed",
+                    "leftValue": "={{ JSON.parse($json.messages.last()).messageTimestamp.toDateTime(\"s\").toISO() }}",
+                    "rightValue": "={{ $now.minus(30, \"seconds\") }}",
+                    "operator": {
+                      "type": "dateTime",
+                      "operation": "before"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Proceed"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "Wait"
+        }
+      },
+      "id": "a877c910-8a0a-4589-af65-1c85e007311f",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1760,
+        420
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-09-26T02:37:47.000Z",
+  "versionId": "4c5cfe60-26f4-4602-a9ab-36f7bce843b3"
+}
