@@ -1,0 +1,471 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set summary1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request27": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request27",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "set summary1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-21T23:39:35.734Z",
+  "id": "iaWnQu9g3IFOFvi2",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Create Donna Clients Embeddings",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "2025ed31-6bd3-463b-80bb-f9d06a62b87f",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        580,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Create clients vector documents ",
+        "height": 721.8110903995818,
+        "width": 2209.738796295111
+      },
+      "id": "aee97418-d8de-4f9c-8a0b-324f0750a5e5",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        500,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9598bd83-c4be-43eb-8bac-d2d66c92b414",
+              "name": "content",
+              "value": "=Cliente: {{ $json.nome }}\n--------------\n\nTelefone: {{ $json.telefone + '\\t\\t' }}{{ $json.telefone_2 ? 'Telefone 2: ' + $json.telefone_2 : '' }}\n{{ $json.email ? 'Email: ' + $json.email : '' }}\n{{ $json.nascimento ? 'Data de Nascimento: ' + $json.nascimento + '\\t\\t' : '\\t\\t' }}{{ $json.cpf_cnpj ? '\\t\\tCPF/CNPJ: ' + $json.cpf_cnpj : '' }}\n{{ $json.empresa ? 'Empresa: ' + $json.empresa : '' }}{{ $json.empresa && $json.fonte ? '\\t\\t' : '' }}{{ $json.fonte ? 'Fonte: ' + $json.fonte : '' }}\n{{ $json.instagram ? 'Instagram: ' + $json.instagram : '' }}{{ $json.instagram && $json.facebook ? '\\t\\t' : '' }}{{ $json.facebook ? 'Facebook: ' + $json.facebook : '' }}\n{{ $json.tiktok ? 'Tiktok: ' + $json.tiktok : '' }}\n\n{{ $json.em_aberto > 0 ? 'Total em Aberto: ' + $json.em_aberto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : '' }}\n\n{{ $json.endereco_principal ? 'Endereço: ' + $json.endereco_principal + ' - ' + $json.bairro + '\\n' + $json.cep + ' - ' + $json.cidade + ' - ' + $json.estado : '' }}\n\n{{ $json.numeroDoAnel ? 'Número do Anel: ' + $json.numeroDoAnel : '' }}{{ $json.numeroDoAnel && $json.numeroDaPulseira ? '\\t\\t' : '' }}{{ $json.numeroDaPulseira ? 'Número da Pulseira: ' + $json.numeroDaPulseira : '' }}\n\n{{ $json.tags && $json.tags.length > 0 ? 'Tags: ' + $json.tags.join(', ') : '' }}\n\n{{ $json.historico_de_compras ? 'Histórico de Compras\\n--------------------\\n\\n' + $json.historico_de_compras + '\\n\\n' : '' }}\n\n{{ $json.notas ? 'Notas\\n-----\\n\\n' + $json.notas + '\\n\\n' : '' }}",
+              "type": "string"
+            },
+            {
+              "id": "88f2748d-65b7-4d4f-936f-27a8cdbdf6de",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "eb69be5a-74c9-4e2c-8817-854c84e450b3",
+              "name": "nome",
+              "value": "={{ $json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "e11fab34-1479-4f2b-9978-447a46a5248d",
+              "name": "email",
+              "value": "={{ $json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "b3e36bac-1c53-4e9a-bf83-fca563b33a9c",
+              "name": "cpf_cnpj",
+              "value": "={{ $json.cpf_cnpj }}",
+              "type": "string"
+            },
+            {
+              "id": "66e20f80-ce50-4174-acbb-4d75f65ae78a",
+              "name": "fonte",
+              "value": "={{ $json.fonte }}",
+              "type": "string"
+            },
+            {
+              "id": "d09de29f-1c1b-4366-b32c-bf350405a81d",
+              "name": "tags",
+              "value": "={{ $json.tags && $json.tags.length > 0 ? $json.tags.join(', ') : '' }}",
+              "type": "string"
+            },
+            {
+              "id": "12645cb6-b15a-4a54-9920-d6cf3b9cc6f4",
+              "name": "notas",
+              "value": "={{ $json.notas }}",
+              "type": "string"
+            },
+            {
+              "id": "b098da87-7916-483d-9330-dc0d2c10ff61",
+              "name": "numeroDoAnel",
+              "value": "={{ $json.numeroDoAnel }}",
+              "type": "number"
+            },
+            {
+              "id": "d997b90c-ea46-4f54-9aec-79cd218ed718",
+              "name": "numeroDaPulseira",
+              "value": "={{ $json.numeroDaPulseira }}",
+              "type": "number"
+            },
+            {
+              "id": "f6d62c22-9d8e-4b05-b0f2-7f781cc19790",
+              "name": "telefone",
+              "value": "={{ $json.telefone }}",
+              "type": "string"
+            },
+            {
+              "id": "dc214fda-8585-4932-a890-df81db49d8b8",
+              "name": "telefone_2",
+              "value": "={{ $json.telefone_2 }}",
+              "type": "string"
+            },
+            {
+              "id": "a2787782-7a08-4d35-91c3-c8bd0c43d359",
+              "name": "empresa",
+              "value": "={{ $json.empresa }}",
+              "type": "string"
+            },
+            {
+              "id": "fb19cace-5c82-4a34-addb-3a84040e2e20",
+              "name": "nascimento",
+              "value": "={{ $json.nascimento }}",
+              "type": "string"
+            },
+            {
+              "id": "ce52da71-1c98-435e-a378-de536149cccb",
+              "name": "endereco_principal",
+              "value": "={{ $json.endereco_principal }}",
+              "type": "string"
+            },
+            {
+              "id": "e79d8535-a549-45de-baf9-47eed4ea3410",
+              "name": "bairro",
+              "value": "={{ $json.bairro }}",
+              "type": "string"
+            },
+            {
+              "id": "d6c4c99c-6951-4911-9dde-94aa5a4f34f8",
+              "name": "cidade",
+              "value": "={{ $json.cidade }}",
+              "type": "string"
+            },
+            {
+              "id": "9bc5a1ae-85da-430f-9d94-066c0f62e235",
+              "name": "cep",
+              "value": "={{ $json.cep }}",
+              "type": "string"
+            },
+            {
+              "id": "795636ff-09ce-4338-93d7-e3f8e7340e02",
+              "name": "estado",
+              "value": "={{ $json.estado }}",
+              "type": "string"
+            },
+            {
+              "id": "75ac11ed-7be1-4196-a45e-0d1385e92b4d",
+              "name": "em_aberto",
+              "value": "={{ $json.em_aberto }}",
+              "type": "string"
+            },
+            {
+              "id": "13e74c39-f30f-47fd-bbbb-cbb7c7986a17",
+              "name": "historico_de_compras",
+              "value": "={{ $json.historico_de_compras }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "62411890-6176-4fc6-bf69-d491a2f487af",
+      "name": "set summary1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1280,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/embeddings",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "input",
+              "value": "={{ $json.content }}"
+            },
+            {
+              "name": "model",
+              "value": "text-embedding-3-small"
+            },
+            {
+              "name": "encoding_format",
+              "value": "float"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a8a66dc0-c2ce-4111-8826-3c85c5a5a74a",
+      "name": "HTTP Request27",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1760,
+        820
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "PZCMjct51rl9RnLJ",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d3a47d00-01ff-4e60-8142-32a2371c9f2a",
+              "name": "embedding",
+              "value": "={{ $json.data[0].embedding }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bd01a3da-fbcd-46b8-9aab-0849ad09e66b",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1920,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "64d41699-62c7-400a-9b30-564b294cdb05",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2120,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO public.contatos_documents(\n\tcontent, metadata, embedding)\nVALUES (\n    '{{ $json.content }}', \n    '{{ $json.metadata }}'::jsonb, \n    '{{ $json.embedding }}'::vector\n);\n",
+        "options": {
+          "queryBatching": "single"
+        }
+      },
+      "id": "28d82eb2-e4c7-4a83-a252-03c538d10b0d",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        2540,
+        880
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "aqc73Y68LRWpxqQC",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "d257fdfe-39f4-4218-9287-2dfb5bec2863",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1520,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "return ({\n  content: $input.item.json.content.replaceAll(\"'\", \"''\"),\n  embedding: \"[\" + $input.item.json.embedding.join(\", \") + \"]\",\n  metadata: JSON.stringify({ ...$input.item.json, content: undefined, embedding: undefined }).replaceAll(\"'\", \"''\")\n})\n"
+      },
+      "id": "6136a550-abea-40f5-993e-25c24f08067e",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2320,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://backend.donnadoro.com.br/items/Contatos?limit=1000",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "id": "8b0b6616-0d43-4d26-8c3a-d03af215b2b8",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        760,
+        660
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gv2igb7M3jLaZsnR",
+          "name": "Donna.Doro.API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "73827523-6a9d-4a67-ac5d-385d95c88fb8",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        980,
+        660
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-10-22T14:29:07.000Z",
+  "versionId": "e79311c1-52eb-4e12-b938-105ac9909056"
+}
