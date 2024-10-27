@@ -1,0 +1,413 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-03T14:24:03.292Z",
+  "id": "p75any6rN4Z5JdAo",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Envia msg Inadimplentes",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "b7fb79fd-1f7d-4c40-8ed3-afe2bbaf6a81",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        860,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "clientList",
+        "options": {}
+      },
+      "id": "3370fd23-52dd-4fda-8bf3-f146cb05a2dd",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const getWhatsappId = (phone) => {\n  let result = phone.replace(/[^\\d]/g, '').replace(/(\\d{2})(\\d{2})(9)(\\d{4})(\\d{4})/, '$1$2$4$5')\n\n  if (!result.startsWith('55')) {\n    return '55' + result;  // Se não, adiciona '55' no início\n  }\n\n  return result;\n}\n\n\nreturn {\n  nome: $json.nome,\n  telefone: getWhatsappId($json.telefone)\n}\n"
+      },
+      "id": "e99e830b-c822-4dff-ba8b-ac8a134dc451",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "fddd2d6a-65f0-4fc9-8c91-3711c1e8127f",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1620,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "47ea33d1-db87-494f-98aa-b70c0e3741f7",
+              "name": "messages",
+              "value": "=[\n  \"Oi, tudo bem?\",\n  \"Eu tô passando pra deixar o meu pix...\",\n  \"67981435828\",\n  \"Celular - Marcio Ricardo Fernandes\",\n  \"Se você já fez o pagamento, favor desconsiderar esta mensagem.\",\n  \"Muito obrigada!\"\n]",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "38e723e1-4d8c-463c-9108-32e98f60e53a",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1840,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://whatsapp.studiomzt.com.br/message/sendText/Donna67992903483",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $json.telefone }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.message }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7ce2e81e-2fbf-4f4b-84de-193177f3e8ab",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2700,
+        500
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "c4v8VKf93nLw1Ove",
+          "name": "StudioMZT.EvolutionAPI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6e69d53f-7313-4186-9cdd-92ab79dfe18d",
+              "name": "nome",
+              "value": "={{ $('Loop Over Items').item.json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "abf33cd2-dfcd-4d46-b3d7-bafc54c36abb",
+              "name": "telefone",
+              "value": "={{ $('Loop Over Items').item.json.telefone }}",
+              "type": "string"
+            },
+            {
+              "id": "7b437f3a-e1f9-426f-a965-d72b999b5a4a",
+              "name": "message",
+              "value": "={{ $json.messages }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "354ccfec-e40a-4142-82be-92a7799a1577",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2260,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "messages",
+        "options": {}
+      },
+      "id": "f86a9a51-d104-40f6-b71f-f346fbdc5a16",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2060,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "281abc82-fb5f-4263-be33-f9909351fec6",
+              "name": "clientList",
+              "value": "=[\n  {\n    \"nome\": \"Marcio\",\n    \"telefone\": \"(67) 98143-5828\"\n  },\n  {\n    \"nome\": \"Taila\",\n    \"telefone\": \"(67) 98429-7997\"\n  }\n]\n",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d6152261-15d5-4b28-a12f-784bad3fd243",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1500,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "amount": "={{ $('Edit Fields4').item.json.message.length / 15 }}"
+      },
+      "id": "7b6e0b09-1f6c-4804-8c77-c575046ba648",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2880,
+        500
+      ],
+      "webhookId": "7a7430fc-20d2-4d91-9dcf-bcedd50ed850"
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": "={{ $(\"Loop Over Items1\").context[\"done\"] }}"
+        }
+      },
+      "id": "89b11667-2b9e-49c2-ae8a-8d4ba6cf0286",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2460,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "281abc82-fb5f-4263-be33-f9909351fec6",
+              "name": "clientList",
+              "value": "=[\n  {\n    \"nome\": \"Ana Cláudia Paiva - SEGOV\",\n    \"telefone\": \"(67) 99175-2997\"\n  },\n  {\n    \"nome\": \"Crislaine - SEGOV PMCG\",\n    \"telefone\": \"(67) 99192-2969\"\n  },\n  {\n    \"nome\": \"Tamires da Silva Gonçalves - SEGOV\",\n    \"telefone\": \"(67) 99261-1621\"\n  },\n  {\n    \"nome\": \"Valentina CAOK SEDHAST\",\n    \"telefone\": \"(67) 99248-8889\"\n  },\n  {\n    \"nome\": \"Marcia Cristaldo - SEC Planejamento\",\n    \"telefone\": \"(67) 99836-0051\"\n  },\n  {\n    \"nome\": \"Ilza Rodrigues Paes - SEAD\",\n    \"telefone\": \"(67) 99273-0868\"\n  },\n  {\n    \"nome\": \"Gislaine Freire - SEAD\",\n    \"telefone\": \"(67) 99810-4192\"\n  },\n  {\n    \"nome\": \"Denise Barrios Domingos - AGEPREV\",\n    \"telefone\": \"(67) 99296-2759\"\n  },\n  {\n    \"nome\": \"Renata - Sefaz\",\n    \"telefone\": \"(67) 99958-6269\"\n  },\n  {\n    \"nome\": \"Moisés - Detran\",\n    \"telefone\": \"(67) 99235-3845\"\n  },\n  {\n    \"nome\": \"Zil Gadelha\",\n    \"telefone\": \"(67) 99650-6888\"\n  },\n  {\n    \"nome\": \"Daniele de Araújo Ruiz - Concursos/SAD\",\n    \"telefone\": \"(67) 99987-1112\"\n  },\n  {\n    \"nome\": \"Gisley Souza Diniz - Divina Unha\",\n    \"telefone\": \"(67) 99287-1224\"\n  },\n  {\n    \"nome\": \"Julia Vasconcelos Lima (Filha da Suzi COPAG)\",\n    \"telefone\": \"(67) 99229-6314\"\n  },\n  {\n    \"nome\": \"Aparecida Virgínia Souza Silva - SEC\",\n    \"telefone\": \"(67) 99981-9453\"\n  },\n  {\n    \"nome\": \"Leda - SEAD\",\n    \"telefone\": \"(67) 98168-0380\"\n  },\n  {\n    \"nome\": \"Clotilde - SEC\",\n    \"telefone\": \"(67) 99245-3867\"\n  },\n  {\n    \"nome\": \"Ednalva Aparecida de Jesus - AGEHAB\",\n    \"telefone\": \"(67) 99199-4562\"\n  },\n  {\n    \"nome\": \"Marcinéia - AGEPREV\",\n    \"telefone\": \"(67) 99602-6088\"\n  },\n  {\n    \"nome\": \"Luciana Tondati F. Fernandes\",\n    \"telefone\": \"(67) 99200-7932\"\n  },\n  {\n    \"nome\": \"Roslaine - CPSB/SEAD\",\n    \"telefone\": \"(67) 99839-8237\"\n  },\n  {\n    \"nome\": \"Simone Gomes - SAD Protocolo\",\n    \"telefone\": \"(67) 99667-0129\"\n  },\n  {\n    \"nome\": \"Elaine de Souza Santos Camilo - SEFAZ Bloco 6\",\n    \"telefone\": \"(67) 98207-3840\"\n  },\n  {\n    \"nome\": \"Deise Marques - AGEHAB\",\n    \"telefone\": \"(48) 98456-6231\"\n  },\n  {\n    \"nome\": \"Carol - UATEC/SEFAZ\",\n    \"telefone\": \"(67) 99973-2181\"\n  },\n  {\n    \"nome\": \"Rosa Guimarães - SEAD\",\n    \"telefone\": \"(67) 99222-3598\"\n  },\n  {\n    \"nome\": \"Gabriela de Souza Barbosa - Setesc\",\n    \"telefone\": \"(67) 99646-5776\"\n  },\n  {\n    \"nome\": \"Ana Marcela - Ageprev\",\n    \"telefone\": \"(67) 99674-1716\"\n  },\n  {\n    \"nome\": \"Marta - SEGOV\",\n    \"telefone\": \"(67) 99259-1307\"\n  }\n]\n",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cc6b87a6-71e3-4cdf-9aff-3b03a4b8af6b",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1040,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "id": "5894007a-6db6-4516-8f5e-0f625b2dd169",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2620,
+        760
+      ],
+      "webhookId": "7e810a90-77c0-4418-8a94-e3e2d3b770d8"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-10-07T13:32:01.000Z",
+  "versionId": "af8058a9-710a-46c2-acb0-10782472a687"
+}
