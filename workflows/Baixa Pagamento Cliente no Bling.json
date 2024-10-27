@@ -1,0 +1,1467 @@
+{
+  "active": true,
+  "connections": {
+    "Payment Info": {
+      "main": [
+        [
+          {
+            "node": "Get Bling Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Bling Token": {
+      "main": [
+        [
+          {
+            "node": "Set Valor Inicial",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Get Detailed Accounts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Only Keep Em Aberto e Parcialmente Recebida": {
+      "main": [
+        [
+          {
+            "node": "Sort by Date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Detailed Accounts": {
+      "main": [
+        [
+          {
+            "node": "Only Keep Em Aberto e Parcialmente Recebida",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort by Date": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Accounts1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Only Keep Em Aberto e Parcialmente Recebida1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Only Keep Em Aberto e Parcialmente Recebida1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Accounts": {
+      "main": [
+        [
+          {
+            "node": "Aggregate3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate3": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Atualiza Contas Vencidas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Baixa Conta",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Set Valor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Valor Inicial": {
+      "main": [
+        [
+          {
+            "node": "Get Accounts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Valor": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baixa Conta": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis2": {
+      "main": [
+        [
+          {
+            "node": "Get Accounts1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Redis2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Detailed Accounts1": {
+      "main": [
+        [
+          {
+            "node": "Total",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Total": {
+      "main": [
+        [
+          {
+            "node": "Total Final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request30": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Payment Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "URL Recibo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "URL Recibo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Detailed Accounts1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Total Final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Total Final": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request30",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-25T01:51:03.373Z",
+  "id": "fuWNLtY46Qcivoce",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Baixa Pagamento Cliente no Bling",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "### https://n8n.studiomzt.com.br/webhook/baixa-pagamento-bling\n\nPayload:\n{\n   data: \"yyyy-mm-dd\",\n   valor: number,\n   texto: string\n}\n\ntoken: WLu74ZGbr8V2QQxmrXwYmw3sa05jzyZT",
+        "height": 442,
+        "width": 408
+      },
+      "id": "de2eb380-1cef-4fc5-9588-db60c5513af1",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        520,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c8198f84-70cc-4625-a6eb-7ca7203cfdf4",
+              "name": "id",
+              "value": "={{ $json.body.id }}",
+              "type": "string"
+            },
+            {
+              "id": "a1ce509f-9752-4ad1-8e8e-5889d2f21bb6",
+              "name": "erpID",
+              "value": "={{ $json.body.erpID }}",
+              "type": "number"
+            },
+            {
+              "id": "e7938c1a-6f6d-427e-b346-9487cbfe41bd",
+              "name": "data",
+              "value": "={{ $json.body.data }}",
+              "type": "string"
+            },
+            {
+              "id": "f67b4dab-dc88-4daf-a815-c1c0d1b597e8",
+              "name": "valor",
+              "value": "={{ $json.body.valor }}",
+              "type": "number"
+            },
+            {
+              "id": "df425a47-3bd8-41b5-8c5f-514691d5609e",
+              "name": "texto",
+              "value": "={{ $json.body.texto === \"undefined\" ? \"\" : $json.body.texto }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d9a73fca-67cc-4526-a82e-dc8860ed7d22",
+      "name": "Payment Info",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        980,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "access_token",
+        "key": "erp_access_token",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "e7845a62-2865-4f56-9ceb-cca2b95bf862",
+      "name": "Get Bling Token",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        260
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "be22580c-c02d-4995-9484-e44a6c1ee161",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nreturn $input.all().sort((a, b) => {\nconst fieldName = 'vencimento';\n\n  // Convert the string date (yyyy-mm-dd) to Date objects\n  const dateA = new Date(a.json[fieldName]);\n  const dateB = new Date(b.json[fieldName]);\n  \n  // Compare the dates\n  if (dateA < dateB) {\n    return -1;  // a should go before b\n  }\n      \n  if (dateA > dateB) {\n    return 1;   // b should go before a\n  }\n  \n  return 0;     // dates are equal\n})"
+      },
+      "id": "78c1fa2c-f43c-4af6-828b-ccc062b28bdc",
+      "name": "Sort by Date",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1600,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fc58fd0d-0589-456d-8dbc-c0a391d54058",
+              "leftValue": "={{ $json.data.situacao }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "15a10933-55b9-4993-9ec2-338f16deb1f8",
+              "leftValue": "={{ $json.data.situacao }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "cbe598ce-cdeb-4490-aa9b-cab52e4d0249",
+      "name": "Only Keep Em Aberto e Parcialmente Recebida",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        1440,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.bling.com.br/Api/v3/contas/receber/{{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Get Bling Token').item.json.access_token }}"
+            }
+          ]
+        },
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 2,
+              "batchInterval": 1500
+            }
+          }
+        }
+      },
+      "id": "7cc36082-dea5-4f0c-8df7-7029fc0f3a5e",
+      "name": "Get Detailed Accounts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1220,
+        540
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 2000
+    },
+    {
+      "parameters": {
+        "url": "=https://api.bling.com.br/Api/v3/contas/receber",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "idContato",
+              "value": "={{ $('Payment Info').item.json.erpID }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Get Bling Token').item.json.access_token }}"
+            }
+          ]
+        },
+        "options": {
+          "pagination": {
+            "pagination": {
+              "parameters": {
+                "parameters": [
+                  {
+                    "name": "pagina",
+                    "value": "={{ $pageCount + 1 }}"
+                  }
+                ]
+              },
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ $response.data.length === 0 }}",
+              "requestInterval": 500
+            }
+          }
+        }
+      },
+      "id": "5930b733-02f1-4473-a154-5f7de794d3d7",
+      "name": "Get Accounts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1580,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.bling.com.br/Api/v3/contas/receber",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "idContato",
+              "value": "={{ $('Payment Info').first().json.erpID }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Get Bling Token').first().json.access_token }}"
+            }
+          ]
+        },
+        "options": {
+          "pagination": {
+            "pagination": {
+              "parameters": {
+                "parameters": [
+                  {
+                    "name": "pagina",
+                    "value": "={{ $pageCount + 1 }}"
+                  }
+                ]
+              },
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ $response.data.length === 0 }}",
+              "requestInterval": 700
+            }
+          }
+        }
+      },
+      "id": "c4f552dd-59c7-4b7f-a4db-4120b8bf1387",
+      "name": "Get Accounts1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1440,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "c51b9002-1697-4e7b-8ba4-151d43221682",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fc58fd0d-0589-456d-8dbc-c0a391d54058",
+              "leftValue": "={{ $json.situacao }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "15a10933-55b9-4993-9ec2-338f16deb1f8",
+              "leftValue": "={{ $json.situacao }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "fdc26f23-49dc-4c3e-ab07-54b74e6adde8",
+      "name": "Only Keep Em Aberto e Parcialmente Recebida1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        2100,
+        800
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a9b36032-e4d5-4240-af25-9d404a530b6f",
+              "leftValue": "={{ new Date($json.vencimento) }}",
+              "rightValue": "={{ new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0) }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "beforeOrEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e7026374-c5c2-44bb-9e80-fd99fafdddc4",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        2640,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "data"
+            }
+          ]
+        },
+        "options": {
+          "mergeLists": true
+        }
+      },
+      "id": "84cc8d5b-63b9-4f25-be45-2febed6a089a",
+      "name": "Aggregate3",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        820,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "data"
+            }
+          ]
+        },
+        "options": {
+          "mergeLists": true
+        }
+      },
+      "id": "774967fb-9a8a-46a6-ab97-ee7796d73677",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1660,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1eb4332e-70a4-4696-813f-aa34be6fe7bd",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        800,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "00a02a25-bffb-4ef0-bad9-1379ed49271e",
+              "leftValue": "={{ $json.valor }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "1d075778-1adb-434f-9f7c-22bd64f8ce4a",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1540,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "=valor",
+        "key": "=baixa-{{ $('Payment Info').item.json.id }}",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "0ed7c7da-46d2-4318-b3c6-7c3dac4cde94",
+      "name": "Redis",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        1300
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.bling.com.br/Api/v3/contas/receber/{{ $('Loop Over Items').item.json.data.id }}/baixar",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Get Bling Token').item.json.access_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"data\": \"{{$('Payment Info').item.json.data}}\",\n  \"usarDataVencimento\": false,\n  \"portador\": {\n    \"id\": 14888942109\n  },\n  \"categoria\": {\n    \"id\": 14646439024\n  },\n  \"historico\": \"\",\n  \"juros\": 0,\n  \"desconto\": 0,\n  \"acrescimo\": 0,\n  \"valorRecebido\": {{ $json.valor > $('Loop Over Items').item.json.data.saldo ? $('Loop Over Items').item.json.data.saldo : $json.valor }},\n  \"tarifa\": 0\n}\n",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 500
+            }
+          }
+        }
+      },
+      "id": "abb5456c-9d71-4280-aa9d-170aeced0c1e",
+      "name": "Baixa Conta",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1840,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 0.5
+      },
+      "id": "f6b06846-3ebf-4ddd-915f-cc455b55bf13",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2020,
+        1060
+      ],
+      "webhookId": "27a7716c-5fad-4243-85b3-e75d9f3c6484"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=baixa-{{ $('Payment Info').item.json.id }}",
+        "value": "={{ $('Set Valor').item.json.valor - ($('Set Valor').item.json.valor > $('Loop Over Items').item.json.data.saldo ? $('Loop Over Items').item.json.data.saldo : $('Set Valor').item.json.valor) }}",
+        "keyType": "string"
+      },
+      "id": "f9c260ca-8bf3-4b10-8c06-40eeb6e4f927",
+      "name": "Redis1",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2220,
+        1060
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=baixa-{{ $('Payment Info').item.json.id }}",
+        "value": "={{ $('Payment Info').item.json.valor }}",
+        "keyType": "string"
+      },
+      "id": "20cef5f8-b0a7-4669-854e-4a0062d242f1",
+      "name": "Set Valor Inicial",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        260
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e489a000-ef1b-4097-8e52-2d0af5291b5a",
+              "name": "valor",
+              "value": "={{ Number($json.valor) }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c79b32bc-3b51-4c08-a973-7c2c7ae7133f",
+      "name": "Set Valor",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1340,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "=baixa-{{ $('Payment Info').first().json.id }}"
+      },
+      "id": "c992a136-dc19-4760-a88c-e587f5a2ac38",
+      "name": "Redis2",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        800
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://api.bling.com.br/Api/v3/contas/receber/{{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Get Bling Token').first().json.access_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "vencimento",
+              "value": "={{ (() => { let d = new Date(); d.setMonth(d.getMonth() + 1, 1); while ([0, 6].includes(d.getDay())) d.setDate(d.getDate() + 1); return d.toISOString().split('T')[0]; })() }}"
+            },
+            {
+              "name": "valor",
+              "value": "={{ $json.valor }}"
+            },
+            {
+              "name": "contato",
+              "value": "={{ { id: $json.contato.id } }}"
+            }
+          ]
+        },
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 500
+            }
+          }
+        }
+      },
+      "id": "8c3b2f4a-5dcd-410b-b9d4-0de4fb0b236e",
+      "name": "Atualiza Contas Vencidas",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2860,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\n\nreturn [{data: true}];"
+      },
+      "id": "4126ec5a-993a-4556-8066-b7e18e55dfb4",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "let total = 0;\n\nfor (const item of $input.all()) {\n  total = total + item.json.data.saldo;\n}\n\nreturn {total};"
+      },
+      "id": "2f9b3d0d-49b5-4c4b-a0cd-ea4ef0c6f150",
+      "name": "Total",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2880,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.bling.com.br/Api/v3/contas/receber/{{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Get Bling Token').first().json.access_token }}"
+            }
+          ]
+        },
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 500
+            }
+          }
+        }
+      },
+      "id": "af0b70d7-e4dd-4fa7-807c-3f45b4591cd6",
+      "name": "Get Detailed Accounts1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2640,
+        840
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 2000
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://backend.donnadoro.com.br/items/Contatos/{{ $('Payment Info').first().json.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "em_aberto",
+              "value": "={{ $json.total }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "80b38755-9b0f-4dd2-8b2d-12ab7603bc43",
+      "name": "HTTP Request30",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3320,
+        720
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gv2igb7M3jLaZsnR",
+          "name": "Donna.Doro.API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8fa7fdc0-66dd-46c9-8cb4-f2448ed31cd8",
+              "name": "debCred",
+              "value": "C",
+              "type": "string"
+            },
+            {
+              "id": "3abe6b6a-6f25-4e21-9572-4b84cd938c80",
+              "name": "idContatoRecibo",
+              "value": "={{ $('HTTP Request30').item.json.data.erpID }}",
+              "type": "number"
+            },
+            {
+              "id": "4fba2693-ef2d-46c2-a748-6b97f43fb304",
+              "name": "clienteRecibo",
+              "value": "={{ $('HTTP Request30').item.json.data.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "9a0596b9-a3c2-410f-b710-75e88c3da74a",
+              "name": "dataImpressaRecibo",
+              "value": "={{ $('Payment Info').first().json.data.split('-').reverse().join('/') }}",
+              "type": "string"
+            },
+            {
+              "id": "cd1692c4-e0a3-4b9b-b981-391decaaf03a",
+              "name": "valorRecibo",
+              "value": "={{ $('Payment Info').first().json.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) }}",
+              "type": "string"
+            },
+            {
+              "id": "35d267c7-6c45-4968-8e35-dd19ae576a2f",
+              "name": "cidadeRecibo",
+              "value": "Campo Grande",
+              "type": "string"
+            },
+            {
+              "id": "620ae3ce-534a-43ae-b75d-8c1f1cf0ec50",
+              "name": "observacoesRecibo",
+              "value": "={{ $json.texto }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "81e3f1bf-ac40-4176-bdfb-085de774bb66",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3700,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "if (!$('Total Final').first().json.total) {\n  return {\n    texto: \"\"\n  }\n}\n\nif (!$('Payment Info').first().json.texto) {\n  return {texto: \"EM ABERTO: \" + $('Total Final').first().json.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }\n}\n\nif (/^[1-9]x/.test($('Payment Info').first().json.texto)) {\n  return {texto: \"EM ABERTO: \" + $('Payment Info').first().json.texto[0] + \"x \" + ($('Total Final').first().json.total / Number($('Payment Info').first().json.texto[0])).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }\n}\n\nreturn {texto: $('Payment Info').first().json.texto }"
+      },
+      "id": "6a9a65fc-ea1f-4c97-bbed-18057de59979",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3500,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "baixa-pagamento-bling",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "id": "45d1a462-998e-4db7-b384-9eb2ae26f1cb",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        780,
+        260
+      ],
+      "webhookId": "c72f8616-0bc9-49c1-b86b-529196f6f08f",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Iv1lVxggeeZlJxqi",
+          "name": "Donna.Baixa.Pagamento.Bling"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "function toUrlEncoded(obj) {\n  return Object.keys(obj)\n    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]))\n    .join('&');\n}\n\nreturn {\n  url: \"https://www.bling.com.br/relatorios/recibo.impressao.php?\" + toUrlEncoded($input.first().json)\n}"
+      },
+      "id": "1ae1244c-a051-48f8-b2cb-0d5de037b46b",
+      "name": "URL Recibo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3900,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://whatsapp.studiomzt.com.br/message/sendText/DonnaAssistente",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "=556792903483"
+            },
+            {
+              "name": "text",
+              "value": "=Recibo - {{ $('HTTP Request30').item.json.data.nome }}\n{{ $json.url }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9130f8f2-cf71-45fc-948f-54d08c4c92e9",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4120,
+        540
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "c4v8VKf93nLw1Ove",
+          "name": "StudioMZT.EvolutionAPI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "25141dd2-dad1-4bd5-8932-1eae34599fd2",
+              "leftValue": "={{ $json }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8fe6e6e7-03ad-47e1-b389-afbc0213259b",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2340,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return {\n  total: 0\n}"
+      },
+      "id": "60abc7f5-3fb5-4c71-9717-1e14b7b73f00",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2880,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "06c92aa5-e530-48e6-a88b-5adcf86df070",
+              "name": "total",
+              "value": "={{ $json.total }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "180253e0-8dfa-40af-8902-19859519c784",
+      "name": "Total Final",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3140,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://whatsapp.studiomzt.com.br/message/sendText/DonnaAssistente",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "=556781435828"
+            },
+            {
+              "name": "text",
+              "value": "=Recibo - {{ $('HTTP Request30').item.json.data.nome }}\n{{ $json.url }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7c9e4f6c-78a9-4010-8abf-98f4a7616d21",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4120,
+        740
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "c4v8VKf93nLw1Ove",
+          "name": "StudioMZT.EvolutionAPI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://whatsapp.studiomzt.com.br/message/sendText/DonnaAssistente",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "=556784297997"
+            },
+            {
+              "name": "text",
+              "value": "=Recibo - {{ $('HTTP Request30').item.json.data.nome }}\n{{ $json.url }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "86d4a63d-29b9-43e3-9920-be17e4f67918",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4120,
+        960
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "c4v8VKf93nLw1Ove",
+          "name": "StudioMZT.EvolutionAPI"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-10-26T23:34:53.000Z",
+  "versionId": "83f328f0-6195-4f25-9129-4b074e900094"
+}
