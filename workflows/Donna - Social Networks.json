@@ -1,0 +1,50 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-10-17T01:57:28.854Z",
+  "id": "4z0bBzcooZvNRljq",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Donna - Social Networks",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "d1303bd9-6019-4b52-8a31-f592adc832be",
+        "formTitle": "test",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "media[]",
+              "fieldType": "file",
+              "multipleFiles": false
+            },
+            {
+              "fieldLabel": "media[]",
+              "fieldType": "file"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "69e5e391-314a-4d09-8a62-6a7f68550bf3",
+      "name": "n8n Form Trigger",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.1,
+      "position": [
+        820,
+        360
+      ],
+      "webhookId": "d1303bd9-6019-4b52-8a31-f592adc832be"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-10-17T02:09:09.000Z",
+  "versionId": "7e7dee09-7a0d-4b2a-997a-60d7e3998228"
+}
