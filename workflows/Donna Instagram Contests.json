@@ -1,0 +1,44 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-10-22T20:48:30.063Z",
+  "id": "dBE8eJJEbtOrXCzd",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Donna Instagram Contests",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "instagram-contests",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "id": "a14e356f-9720-4db6-ba08-0a56a396a1ba",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        680,
+        400
+      ],
+      "webhookId": "fa15fa5b-6615-4900-8d06-16d0c9356b2d",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Qse9GD9RrYaMOoaS",
+          "name": "Donna Instagram Webhook"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-10-23T02:23:12.000Z",
+  "versionId": "9cba68aa-1149-4ba3-a06c-8f2c9967cb5f"
+}
