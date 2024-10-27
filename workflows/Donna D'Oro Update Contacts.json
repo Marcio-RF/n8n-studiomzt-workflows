@@ -1,0 +1,2495 @@
+{
+  "active": true,
+  "connections": {
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items for WhatsappID",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items for Chatwoot",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop over clients to update vector store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Create Event?": {
+      "main": [
+        [
+          {
+            "node": "Create Google Contact",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update Google Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Need Update?": {
+      "main": [
+        [
+          {
+            "node": "blingToken",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Need to Update Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Comprador?": {
+      "main": [
+        [
+          {
+            "node": "setBlingUpdatePayload1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Tem Bling ID?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tem Bling ID?": {
+      "main": [
+        [
+          {
+            "node": "setBlingUpdatePayload",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Comprador?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "blingToken": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "setBlingUpdatePayload": {
+      "main": [
+        [
+          {
+            "node": "getBlingContact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "setBlingUpdatePayload1": {
+      "main": [
+        [
+          {
+            "node": "getLastBlingContact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Need Update?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items for WhatsappID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items for WhatsappID": {
+      "main": [
+        [],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items for Chatwoot": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Tem chatwootID?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tem chatwootID?": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Is Create Event?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Update Bling User",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Google Contact": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Google Contact": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request12",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tem telefone no chatwoot?": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items for Chatwoot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request12": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Bling User": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getBlingContact": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getLastBlingContact": {
+      "main": [
+        [
+          {
+            "node": "Create Bling Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Bling Contact": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items for WhatsappID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Tem telefone no chatwoot?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items for Chatwoot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set summary1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request27",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request27": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Need to Update Vector Store": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Loop over clients to update vector store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop over clients to update vector store": {
+      "main": [
+        [],
+        [
+          {
+            "node": "set summary1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Record": {
+      "main": [
+        [
+          {
+            "node": "Loop over clients to update vector store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create New Record": {
+      "main": [
+        [
+          {
+            "node": "Loop over clients to update vector store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Update Record",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create New Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-27T18:37:00.581Z",
+  "id": "tFLPkKw8gGBCU2SE",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Donna D'Oro Update Contacts",
+  "nodes": [
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "options": {}
+      },
+      "id": "d8dabb77-c95b-4d46-ab98-320853b13224",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2120,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.2
+        }
+      },
+      "id": "3b4bcb0f-8f62-4a56-be58-a0e1ac11df78",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        3320,
+        -120
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "PZCMjct51rl9RnLJ",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"telefone\": \"mobile|home\",\n  \"telefone_2\": \"mobile|home\"\n}"
+      },
+      "id": "d60a4922-fe30-444a-962c-5b3342895963",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        3520,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fc8b13d6-feb5-4b35-abfd-72465616e3c5",
+              "name": "payload",
+              "value": "={{ $('Need Update?').item.json.body.payload }}",
+              "type": "object"
+            },
+            {
+              "id": "c5b489d6-293e-4af8-8631-15dde3cc6bf0",
+              "name": "ids",
+              "value": "={{ $('Need Update?').item.json.body.keys }}",
+              "type": "array"
+            },
+            {
+              "id": "46a749b6-2719-4a46-96f1-6782a6d6eaaf",
+              "name": "items",
+              "value": "={{ $('Need Update?').item.json.body.items }}",
+              "type": "array"
+            },
+            {
+              "id": "dbf6df6d-3e38-4464-a89a-92ad03822a8c",
+              "name": "event",
+              "value": "={{ $('Need Update?').item.json.body.event.event }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fc2261b5-e26c-477a-8adb-486fcb42de0b",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1920,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Google Contacts",
+        "height": 674.2434988179682,
+        "width": 1712.701042372295
+      },
+      "id": "da66b347-e516-4d35-a4f3-af1cd609e293",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2840,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9f77c449-d61e-48a0-bc17-dd804180df4c",
+              "leftValue": "={{ $('Edit Fields').item.json.event }}",
+              "rightValue": "create",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7f5618f1-4a24-4448-8bf5-285322e5e6f0",
+      "name": "Is Create Event?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3700,
+        -320
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8b22e81b-7694-4227-ab68-a61d828454fe",
+              "leftValue": "={{ $json.body.payload.nome }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "24ab4078-9046-4050-966b-6c1280ba3798",
+              "leftValue": "={{ $json.body.payload.telefone }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "42b935d7-9d0a-46d3-bc0f-7a74cc849c17",
+              "leftValue": "={{ $json.body.payload.telefone_2}}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "158900a6-dd27-4da8-9de3-f13898aaa5ec",
+              "leftValue": "={{ $json.body.payload.email }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "5cc27974-5b3e-4ecf-aea6-b5d9d3d79b1c",
+              "leftValue": "={{ $json.body.payload.endereco_principal }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "8e143d5f-cb44-4549-a1c4-ce3d403bdb67",
+              "leftValue": "={{ $json.body.payload.comprador }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "d71abcb6-06be-4ef6-8a86-396054a7417a",
+      "name": "Need Update?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1520,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "952452e6-3c41-406f-a202-dbfdcc3a1e58",
+              "leftValue": "={{ $('Edit Fields').item.json.payload.comprador }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "cd25afa7-4864-45c0-b648-5799a0327065",
+      "name": "Comprador?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3640,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Update Bling",
+        "height": 704.0751567377857,
+        "width": 1761.0029961910373
+      },
+      "id": "4af2646c-39cc-407f-8ce1-9f7b49b290c2",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2840,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "79205119-76ae-4090-99dd-daebf11c4a51",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3020,
+        -400
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5fc153b6-4dab-4799-a667-3bf66228626b",
+      "name": "No Operation, do nothing2",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3320,
+        -480
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "bf68ee00-7599-4115-89bb-c88cf47da0aa",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2940,
+        480
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "1cd70c96-8207-4ba5-a04d-af06cae5573e",
+      "name": "No Operation, do nothing3",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3180,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "773e98b6-92f0-4bcf-b1b1-9678ce11ad81",
+              "leftValue": "={{ $json.erpID }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5b0c94ba-8083-45f7-80f3-123a79629ccd",
+      "name": "Tem Bling ID?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3180,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4a2cf692-e3fe-47f8-aea2-aaa2d6408c1e",
+              "name": "nome",
+              "value": "={{ $('Split Out').item.json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "4d508424-3907-46ec-8131-21d6a068bb41",
+              "name": "numeroDocumento",
+              "value": "={{ $('Split Out').item.json.cpf_cnpj }}",
+              "type": "string"
+            },
+            {
+              "id": "8c9956fc-7131-435f-b268-0aa6fa178ef4",
+              "name": "telefone",
+              "value": "={{ $('Split Out').item.json.telefone?.replace(/^\\+/, '').replace(/^\\d{2}\\s(\\d{2})\\s(\\d{5})-?(\\d{4})$/, '($1) $2-$3') }}",
+              "type": "string"
+            },
+            {
+              "id": "6d720671-1372-4579-8eb0-8663c641f158",
+              "name": "celular",
+              "value": "={{ $('Split Out').item.json.telefone_2?.replace(/^\\+/, '').replace(/^\\d{2}\\s(\\d{2})\\s(\\d{5})-?(\\d{4})$/, '($1) $2-$3') }}",
+              "type": "string"
+            },
+            {
+              "id": "15d946fa-518c-4be8-ad4c-a521513b9451",
+              "name": "email",
+              "value": "={{ $('Split Out').item.json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "8a084ab5-b5c8-4dd3-b6e6-72432bc2d0ba",
+              "name": "id",
+              "value": "={{ $('Split Out').item.json.erpID }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3aefade1-d0d6-4d0f-a8b6-de27d479b16f",
+      "name": "setBlingUpdatePayload",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3360,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "access_token",
+        "key": "erp_access_token",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "685cb5fc-41fc-4e06-92f7-db8a494d095b",
+      "name": "blingToken",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        640
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4a2cf692-e3fe-47f8-aea2-aaa2d6408c1e",
+              "name": "nome",
+              "value": "={{ $('Split Out').item.json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "4d508424-3907-46ec-8131-21d6a068bb41",
+              "name": "numeroDocumento",
+              "value": "={{ $('Split Out').item.json.cpf_cnpj }}",
+              "type": "string"
+            },
+            {
+              "id": "8c9956fc-7131-435f-b268-0aa6fa178ef4",
+              "name": "telefone",
+              "value": "={{ $('Split Out').item.json.telefone?.replace(/^\\+/, '').replace(/^\\d{2}\\s(\\d{2})\\s(\\d{5})-?(\\d{4})$/, '($1) $2-$3') }}",
+              "type": "string"
+            },
+            {
+              "id": "6d720671-1372-4579-8eb0-8663c641f158",
+              "name": "celular",
+              "value": "={{ $('Split Out').item.json.telefone_2?.replace(/^\\+/, '').replace(/^\\d{2}\\s(\\d{2})\\s(\\d{5})-?(\\d{4})$/, '($1) $2-$3') }}",
+              "type": "string"
+            },
+            {
+              "id": "15d946fa-518c-4be8-ad4c-a521513b9451",
+              "name": "email",
+              "value": "={{ $('Split Out').item.json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "8a084ab5-b5c8-4dd3-b6e6-72432bc2d0ba",
+              "name": "id",
+              "value": "={{ $('Split Out').item.json.erpID }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9f28d6b6-4ded-4358-9ea4-d27b648374ea",
+      "name": "setBlingUpdatePayload1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3840,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "7bb62b21-fc3e-4662-ab17-0ab2e36518b9",
+        "authentication": "headerAuth",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "53ad2b7e-b292-4fbb-b15c-f14bc7e3af36",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1300,
+        640
+      ],
+      "webhookId": "7bb62b21-fc3e-4662-ab17-0ab2e36518b9",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "hvVnkLiC68chBKCj",
+          "name": "Donna.Doro.N8N"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "008cae83-9970-4616-976d-4ab5a1f311fc",
+              "leftValue": "={{ $('Edit Fields').item.json.payload.telefone }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "de73a9bf-629b-400f-873c-8dbc2ac8de6c",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3140,
+        1160
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Update Whatsapp ID",
+        "height": 385.2822054232761,
+        "width": 698.9081962325987
+      },
+      "id": "da7d7909-8132-4d19-a190-9de597c39e98",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2840,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "545fbc7f-95fe-4160-b1d5-ecf57817d522",
+      "name": "Loop Over Items for WhatsappID",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2920,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "61c29255-48bd-4270-9ea5-fd826da560a8",
+      "name": "Loop Over Items for Chatwoot",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2920,
+        1680
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fcdd8eee-212a-41bf-a707-0e0b7fec779f",
+              "leftValue": "={{ $json.chatwootID }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "25b278a8-c0d9-4f9a-8955-37efa3ac706f",
+      "name": "Tem chatwootID?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3140,
+        1680
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Update Chatwoot",
+        "height": 780.1918238514954,
+        "width": 2167.0612462537943
+      },
+      "id": "9acd44e6-32d7-4413-bd4d-3582c5a6ddff",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2840,
+        1540
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Create Chatwoot contact",
+        "height": 232.57293509250917,
+        "width": 490.8342685748462,
+        "color": 3
+      },
+      "id": "e92fa7e7-f21d-4250-8e50-51f194571af8",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3860,
+        2040
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "daae7092-8cdb-45a6-a7ac-246c9cb6bfad",
+              "name": "id",
+              "value": "={{ $('Loop Over Items for Chatwoot').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "1712a7d6-3f36-4332-8ffe-57220a8d823a",
+              "name": "chatwootID",
+              "value": "={{ $json.payload[0].id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bb04a438-c3f5-41c1-8d04-1245eccd6741",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3940,
+        1800
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "id",
+        "joinMode": "enrichInput1",
+        "options": {}
+      },
+      "id": "823ee33c-90f0-4bc3-ba0f-7a5cfb4f4d22",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        4180,
+        1720
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "content": "## Update chatwootID",
+        "height": 273.65556038292516,
+        "width": 248.23591017267574,
+        "color": 3
+      },
+      "id": "bc04c587-26d3-4052-9488-a28e85b97ef7",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4720,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Seu trabalho é analisar números de telefones brasileiros e o classificá-los como mobile (celular) e fixo (home). Leve em consideração os números iniciais do telefone, após o DDD, pois esses são os dígitos que indicam se um telefone é um número fixo ou de celular (normalmente iniciados por 9, 8 ou 6).\n\nNúmero(s) de telefone(s) a ser(em) analisado(s):\n\n{{ $json.telefone }}\n{{ $json.telefone_2 }}\n\nResponda apenas com um objeto json com o seguinte formato:\n{\n  \"telefone\": \"mobile|home\",\n  \"telefone_2\": \"mobile|home\" (se existir)\n}",
+        "hasOutputParser": true
+      },
+      "id": "25cf9044-cde1-4d8e-ac7a-ef51f74171ea",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        3320,
+        -320
+      ],
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const blingContact = $input.item.json.data\nconst payload = $(\"setBlingUpdatePayload\").item.json\n\nreturn {\n  data: { ...blingContact, ...payload }\n}"
+      },
+      "id": "449a30e6-7611-49cf-8c98-671a26d37a82",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3720,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "contactId": "={{ $('Loop Over Items').item.json.googleContactsId }}",
+        "fields": [
+          "addresses",
+          "birthdays",
+          "emailAddresses",
+          "names",
+          "phoneNumbers"
+        ],
+        "updateFields": {
+          "familyName": "",
+          "givenName": "={{ $('Loop Over Items').item.json.nome }}",
+          "addressesUi": {
+            "addressesValues": {
+              "streetAddress": "={{ $('Loop Over Items').item.json.endereco_principal }}",
+              "city": "={{ $('Loop Over Items').item.json.cidade }}",
+              "region": "={{ $('Loop Over Items').item.json.bairro }}",
+              "postalCode": "={{ $('Loop Over Items').item.json.cep }}",
+              "type": "home"
+            }
+          },
+          "birthday": "={{ $('Loop Over Items').item.json.nascimento }}",
+          "companyUi": {
+            "companyValues": [
+              {
+                "name": "={{ $('Loop Over Items').item.json.empresa }}"
+              }
+            ]
+          },
+          "emailsUi": {
+            "emailsValues": [
+              {
+                "type": "home",
+                "value": "={{ $('Loop Over Items').item.json.email }}"
+              }
+            ]
+          },
+          "middleName": "",
+          "phoneUi": {
+            "phoneValues": [
+              {
+                "type": "={{ $json.output.telefone }}",
+                "value": "={{ $('Loop Over Items').item.json.telefone }}"
+              },
+              {
+                "type": "={{ $json.output.telefone_2 }}",
+                "value": "={{ $('Loop Over Items').item.json.telefone_2 }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "9aa965ec-fd7c-43ba-bfee-11078a07068a",
+      "name": "Update Google Contact",
+      "type": "n8n-nodes-base.googleContacts",
+      "typeVersion": 1,
+      "position": [
+        4060,
+        -80
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "googleContactsOAuth2Api": {
+          "id": "hoMDh5SwiITnx666",
+          "name": "Donna D'Oro - Google Contacts"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "givenName": "={{ $('Loop Over Items').item.json.nome }}",
+        "additionalFields": {
+          "addressesUi": {
+            "addressesValues": {
+              "streetAddress": "={{ $('Loop Over Items').item.json.endereco_principal }}",
+              "city": "={{ $('Loop Over Items').item.json.cidade }}",
+              "region": "={{ $('Loop Over Items').item.json.bairro }}",
+              "postalCode": "={{ $('Loop Over Items').item.json.cep }}",
+              "type": "home"
+            }
+          },
+          "birthday": "={{ $('Loop Over Items').item.json.nascimento }}",
+          "companyUi": {
+            "companyValues": [
+              {
+                "name": "={{ $('Loop Over Items').item.json.empresa }}"
+              }
+            ]
+          },
+          "emailsUi": {
+            "emailsValues": [
+              {
+                "type": "home",
+                "value": "={{ $('Loop Over Items').item.json.email }}"
+              }
+            ]
+          },
+          "phoneUi": {
+            "phoneValues": [
+              {
+                "type": "={{ $json.output.telefone }}",
+                "value": "={{ $('Loop Over Items').item.json.telefone }}"
+              },
+              {
+                "type": "={{ $json.output.telefone_2 }}",
+                "value": "={{ $('Loop Over Items').item.json.telefone_2 }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "e2977624-7a44-4808-a956-223689057cbf",
+      "name": "Create Google Contact",
+      "type": "n8n-nodes-base.googleContacts",
+      "typeVersion": 1,
+      "position": [
+        4060,
+        -300
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "googleContactsOAuth2Api": {
+          "id": "hoMDh5SwiITnx666",
+          "name": "Donna D'Oro - Google Contacts"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "44af241a-267e-470b-957a-6544b5913352",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "20bf9e28-3393-4690-bab1-9410696fb0c6",
+      "name": "Tem telefone no chatwoot?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3740,
+        1800
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://backend.donnadoro.com.br/items/Contatos/{{ $('Loop Over Items').item.json.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "googleContactsId",
+              "value": "={{ $json.contactId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ae501d98-c1ca-45ea-9121-07ed18d07f98",
+      "name": "HTTP Request12",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4260,
+        -300
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gv2igb7M3jLaZsnR",
+          "name": "Donna.Doro.API"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://backend.donnadoro.com.br/items/Contatos/{{ $('Split Out').item.json.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "erpID",
+              "value": "={{ $json.data.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9fe60473-65b4-4a25-9641-4e1308e89f72",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4380,
+        480
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gv2igb7M3jLaZsnR",
+          "name": "Donna.Doro.API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://api.bling.com.br/Api/v3/contatos/{{ $json.data.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('blingToken').item.json.access_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.data }}",
+        "options": {}
+      },
+      "id": "fc9acfb6-cdb7-4b1a-a6e5-e2cf423cca61",
+      "name": "Update Bling User",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3900,
+        720
+      ],
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.bling.com.br/Api/v3/contatos/{{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('blingToken').item.json.access_token }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9622817c-c5a1-4972-80f7-ea44fe4bc42d",
+      "name": "getBlingContact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3540,
+        720
+      ],
+      "retryOnFail": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.bling.com.br/Api/v3/contatos?pagina=1&limite=1&criterio=3",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('blingToken').item.json.access_token }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "21f7cfac-5d45-4395-afa7-e48c06e7b13d",
+      "name": "getLastBlingContact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4020,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.bling.com.br/Api/v3/contatos",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('blingToken').item.json.access_token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"nome\": \"{{ $('setBlingUpdatePayload1').item.json.nome }}\",\n  \"codigo\": \"{{ (parseInt($json.data[0].codigo) + 1).toString() }}\",\n  \"situacao\": \"A\",\n  \"numeroDocumento\": \"{{ $('setBlingUpdatePayload1').item.json.cpf_cnpj }}\",\n  \"telefone\": \"{{ $('setBlingUpdatePayload1').item.json.telefone }}\",\n  \"celular\": \"{{ $('setBlingUpdatePayload1').item.json.telefone_2 }}\",\n  \"fantasia\": \"\",\n  \"tipo\": \"F\",\n  \"indicadorIe\": 9,\n  \"ie\": \"\",\n  \"rg\": \"\",\n  \"orgaoEmissor\": \"\",\n  \"email\": \"{{ $('setBlingUpdatePayload1').item.json.email }}\",\n  \"tiposContato\": [\n    {\n      \"id\": 14574524980,\n      \"descricao\": \"Cliente\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "97a9efb7-fa7a-49a8-8a62-0021cbc0726e",
+      "name": "Create Bling Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4200,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://backend.donnadoro.com.br/items/Contatos/{{ $json.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "whatsappID",
+              "value": "={{ $json.telefone.replace(/^\\+/, '').replace(/\\s/g, '').replace(/-/, '').replace(/(\\d{2})(\\d{2})(9)(\\d{8})/, '$1$2$4@s.whatsapp.net') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e2dd2602-b87c-4038-b5d9-4d3701b86dca",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3360,
+        1160
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gv2igb7M3jLaZsnR",
+          "name": "Donna.Doro.API"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://chatwoot.studiomzt.com.br/api/v1/accounts/1/contacts/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $json.telefone.replace(/\\D/g, '').slice(-8) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e8bef39c-a4e2-4430-bb93-07558682787a",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3560,
+        1800
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "TaBUjM8hPaFiNceC",
+          "name": "Chatwoot API"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://chatwoot.studiomzt.com.br/api/v1/accounts/1/contacts/{{ $json.chatwootID }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{ $json.nome }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $json.email }}"
+            },
+            {
+              "name": "phone_number",
+              "value": "=+{{ $json.telefone.replace(/\\D/g, '') }}"
+            },
+            {
+              "name": "identifier",
+              "value": "={{ $json.whatsappID }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "013a1062-3eb1-4cf1-8281-f88c7f0ac3be",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4440,
+        1660
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "TaBUjM8hPaFiNceC",
+          "name": "Chatwoot API"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://chatwoot.studiomzt.com.br/api/v1/accounts/1/contacts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "inbox_id",
+              "value": "1"
+            },
+            {
+              "name": "name",
+              "value": "={{ $('Loop Over Items for Chatwoot').item.json.nome }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('Loop Over Items for Chatwoot').item.json.email }}"
+            },
+            {
+              "name": "phone_number",
+              "value": "=+{{ $('Loop Over Items for Chatwoot').item.json.telefone.replace(/\\D/g, '') }}"
+            },
+            {
+              "name": "identifier",
+              "value": "={{ $('Loop Over Items for Chatwoot').item.json.whatsappID }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "941ddfc7-c949-4fa8-9c47-6392b6ddc022",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4000,
+        2120
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "TaBUjM8hPaFiNceC",
+          "name": "Chatwoot API"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://backend.donnadoro.com.br/items/Contatos/{{ $('Loop Over Items for Chatwoot').item.json.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chatwootID",
+              "value": "={{ $json.payload.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b51defcd-9516-4e19-bf09-8f0a5ba1bafe",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4780,
+        1840
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gv2igb7M3jLaZsnR",
+          "name": "Donna.Doro.API"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9598bd83-c4be-43eb-8bac-d2d66c92b414",
+              "name": "content",
+              "value": "=Cliente: {{ $json.nome }}\n--------------\n\nTelefone: {{ $json.telefone + '\\t\\t' }}{{ $json.telefone_2 ? 'Telefone 2: ' + $json.telefone_2 : '' }}\n{{ $json.email ? 'Email: ' + $json.email : '' }}\n{{ $json.nascimento ? 'Data de Nascimento: ' + $json.nascimento + '\\t\\t' : '\\t\\t' }}{{ $json.cpf_cnpj ? '\\t\\tCPF/CNPJ: ' + $json.cpf_cnpj : '' }}\n{{ $json.empresa ? 'Empresa: ' + $json.empresa : '' }}{{ $json.empresa && $json.fonte ? '\\t\\t' : '' }}{{ $json.fonte ? 'Fonte: ' + $json.fonte : '' }}\n{{ $json.instagram ? 'Instagram: ' + $json.instagram : '' }}{{ $json.instagram && $json.facebook ? '\\t\\t' : '' }}{{ $json.facebook ? 'Facebook: ' + $json.facebook : '' }}\n{{ $json.tiktok ? 'Tiktok: ' + $json.tiktok : '' }}\n\n{{ $json.em_aberto > 0 ? 'Total em Aberto: ' + $json.em_aberto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : '' }}\n\n{{ $json.endereco_principal ? 'Endereço: ' + $json.endereco_principal + ' - ' + $json.bairro + '\\n' + $json.cep + ' - ' + $json.cidade + ' - ' + $json.estado : '' }}\n\n{{ $json.numeroDoAnel ? 'Número do Anel: ' + $json.numeroDoAnel : '' }}{{ $json.numeroDoAnel && $json.numeroDaPulseira ? '\\t\\t' : '' }}{{ $json.numeroDaPulseira ? 'Número da Pulseira: ' + $json.numeroDaPulseira : '' }}\n\n{{ $json.tags && $json.tags.length > 0 ? 'Tags: ' + $json.tags.join(', ') : '' }}\n\n{{ $json.historico_de_compras ? 'Histórico de Compras\\n--------------------\\n\\n' + $json.historico_de_compras + '\\n\\n' : '' }}\n\n{{ $json.notas ? 'Notas\\n-----\\n\\n' + $json.notas + '\\n\\n' : '' }}",
+              "type": "string"
+            },
+            {
+              "id": "88f2748d-65b7-4d4f-936f-27a8cdbdf6de",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "eb69be5a-74c9-4e2c-8817-854c84e450b3",
+              "name": "nome",
+              "value": "={{ $json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "e11fab34-1479-4f2b-9978-447a46a5248d",
+              "name": "email",
+              "value": "={{ $json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "b3e36bac-1c53-4e9a-bf83-fca563b33a9c",
+              "name": "cpf_cnpj",
+              "value": "={{ $json.cpf_cnpj }}",
+              "type": "string"
+            },
+            {
+              "id": "66e20f80-ce50-4174-acbb-4d75f65ae78a",
+              "name": "fonte",
+              "value": "={{ $json.fonte }}",
+              "type": "string"
+            },
+            {
+              "id": "d09de29f-1c1b-4366-b32c-bf350405a81d",
+              "name": "tags",
+              "value": "={{ $json.tags && $json.tags.length > 0 ? $json.tags.join(', ') : '' }}",
+              "type": "string"
+            },
+            {
+              "id": "12645cb6-b15a-4a54-9920-d6cf3b9cc6f4",
+              "name": "notas",
+              "value": "={{ $json.notas }}",
+              "type": "string"
+            },
+            {
+              "id": "b098da87-7916-483d-9330-dc0d2c10ff61",
+              "name": "numeroDoAnel",
+              "value": "={{ $json.numeroDoAnel }}",
+              "type": "number"
+            },
+            {
+              "id": "d997b90c-ea46-4f54-9aec-79cd218ed718",
+              "name": "numeroDaPulseira",
+              "value": "={{ $json.numeroDaPulseira }}",
+              "type": "number"
+            },
+            {
+              "id": "f6d62c22-9d8e-4b05-b0f2-7f781cc19790",
+              "name": "telefone",
+              "value": "={{ $json.telefone }}",
+              "type": "string"
+            },
+            {
+              "id": "dc214fda-8585-4932-a890-df81db49d8b8",
+              "name": "telefone_2",
+              "value": "={{ $json.telefone_2 }}",
+              "type": "string"
+            },
+            {
+              "id": "a2787782-7a08-4d35-91c3-c8bd0c43d359",
+              "name": "empresa",
+              "value": "={{ $json.empresa }}",
+              "type": "string"
+            },
+            {
+              "id": "fb19cace-5c82-4a34-addb-3a84040e2e20",
+              "name": "nascimento",
+              "value": "={{ $json.nascimento }}",
+              "type": "string"
+            },
+            {
+              "id": "ce52da71-1c98-435e-a378-de536149cccb",
+              "name": "endereco_principal",
+              "value": "={{ $json.endereco_principal }}",
+              "type": "string"
+            },
+            {
+              "id": "e79d8535-a549-45de-baf9-47eed4ea3410",
+              "name": "bairro",
+              "value": "={{ $json.bairro }}",
+              "type": "string"
+            },
+            {
+              "id": "d6c4c99c-6951-4911-9dde-94aa5a4f34f8",
+              "name": "cidade",
+              "value": "={{ $json.cidade }}",
+              "type": "string"
+            },
+            {
+              "id": "9bc5a1ae-85da-430f-9d94-066c0f62e235",
+              "name": "cep",
+              "value": "={{ $json.cep }}",
+              "type": "string"
+            },
+            {
+              "id": "795636ff-09ce-4338-93d7-e3f8e7340e02",
+              "name": "estado",
+              "value": "={{ $json.estado }}",
+              "type": "string"
+            },
+            {
+              "id": "75ac11ed-7be1-4196-a45e-0d1385e92b4d",
+              "name": "em_aberto",
+              "value": "={{ $json.em_aberto }}",
+              "type": "string"
+            },
+            {
+              "id": "13e74c39-f30f-47fd-bbbb-cbb7c7986a17",
+              "name": "historico_de_compras",
+              "value": "={{ $json.historico_de_compras }}",
+              "type": "string"
+            },
+            {
+              "id": "7c714d9b-7e84-4756-946a-8d6d0df7472f",
+              "name": "notas",
+              "value": "={{ $json.notas }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e920958a-0f02-4cf6-b43d-5f724eca53e5",
+      "name": "set summary1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3200,
+        2700
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/embeddings",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "input",
+              "value": "={{ $json.content }}"
+            },
+            {
+              "name": "model",
+              "value": "text-embedding-3-small"
+            },
+            {
+              "name": "encoding_format",
+              "value": "float"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d135bce6-62c6-4d8c-bce1-33d68416e7e7",
+      "name": "HTTP Request27",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3420,
+        2860
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "PZCMjct51rl9RnLJ",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d3a47d00-01ff-4e60-8142-32a2371c9f2a",
+              "name": "embedding",
+              "value": "={{ $json.data[0].embedding }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ac6e309c-8bb2-4d2b-9cef-de4165054ff2",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3600,
+        2860
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "return ({\n  content: $input.item.json.content.replaceAll(\"'\", \"''\"),\n  embedding: \"[\" + $input.item.json.embedding.join(\", \") + \"]\",\n  metadata: JSON.stringify({ ...$input.item.json, content: undefined, embedding: undefined }).replaceAll(\"'\", \"''\")\n})\n"
+      },
+      "id": "c567f013-92b5-4b0e-945d-5c94f50f7138",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4040,
+        2720
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Create clients vector documents ",
+        "height": 721.8110903995818,
+        "width": 2209.738796295111
+      },
+      "id": "3579b40a-c27d-4f2c-b2ca-d655b3a89082",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2840,
+        2440
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5ccf217c-31da-4a19-9459-9cb1d7ad4830",
+              "leftValue": "={{ $json.body.payload.historico_de_compras }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "01bec887-1c70-4bf2-a7da-88dc14db37ae",
+              "leftValue": "={{ $json.body.payload.em_aberto }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "229fd998-496d-4b6a-adc9-da3dc2d6c038",
+              "leftValue": "={{ $json.body.payload.notas }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "09805522-b68b-4898-8d01-c6e3b38a7885",
+              "leftValue": "={{ $json.body.payload.tags }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "ce1c04ec-ba8a-46b0-bf3d-2d4ffbe09241",
+      "name": "Need to Update Vector Store",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1720,
+        920
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "aee1fc09-64c7-4191-bbc5-486415ef289f",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fc8b13d6-feb5-4b35-abfd-72465616e3c5",
+              "name": "payload",
+              "value": "={{ $json.body.payload }}",
+              "type": "object"
+            },
+            {
+              "id": "c5b489d6-293e-4af8-8631-15dde3cc6bf0",
+              "name": "ids",
+              "value": "={{ $('Need Update?').item.json.body.keys }}",
+              "type": "array"
+            },
+            {
+              "id": "46a749b6-2719-4a46-96f1-6782a6d6eaaf",
+              "name": "items",
+              "value": "={{ $json.body.items }}",
+              "type": "array"
+            },
+            {
+              "id": "dbf6df6d-3e38-4464-a89a-92ad03822a8c",
+              "name": "event",
+              "value": "={{ $json.body.event.event }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "acb03eb9-27a5-4a14-a3b4-9a190152760c",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1940,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "options": {}
+      },
+      "id": "131a24b9-8955-4fc4-a45d-9a1329092930",
+      "name": "Split Out2",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "3365afd7-a4d6-4abd-aaca-4f32d275db23",
+      "name": "Loop over clients to update vector store",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2960,
+        2600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT COUNT(*) \nFROM public.contatos_documents\nWHERE metadata->>'id' = '{{ $('Merge1').item.json.id }}';\n",
+        "options": {}
+      },
+      "id": "e5254811-2df6-4d78-9242-86dffb9d82cf",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        4260,
+        2720
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "postgres": {
+          "id": "aqc73Y68LRWpxqQC",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "b58fb39d-3de6-440d-ae9f-7f6ad02c6142",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3820,
+        2720
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE public.contatos_documents\nSET \n    content = '{{ $('Code1').item.json.content }}', \n    metadata = '{{ $('Code1').item.json.metadata }}'::jsonb, \n    embedding = '{{ $('Code1').item.json.embedding }}'::vector\nWHERE metadata->>'id' = '{{ $('Merge1').item.json.id }}';\n",
+        "options": {
+          "queryBatching": "single"
+        }
+      },
+      "id": "f5e2bac3-87cd-4ac2-82e9-9bbbbed4153c",
+      "name": "Update Record",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        4740,
+        2660
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "aqc73Y68LRWpxqQC",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO public.contatos_documents(\n\tcontent, metadata, embedding)\nVALUES (\n    '{{ $('Code1').item.json.content }}', \n    '{{ $('Code1').item.json.metadata }}'::jsonb, \n    '{{ $('Code1').item.json.embedding }}'::vector\n);\n",
+        "options": {
+          "queryBatching": "single"
+        }
+      },
+      "id": "62b182cb-c247-4f63-88e9-bda1217d70f8",
+      "name": "Create New Record",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        4740,
+        2860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "aqc73Y68LRWpxqQC",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.count }}",
+                    "rightValue": 0,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Existing Record"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "15030e62-ffab-4549-9cb5-06e058903481",
+                    "leftValue": "={{ $json.count }}",
+                    "rightValue": 0,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "New Record"
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "783d571e-3bc0-4da0-9f59-da97a04e5af8",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        4460,
+        2720
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-10-25T19:06:14.000Z",
+  "versionId": "3deacad5-f635-43c9-b5a0-f1ab5eb6b439"
+}
