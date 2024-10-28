@@ -2893,6 +2893,21 @@
     },
     {
       "parameters": {
+        "content": "token\nCh76HKtFPqe_kfbqJloBoFsQ-KCYSyCz",
+        "height": 288.16343741806753,
+        "color": 3
+      },
+      "id": "959accb6-6ddf-4d14-805c-f6276b8020a1",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        2620
+      ]
+    },
+    {
+      "parameters": {
         "path": "donna-update-em-aberto",
         "authentication": "headerAuth",
         "responseMode": "responseNode",
@@ -2909,8 +2924,8 @@
       "webhookId": "6b735a8c-d981-434d-9833-41eb80a324d2",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "gv2igb7M3jLaZsnR",
-          "name": "Donna.Doro.API"
+          "id": "WwmB4qJgS86D3E3i",
+          "name": "Update Bling Data Webhook"
         }
       }
     }
@@ -2932,6 +2947,6 @@
   },
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2024-10-25T19:06:54.000Z",
-  "versionId": "914d2161-3cbd-477b-9f0a-ab54e3932d81"
+  "updatedAt": "2024-10-28T00:23:03.771Z",
+  "versionId": "d7ec9593-29c1-4955-8b2b-5d799b5e7596"
 }
