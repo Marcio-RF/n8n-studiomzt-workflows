@@ -1,17 +1,6 @@
 {
   "active": true,
   "connections": {
-    "Webhook GET": {
-      "main": [
-        [
-          {
-            "node": "Respond to Webhook",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "RabbitMQ Trigger": {
       "main": [
         [
@@ -49,6 +38,17 @@
           }
         ]
       ]
+    },
+    "Webhook GET": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-10-23T00:20:45.274Z",
@@ -78,33 +78,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://n8n.studiomzt.com.br/webhook-test/instagram-contests",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ $json.body }}",
-        "options": {}
-      },
-      "id": "7c99dae2-1c87-4daa-be3c-e6d6a784ed5a",
-      "name": "Contests Test",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1240,
-        900
-      ],
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "Qse9GD9RrYaMOoaS",
-          "name": "Donna Instagram Webhook"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://n8n.studiomzt.com.br/webhook/instagram-contests",
+        "url": "https://n8n-webhook.studiomzt.com.br/webhook/instagram-contests",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -126,22 +100,6 @@
           "name": "Donna Instagram Webhook"
         }
       }
-    },
-    {
-      "parameters": {
-        "path": "meta-webhook",
-        "responseMode": "responseNode",
-        "options": {}
-      },
-      "id": "03fc551a-18d1-44e6-bec3-d966dc8689da",
-      "name": "Webhook GET",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        820,
-        300
-      ],
-      "webhookId": "0fcb710d-e537-403e-b2f0-b5742f5f4a1e"
     },
     {
       "parameters": {
@@ -220,6 +178,21 @@
     },
     {
       "parameters": {
+        "content": "## Token QPWHop3E1nG3b63y9uArkCZQK2PF6QiA",
+        "height": 249.71631205673725,
+        "width": 499.3617021276599
+      },
+      "id": "2b2f73ba-3aed-4ee6-ac89-80cb1ae488ae",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        485.0354609929077,
+        460
+      ]
+    },
+    {
+      "parameters": {
         "httpMethod": "POST",
         "path": "meta-webhook",
         "options": {}
@@ -233,6 +206,48 @@
         540
       ],
       "webhookId": "0fcb710d-e537-403e-b2f0-b5742f5f4a1e"
+    },
+    {
+      "parameters": {
+        "path": "meta-webhook",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "03fc551a-18d1-44e6-bec3-d966dc8689da",
+      "name": "Webhook GET",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        820,
+        300
+      ],
+      "webhookId": "0fcb710d-e537-403e-b2f0-b5742f5f4a1e"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n.studiomzt.com.br/webhook-test/instagram-contests",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.body }}",
+        "options": {}
+      },
+      "id": "7c99dae2-1c87-4daa-be3c-e6d6a784ed5a",
+      "name": "Contests Test",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1240,
+        900
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Qse9GD9RrYaMOoaS",
+          "name": "Donna Instagram Webhook"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -242,6 +257,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2024-10-29T14:44:16.444Z",
-  "versionId": "c0da752d-f2df-4973-af43-a740d24b2779"
+  "updatedAt": "2024-10-29T19:11:54.507Z",
+  "versionId": "9a2e2da2-1098-4bda-ae90-cd25dfa22d9c"
 }
