@@ -305,6 +305,28 @@
       "main": [
         [
           {
+            "node": "RabbitMQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RabbitMQ Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
             "node": "Filter1",
             "type": "main",
             "index": 0
@@ -332,7 +354,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2140,
+        2360,
         480
       ],
       "credentials": {
@@ -351,7 +373,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2400,
+        2620,
         480
       ],
       "webhookId": "fa7e5fd1-54e5-46bd-a878-52ea8f893220"
@@ -369,7 +391,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2600,
+        2820,
         480
       ],
       "credentials": {
@@ -419,7 +441,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3000,
+        3220,
         480
       ]
     },
@@ -433,7 +455,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3200,
+        3420,
         480
       ],
       "credentials": {
@@ -468,7 +490,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3400,
+        3620,
         480
       ]
     },
@@ -502,7 +524,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2800,
+        3020,
         480
       ]
     },
@@ -513,7 +535,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        3000,
+        3220,
         280
       ]
     },
@@ -547,7 +569,7 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        200,
+        420,
         460
       ]
     },
@@ -591,7 +613,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1260,
+        1480,
         100
       ],
       "credentials": {
@@ -615,7 +637,7 @@
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
       "position": [
-        1020,
+        1240,
         100
       ]
     },
@@ -731,7 +753,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        400,
+        620,
         460
       ]
     },
@@ -749,7 +771,7 @@
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
       "position": [
-        960,
+        1180,
         920
       ]
     },
@@ -796,7 +818,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1480,
+        1700,
         100
       ]
     },
@@ -843,7 +865,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1520,
+        1740,
         920
       ]
     },
@@ -890,7 +912,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1500,
+        1720,
         480
       ]
     },
@@ -937,7 +959,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1860,
+        2080,
         480
       ]
     },
@@ -950,7 +972,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        4240,
+        4460,
         480
       ]
     },
@@ -980,7 +1002,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4540,
+        4760,
         580
       ],
       "credentials": {
@@ -999,7 +1021,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        4740,
+        4960,
         620
       ],
       "webhookId": "7a7430fc-20d2-4d91-9dcf-bcedd50ed850"
@@ -1014,7 +1036,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        4020,
+        4240,
         480
       ]
     },
@@ -1039,7 +1061,7 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.5,
       "position": [
-        1240,
+        1460,
         920
       ],
       "credentials": {
@@ -1071,7 +1093,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3580,
+        3800,
         480
       ],
       "credentials": {
@@ -1093,7 +1115,7 @@
           "conditions": [
             {
               "id": "b97c0a67-60e0-4177-ac8f-fc6560d8cb63",
-              "leftValue": "={{ $json.body.apikey }}",
+              "leftValue": "={{ $json.content.body.apikey }}",
               "rightValue": "5itmyi37nvzd2b8g2r4thl0rm75j13zh",
               "operator": {
                 "type": "string",
@@ -1111,7 +1133,7 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        -60,
+        200,
         460
       ]
     },
@@ -1125,7 +1147,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -120,
+        140,
         380
       ]
     },
@@ -1148,7 +1170,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3800,
+        4020,
         480
       ]
     },
@@ -1178,7 +1200,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1760,
+        1980,
         920
       ],
       "credentials": {
@@ -1199,10 +1221,84 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -320,
-        460
+        -300,
+        0
       ],
       "webhookId": "ac4e2773-a0b1-462b-83d9-eaccbab5c10f"
+    },
+    {
+      "parameters": {
+        "queue": "donna-whatsapp-assistente",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "durable": true
+        }
+      },
+      "id": "f80e5a9e-fa29-4655-bd17-94b60e9d126c",
+      "name": "RabbitMQ Trigger",
+      "type": "n8n-nodes-base.rabbitmqTrigger",
+      "typeVersion": 1,
+      "position": [
+        -280,
+        460
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "tu2r8ZlKYBiycQBN",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "queue": "donna-whatsapp-assistente",
+        "options": {
+          "arguments": {
+            "argument": [
+              {
+                "key": "x-queue-type",
+                "value": "quorum"
+              }
+            ]
+          },
+          "durable": true
+        }
+      },
+      "id": "4d598dad-9aad-423a-b25a-2f5ae3b3aed6",
+      "name": "RabbitMQ",
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1.1,
+      "position": [
+        -80,
+        0
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "tu2r8ZlKYBiycQBN",
+          "name": "RabbitMQ account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\n$input.item.json.myNewField = 1;\n\nreturn $input.item;"
+      },
+      "id": "c5f1d2fe-934c-4a62-8034-348f56adffb9",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        460
+      ]
     }
   ],
   "pinData": {},
@@ -1211,7 +1307,7 @@
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 1,
-  "updatedAt": "2024-10-27T23:26:42.727Z",
-  "versionId": "28c96d82-593c-4c56-8ff0-b9e0fa4a6d50"
+  "triggerCount": 2,
+  "updatedAt": "2024-10-29T03:45:13.988Z",
+  "versionId": "e7ebe1e7-2ec0-42ba-a06e-fa03d02ac14b"
 }
