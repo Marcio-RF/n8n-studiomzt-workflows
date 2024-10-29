@@ -316,14 +316,14 @@
       "main": [
         [
           {
-            "node": "Code",
+            "node": "Get Payload",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Code": {
+    "Get Payload": {
       "main": [
         [
           {
@@ -782,13 +782,13 @@
             {
               "id": "3df98d28-5a08-4f83-b439-17bc75bbe607",
               "name": "=id",
-              "value": "={{ $('Webhook').item.json.body.data.key.id }}",
+              "value": "={{ $('Get Payload').item.json.body.data.key.id }}",
               "type": "string"
             },
             {
               "id": "1beba143-794d-4133-884c-56a03de1db81",
               "name": "remoteJid",
-              "value": "={{ $('Webhook').item.json.body.data.key.remoteJid }}",
+              "value": "={{ $('Get Payload').item.json.body.data.key.remoteJid }}",
               "type": "string"
             },
             {
@@ -800,7 +800,7 @@
             {
               "id": "9310b7d0-0981-41b5-b271-5dd15ff8f28c",
               "name": "pushName",
-              "value": "={{ $('Webhook').item.json.body.data.pushName }}",
+              "value": "={{ $('Get Payload').item.json.body.data.pushName }}",
               "type": "string"
             },
             {
@@ -829,13 +829,13 @@
             {
               "id": "3df98d28-5a08-4f83-b439-17bc75bbe607",
               "name": "=id",
-              "value": "={{ $('Webhook').item.json.body.data.key.id }}",
+              "value": "={{ $('Get Payload').item.json.body.data.key.id }}",
               "type": "string"
             },
             {
               "id": "1beba143-794d-4133-884c-56a03de1db81",
               "name": "remoteJid",
-              "value": "={{ $('Webhook').item.json.body.data.key.remoteJid }}",
+              "value": "={{ $('Get Payload').item.json.body.data.key.remoteJid }}",
               "type": "string"
             },
             {
@@ -847,7 +847,7 @@
             {
               "id": "9310b7d0-0981-41b5-b271-5dd15ff8f28c",
               "name": "pushName",
-              "value": "={{ $('Webhook').item.json.body.data.pushName }}",
+              "value": "={{ $('Get Payload').item.json.body.data.pushName }}",
               "type": "string"
             },
             {
@@ -876,13 +876,7 @@
             {
               "id": "3df98d28-5a08-4f83-b439-17bc75bbe607",
               "name": "=id",
-              "value": "={{ $('Webhook').item.json.body.data.key.id }}",
-              "type": "string"
-            },
-            {
-              "id": "1beba143-794d-4133-884c-56a03de1db81",
-              "name": "remoteJid",
-              "value": "={{ $('Webhook').item.json.body.data.key.remoteJid }}",
+              "value": "={{ $('Get Payload').item.json.body.data.key.id }}",
               "type": "string"
             },
             {
@@ -894,13 +888,19 @@
             {
               "id": "9310b7d0-0981-41b5-b271-5dd15ff8f28c",
               "name": "pushName",
-              "value": "={{ $('Webhook').item.json.body.data.pushName }}",
+              "value": "={{ $('Get Payload').item.json.body.data.pushName }}",
               "type": "string"
             },
             {
               "id": "fbc5a4bd-22f1-4a72-b686-abfa7dc530f0",
               "name": "content",
-              "value": "={{ $('Webhook').item.json.body.data.message.conversation }}",
+              "value": "={{ $('Get Payload').item.json.body.data.message.conversation }}",
+              "type": "string"
+            },
+            {
+              "id": "2b0de64a-9cf8-4633-b05d-2e6f53f8cb96",
+              "name": "remoteJid",
+              "value": "={{ $('Get Payload').item.json.body.data.key.remoteJid }}",
               "type": "string"
             }
           ]
@@ -912,7 +912,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1720,
+        1660,
         480
       ]
     },
@@ -1115,7 +1115,7 @@
           "conditions": [
             {
               "id": "b97c0a67-60e0-4177-ac8f-fc6560d8cb63",
-              "leftValue": "={{ $json.content.body.apikey }}",
+              "leftValue": "={{ $json.body.apikey }}",
               "rightValue": "5itmyi37nvzd2b8g2r4thl0rm75j13zh",
               "operator": {
                 "type": "string",
@@ -1238,7 +1238,9 @@
               }
             ]
           },
-          "durable": true
+          "acknowledge": "executionFinishesSuccessfully",
+          "durable": true,
+          "jsonParseBody": true
         }
       },
       "id": "f80e5a9e-fa29-4655-bd17-94b60e9d126c",
@@ -1289,10 +1291,10 @@
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\n$input.item.json.myNewField = 1;\n\nreturn $input.item;"
+        "jsCode": "return $input.item.json.content"
       },
       "id": "c5f1d2fe-934c-4a62-8034-348f56adffb9",
-      "name": "Code",
+      "name": "Get Payload",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
@@ -1308,6 +1310,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2024-10-29T03:45:13.988Z",
-  "versionId": "e7ebe1e7-2ec0-42ba-a06e-fa03d02ac14b"
+  "updatedAt": "2024-10-29T14:29:32.724Z",
+  "versionId": "7854fd11-9fbb-444f-b735-f5f191dd7a50"
 }
