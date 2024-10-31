@@ -96,7 +96,7 @@
       "main": [
         [
           {
-            "node": "Convert to File",
+            "node": "HTTP Request5",
             "type": "main",
             "index": 0
           }
@@ -117,29 +117,7 @@
         ],
         [
           {
-            "node": "Convert to File1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Convert to File": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Convert to File1": {
-      "main": [
-        [
-          {
-            "node": "OpenAI",
+            "node": "HTTP Request4",
             "type": "main",
             "index": 0
           }
@@ -257,17 +235,6 @@
         ]
       ]
     },
-    "OpenAI": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Filter1": {
       "main": [
         [
@@ -333,6 +300,61 @@
           }
         ]
       ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request5": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-10-14T01:09:29.542Z",
@@ -354,7 +376,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2360,
+        2580,
         480
       ],
       "credentials": {
@@ -373,7 +395,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2620,
+        2840,
         480
       ],
       "webhookId": "fa7e5fd1-54e5-46bd-a878-52ea8f893220"
@@ -391,7 +413,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2820,
+        3040,
         480
       ],
       "credentials": {
@@ -441,7 +463,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3220,
+        3440,
         480
       ]
     },
@@ -455,7 +477,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3420,
+        3640,
         480
       ],
       "credentials": {
@@ -490,7 +512,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3620,
+        3840,
         480
       ]
     },
@@ -524,7 +546,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3020,
+        3240,
         480
       ]
     },
@@ -535,7 +557,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        3220,
+        3440,
         280
       ]
     },
@@ -613,7 +635,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1480,
+        1760,
         100
       ],
       "credentials": {
@@ -622,24 +644,6 @@
           "name": "Groq"
         }
       }
-    },
-    {
-      "parameters": {
-        "operation": "toBinary",
-        "sourceProperty": "body.data.message.base64",
-        "options": {
-          "fileName": "audio.mp3",
-          "mimeType": "audio/mpeg"
-        }
-      },
-      "id": "8caddf6b-0329-4b95-a003-0b76efff22e6",
-      "name": "Convert to File",
-      "type": "n8n-nodes-base.convertToFile",
-      "typeVersion": 1.1,
-      "position": [
-        1240,
-        100
-      ]
     },
     {
       "parameters": {
@@ -759,24 +763,6 @@
     },
     {
       "parameters": {
-        "operation": "toBinary",
-        "sourceProperty": "body.data.message.base64",
-        "options": {
-          "fileName": "image.jpg",
-          "mimeType": "image/jpeg"
-        }
-      },
-      "id": "5e0c8372-9643-4e9a-870f-db5297ce4905",
-      "name": "Convert to File1",
-      "type": "n8n-nodes-base.convertToFile",
-      "typeVersion": 1.1,
-      "position": [
-        1180,
-        920
-      ]
-    },
-    {
-      "parameters": {
         "assignments": {
           "assignments": [
             {
@@ -818,7 +804,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1700,
+        1980,
         100
       ]
     },
@@ -959,7 +945,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2080,
+        2300,
         480
       ]
     },
@@ -972,7 +958,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        4460,
+        4680,
         480
       ]
     },
@@ -1002,7 +988,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4760,
+        4980,
         580
       ],
       "credentials": {
@@ -1021,7 +1007,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        4960,
+        5180,
         620
       ],
       "webhookId": "7a7430fc-20d2-4d91-9dcf-bcedd50ed850"
@@ -1036,40 +1022,9 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        4240,
+        4460,
         480
       ]
-    },
-    {
-      "parameters": {
-        "resource": "image",
-        "operation": "analyze",
-        "modelId": {
-          "__rl": true,
-          "value": "gpt-4o-mini",
-          "mode": "list",
-          "cachedResultName": "GPT-4O-MINI"
-        },
-        "text": "Esta imagem é, na maior parte das vezes, uma foto de joia ou semijoias. Descreva a imagem nos seus mínimos detalhes, descrevendo cada parte visível da melhor maneira possível.",
-        "inputType": "base64",
-        "options": {
-          "maxTokens": 800
-        }
-      },
-      "id": "fe22697c-f42b-40c9-9e54-4c5afed37e98",
-      "name": "OpenAI",
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 1.5,
-      "position": [
-        1460,
-        920
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "PZCMjct51rl9RnLJ",
-          "name": "OpenAi account"
-        }
-      }
     },
     {
       "parameters": {
@@ -1093,7 +1048,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3800,
+        4020,
         480
       ],
       "credentials": {
@@ -1170,7 +1125,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4020,
+        4240,
         480
       ]
     },
@@ -1185,7 +1140,7 @@
           "parameters": [
             {
               "name": "number",
-              "value": "={{ $('Webhook').item.json.body.data.key.remoteJid }}"
+              "value": "={{ $('Get Payload').item.json.body.data.key.remoteJid }}"
             },
             {
               "name": "text",
@@ -1301,6 +1256,97 @@
         -60,
         460
       ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.body.data.message.mediaUrl }}",
+        "options": {}
+      },
+      "id": "24497596-7bd5-44d4-9afb-d6123822398a",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "Esta imagem é, na maior parte das vezes, uma foto de joia ou semijoias. Descreva a imagem nos seus mínimos detalhes, descrevendo cada parte visível da melhor maneira possível.",
+        "inputType": "base64",
+        "options": {
+          "maxTokens": 800
+        }
+      },
+      "id": "fe22697c-f42b-40c9-9e54-4c5afed37e98",
+      "name": "OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        1460,
+        920
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "PZCMjct51rl9RnLJ",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.body.data.message.mediaUrl }}",
+        "options": {}
+      },
+      "id": "6dda48b7-9237-41b4-a00d-6e93163f1115",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        960,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "destinationKey": "audio",
+        "options": {}
+      },
+      "id": "42b64542-6832-4fa3-b9a7-085477de97a8",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "audio",
+        "options": {
+          "mimeType": "audio/mpeg"
+        }
+      },
+      "id": "93e0b189-ba8d-49d8-bbdd-2dd98f957f92",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1480,
+        100
+      ]
     }
   ],
   "pinData": {},
@@ -1310,6 +1356,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2024-10-29T14:29:32.724Z",
-  "versionId": "7854fd11-9fbb-444f-b735-f5f191dd7a50"
+  "updatedAt": "2024-10-31T02:02:28.572Z",
+  "versionId": "935fa430-e97f-4751-bdd7-415725dbebfd"
 }
