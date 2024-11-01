@@ -860,6 +860,138 @@
           }
         ]
       ]
+    },
+    "blingToken3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate7": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Filter8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter8": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request40": {
+      "main": [
+        [
+          {
+            "node": "Aggregate7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "blingToken3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Duplicates": {
+      "main": [
+        [
+          {
+            "node": "Directus",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request40",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Directus": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "Directus1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-10-15T02:08:31.086Z",
@@ -2928,6 +3060,322 @@
           "name": "Update Bling Data Webhook"
         }
       }
+    },
+    {
+      "parameters": {},
+      "id": "4a0322d8-6fe3-4cf0-91ab-d5e558279158",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        4260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "access_token",
+        "key": "erp_access_token",
+        "keyType": "string",
+        "options": {}
+      },
+      "id": "b91ff725-b560-43f0-a6e6-04aaae2bb762",
+      "name": "blingToken3",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        4060
+      ],
+      "credentials": {
+        "redis": {
+          "id": "xO1fxD1a2KzN70fl",
+          "name": "Redis 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "data"
+            }
+          ]
+        },
+        "options": {
+          "mergeLists": true
+        }
+      },
+      "id": "0923b3c9-6048-4f6a-80ed-2d38625b7750",
+      "name": "Aggregate7",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2080,
+        4060
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "e1a7bd5e-8a21-4261-bc27-3bff2f29a49a",
+      "name": "Split Out2",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2300,
+        4060
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "28186191-1692-4c30-9127-33a8d5c31fa7",
+              "leftValue": "={{ $json.situacao }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "c3c0d625-23d7-4544-87ef-044519a65367",
+              "leftValue": "={{ $json.situacao }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "ac41aa07-7d94-40a9-9d6c-e50b5b436136",
+      "name": "Filter8",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        2520,
+        4060
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b2f2a807-a654-491b-86e9-fb07624ac7d9",
+              "name": "contato",
+              "value": "={{ $json.contato }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e0c190ed-a8bb-42f4-9260-2d99cf1aab12",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2740,
+        4060
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.bling.com.br/Api/v3/contas/receber",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('blingToken3').item.json.access_token }}"
+            }
+          ]
+        },
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1
+            }
+          },
+          "pagination": {
+            "pagination": {
+              "parameters": {
+                "parameters": [
+                  {
+                    "name": "pagina",
+                    "value": "={{ $pageCount + 1 }}"
+                  }
+                ]
+              },
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ $response.body.data.length === 0 }}",
+              "requestInterval": 500
+            }
+          }
+        }
+      },
+      "id": "1c2b3e44-c444-4f93-a8b0-df5c05b1a9ac",
+      "name": "HTTP Request40",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1860,
+        4060
+      ]
+    },
+    {
+      "parameters": {
+        "compare": "selectedFields",
+        "fieldsToCompare": "contato.id",
+        "options": {}
+      },
+      "id": "48dc3747-cd63-498f-8c08-08eb789c27ab",
+      "name": "Remove Duplicates",
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 2,
+      "position": [
+        2960,
+        4060
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "donna-update-inadimplentes",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "id": "02d8fb57-5f3b-4d10-a165-58bc02c131e2",
+      "name": "Webhook2",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        4060
+      ],
+      "webhookId": "6b735a8c-d981-434d-9833-41eb80a324d2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "j4aNmp45Pm5k7kYg",
+          "name": "Update Bling Data Webhook"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "collection": "Contatos",
+        "additionalFields": {
+          "filter": "={\n  \"erpID\": {\n    \"_eq\": \"{{ $json.contato.id.toString() }}\"\n  }\n}"
+        }
+      },
+      "id": "53935561-8eac-4058-a14a-b4d2b51ddef3",
+      "name": "Directus",
+      "type": "@flagbit/n8n-nodes-directus.directus",
+      "typeVersion": 1,
+      "position": [
+        3180,
+        4060
+      ],
+      "credentials": {
+        "directusApi": {
+          "id": "iw821PMJLt3Ug3fH",
+          "name": "Donna.Doro.Backend"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://backend.donnadoro.com.br/items/settings",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "id": "956e16f8-01b7-45ba-ba32-42440b7a9c4b",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1520,
+        4060
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gv2igb7M3jLaZsnR",
+          "name": "Donna.Doro.API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\n$input.item.json = $input.item.json\n\nreturn $input.item;"
+      },
+      "id": "7a835b7b-f557-4c1f-b125-6d2f9faba1a7",
+      "name": "Code3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3400,
+        4060
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "id": "={{ $('HTTP Request2').first().json.data.idListaInadimplentes }}",
+        "collection": "client_lists",
+        "data": "={{ {\n  \"clients\": $json.ids\n} }}"
+      },
+      "id": "9ae6f810-8e44-45ed-806a-57d1dfc043cc",
+      "name": "Directus1",
+      "type": "@flagbit/n8n-nodes-directus.directus",
+      "typeVersion": 1,
+      "position": [
+        3860,
+        4060
+      ],
+      "credentials": {
+        "directusApi": {
+          "id": "iw821PMJLt3Ug3fH",
+          "name": "Donna.Doro.Backend"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get all input items\nconst items = $input.all();\n\n// Map the array of objects to an array of strings containing only the 'id' values\nconst ids = items.map(item => item.json.id);\n\n// Return the result as an array of single objects with 'idArray' as a key\nreturn [{ json: { ids } }];\n"
+      },
+      "id": "214e7cdb-7efc-4c09-b1aa-4b374ffec507",
+      "name": "Code4",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3620,
+        4060
+      ]
     }
   ],
   "pinData": {},
@@ -2946,7 +3394,7 @@
     }
   },
   "tags": [],
-  "triggerCount": 3,
-  "updatedAt": "2024-10-29T19:28:51.742Z",
-  "versionId": "1a36b898-fa93-4b86-abef-320affc8c7a2"
+  "triggerCount": 4,
+  "updatedAt": "2024-11-01T03:37:42.539Z",
+  "versionId": "6d5c05e5-f8aa-4c1b-9baf-1bb90e81bd77"
 }
