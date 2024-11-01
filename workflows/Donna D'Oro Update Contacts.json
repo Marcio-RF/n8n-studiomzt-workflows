@@ -28,6 +28,11 @@
             "node": "Loop over clients to update vector store",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Loop Over Items for photo",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -200,17 +205,6 @@
         [
           {
             "node": "getLastBlingContact",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Webhook": {
-      "main": [
-        [
-          {
-            "node": "Need Update?",
             "type": "main",
             "index": 0
           }
@@ -666,6 +660,109 @@
           }
         ]
       ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Need Update?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items for photo": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Have photo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Have photo": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items for photo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Directus",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Directus": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Directus2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items for photo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request8": {
+      "main": [
+        [
+          {
+            "node": "Directus2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items for photo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-09-27T18:37:00.581Z",
@@ -685,8 +782,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        2120,
-        640
+        2020,
+        1300
       ]
     },
     {
@@ -761,8 +858,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1920,
-        640
+        1820,
+        1300
       ]
     },
     {
@@ -895,8 +992,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1520,
-        640
+        1420,
+        1300
       ]
     },
     {
@@ -1096,8 +1193,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1720,
-        640
+        1620,
+        1300
       ],
       "credentials": {
         "redis": {
@@ -1158,30 +1255,6 @@
         3840,
         480
       ]
-    },
-    {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "7bb62b21-fc3e-4662-ab17-0ab2e36518b9",
-        "authentication": "headerAuth",
-        "responseMode": "lastNode",
-        "options": {}
-      },
-      "id": "53ad2b7e-b292-4fbb-b15c-f14bc7e3af36",
-      "name": "Webhook",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        1300,
-        640
-      ],
-      "webhookId": "7bb62b21-fc3e-4662-ab17-0ab2e36518b9",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "hvVnkLiC68chBKCj",
-          "name": "Donna.Doro.N8N"
-        }
-      }
     },
     {
       "parameters": {
@@ -2095,7 +2168,7 @@
       "typeVersion": 3.4,
       "position": [
         3200,
-        2700
+        3360
       ]
     },
     {
@@ -2129,7 +2202,7 @@
       "typeVersion": 4.2,
       "position": [
         3420,
-        2860
+        3520
       ],
       "credentials": {
         "openAiApi": {
@@ -2158,7 +2231,7 @@
       "typeVersion": 3.4,
       "position": [
         3600,
-        2860
+        3520
       ]
     },
     {
@@ -2172,7 +2245,7 @@
       "typeVersion": 2,
       "position": [
         4040,
-        2720
+        3380
       ]
     },
     {
@@ -2187,7 +2260,7 @@
       "typeVersion": 1,
       "position": [
         2840,
-        2440
+        3100
       ]
     },
     {
@@ -2251,8 +2324,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1720,
-        920
+        1620,
+        1580
       ]
     },
     {
@@ -2262,8 +2335,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        1920,
-        1080
+        1820,
+        1740
       ]
     },
     {
@@ -2303,8 +2376,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1940,
-        920
+        1840,
+        1580
       ]
     },
     {
@@ -2317,8 +2390,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        2140,
-        920
+        2040,
+        1580
       ]
     },
     {
@@ -2331,7 +2404,7 @@
       "typeVersion": 3,
       "position": [
         2960,
-        2600
+        3260
       ]
     },
     {
@@ -2346,7 +2419,7 @@
       "typeVersion": 2.5,
       "position": [
         4260,
-        2720
+        3380
       ],
       "retryOnFail": true,
       "credentials": {
@@ -2368,7 +2441,7 @@
       "typeVersion": 3,
       "position": [
         3820,
-        2720
+        3380
       ]
     },
     {
@@ -2385,7 +2458,7 @@
       "typeVersion": 2.5,
       "position": [
         4740,
-        2660
+        3320
       ],
       "credentials": {
         "postgres": {
@@ -2408,7 +2481,7 @@
       "typeVersion": 2.5,
       "position": [
         4740,
-        2860
+        3520
       ],
       "credentials": {
         "postgres": {
@@ -2479,7 +2552,249 @@
       "typeVersion": 3.2,
       "position": [
         4460,
-        2720
+        3380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "6bb51602-b058-4df7-9ce0-8c8a42183ae1",
+      "name": "Loop Over Items for photo",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2980,
+        2460
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "7bb62b21-fc3e-4662-ab17-0ab2e36518b9",
+        "authentication": "headerAuth",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "53ad2b7e-b292-4fbb-b15c-f14bc7e3af36",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        1300
+      ],
+      "webhookId": "7bb62b21-fc3e-4662-ab17-0ab2e36518b9",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "hvVnkLiC68chBKCj",
+          "name": "Donna.Doro.N8N"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fe671380-2ba8-455f-937c-458a9c4a3185",
+              "leftValue": "={{ $json.foto }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a37dbb56-70fb-4dd8-b6d0-224222cadb2d",
+      "name": "Have photo",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3180,
+        2660
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://whatsapp.studiomzt.com.br/chat/fetchProfile/Donna67992903483",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $json.whatsappID }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "02cce7c8-fdd3-4837-874c-cac832ebfba5",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3560,
+        2740
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "c4v8VKf93nLw1Ove",
+          "name": "StudioMZT.EvolutionAPI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "id": "={{ $json.id }}",
+        "collection": "Contatos",
+        "additionalFields": {}
+      },
+      "id": "1b248931-52ff-4e4d-9b6f-66ab8c3a6a76",
+      "name": "Directus",
+      "type": "@flagbit/n8n-nodes-directus.directus",
+      "typeVersion": 1,
+      "position": [
+        3380,
+        2740
+      ],
+      "credentials": {
+        "directusApi": {
+          "id": "iw821PMJLt3Ug3fH",
+          "name": "Donna.Doro.Backend"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Get Whatsapp Photo",
+        "height": 629.9801900963706,
+        "width": 1579.9547315466364
+      },
+      "id": "d369d086-ef79-4319-955a-81877e5c4b99",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2840,
+        2380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "id": "={{ $('Directus').item.json.id }}",
+        "collection": "Contatos",
+        "data": "={{ { foto: $json.data.id } }}"
+      },
+      "id": "c5700650-d452-410d-ae04-09d01337a338",
+      "name": "Directus2",
+      "type": "@flagbit/n8n-nodes-directus.directus",
+      "typeVersion": 1,
+      "position": [
+        4240,
+        2800
+      ],
+      "credentials": {
+        "directusApi": {
+          "id": "iw821PMJLt3Ug3fH",
+          "name": "Donna.Doro.Backend"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.donnadoro.com.br/files/import",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "={{ $json.picture }}"
+            },
+            {
+              "name": "data",
+              "value": "={{ { title: $('Directus').item.json.nome } }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "61094829-3581-427c-ab49-77d5c77bed6e",
+      "name": "HTTP Request8",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4060,
+        2800
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gv2igb7M3jLaZsnR",
+          "name": "Donna.Doro.API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b695759d-a8b6-4fda-95f7-c72d979a3c75",
+              "leftValue": "={{ $json.picture }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "f58770c2-d364-433f-980f-27a2727dd684",
+              "leftValue": "={{ $json.picture }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "ec76b624-b5ff-4a19-b847-7a01aa57dcde",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3780,
+        2740
       ]
     }
   ],
@@ -2490,6 +2805,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-10-28T21:11:25.372Z",
-  "versionId": "3deacad5-f635-43c9-b5a0-f1ab5eb6b439"
+  "updatedAt": "2024-11-01T00:55:17.957Z",
+  "versionId": "eeb557cc-59a1-4e46-a6b6-9892951edbe9"
 }
