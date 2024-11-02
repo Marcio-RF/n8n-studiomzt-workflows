@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Redis1",
+            "node": "Digitando",
             "type": "main",
             "index": 0
           }
@@ -45,7 +45,7 @@
         ],
         [
           {
-            "node": "Redis1",
+            "node": "Digitando",
             "type": "main",
             "index": 0
           }
@@ -183,7 +183,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request2",
+            "node": "Execute Workflow",
             "type": "main",
             "index": 0
           }
@@ -246,17 +246,6 @@
         ]
       ]
     },
-    "HTTP Request2": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Edit Fields": {
       "main": [
         [
@@ -279,17 +268,6 @@
         ]
       ]
     },
-    "RabbitMQ Trigger": {
-      "main": [
-        [
-          {
-            "node": "Get Payload",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get Payload": {
       "main": [
         [
@@ -306,17 +284,6 @@
         [
           {
             "node": "OpenAI",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields3",
             "type": "main",
             "index": 0
           }
@@ -355,6 +322,139 @@
           }
         ]
       ]
+    },
+    "Digitando": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Chat Memory Manager",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory Manager": {
+      "main": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Chat Memory Manager",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "Internet Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Internet Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Perplexity": {
+      "ai_tool": [
+        [
+          {
+            "node": "Internet Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RabbitMQ Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Classifier": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Internet Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-10-14T01:09:29.542Z",
@@ -376,7 +476,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2580,
+        2560,
         480
       ],
       "credentials": {
@@ -388,14 +488,14 @@
     },
     {
       "parameters": {
-        "amount": 15
+        "amount": 1
       },
       "id": "87c2ba9f-92fc-4934-a288-c9135f303d58",
       "name": "Wait",
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2840,
+        2760,
         480
       ],
       "webhookId": "fa7e5fd1-54e5-46bd-a878-52ea8f893220"
@@ -413,7 +513,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3040,
+        3140,
         480
       ],
       "credentials": {
@@ -463,7 +563,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3440,
+        3580,
         480
       ]
     },
@@ -477,7 +577,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3640,
+        3780,
         480
       ],
       "credentials": {
@@ -512,7 +612,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3840,
+        3980,
         480
       ]
     },
@@ -546,7 +646,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3240,
+        3380,
         480
       ]
     },
@@ -557,7 +657,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        3440,
+        3580,
         280
       ]
     },
@@ -851,8 +951,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1740,
-        920
+        1560,
+        900
       ]
     },
     {
@@ -945,7 +1045,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2300,
+        2400,
         480
       ]
     },
@@ -958,7 +1058,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        4680,
+        5320,
         480
       ]
     },
@@ -988,7 +1088,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4980,
+        5620,
         580
       ],
       "credentials": {
@@ -1007,7 +1107,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        5180,
+        5820,
         620
       ],
       "webhookId": "7a7430fc-20d2-4d91-9dcf-bcedd50ed850"
@@ -1022,7 +1122,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        4460,
+        5100,
         480
       ]
     },
@@ -1048,8 +1148,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4020,
-        480
+        -1100,
+        1260
       ],
       "credentials": {
         "httpHeaderAuth": {
@@ -1113,7 +1213,7 @@
             {
               "id": "e7ca0797-e2fa-40c5-a903-a80d391edc17",
               "name": "messages",
-              "value": "={{ JSON.parse($json.text) }}",
+              "value": "={{ $json.output.split(\"\\n\") }}",
               "type": "array"
             }
           ]
@@ -1125,7 +1225,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4240,
+        4880,
         480
       ]
     },
@@ -1155,8 +1255,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1980,
-        920
+        1800,
+        900
       ],
       "credentials": {
         "httpHeaderAuth": {
@@ -1176,8 +1276,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -300,
-        0
+        -240,
+        80
       ],
       "webhookId": "ac4e2773-a0b1-462b-83d9-eaccbab5c10f"
     },
@@ -1193,7 +1293,7 @@
               }
             ]
           },
-          "acknowledge": "executionFinishesSuccessfully",
+          "acknowledge": "executionFinishes",
           "durable": true,
           "jsonParseBody": true
         }
@@ -1233,8 +1333,8 @@
       "type": "n8n-nodes-base.rabbitmq",
       "typeVersion": 1.1,
       "position": [
-        -80,
-        0
+        -20,
+        80
       ],
       "credentials": {
         "rabbitmq": {
@@ -1267,40 +1367,9 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1200,
-        920
+        1020,
+        900
       ]
-    },
-    {
-      "parameters": {
-        "resource": "image",
-        "operation": "analyze",
-        "modelId": {
-          "__rl": true,
-          "value": "gpt-4o-mini",
-          "mode": "list",
-          "cachedResultName": "GPT-4O-MINI"
-        },
-        "text": "Esta imagem é, na maior parte das vezes, uma foto de joia ou semijoias. Descreva a imagem nos seus mínimos detalhes, descrevendo cada parte visível da melhor maneira possível.",
-        "inputType": "base64",
-        "options": {
-          "maxTokens": 800
-        }
-      },
-      "id": "fe22697c-f42b-40c9-9e54-4c5afed37e98",
-      "name": "OpenAI",
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 1.5,
-      "position": [
-        1460,
-        920
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "PZCMjct51rl9RnLJ",
-          "name": "OpenAi account"
-        }
-      }
     },
     {
       "parameters": {
@@ -1347,6 +1416,363 @@
         1480,
         100
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://whatsapp.studiomzt.com.br/chat/sendPresence/Donna67992903483",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $('Message').item.json.remoteJid.split(\"@\")[0] }}\",\n  \"delay\": 2000,\n  \"presence\": \"composing\"\n}",
+        "options": {}
+      },
+      "id": "88059a68-8826-4ce8-8355-31ebba7fe6bc",
+      "name": "Digitando",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2980,
+        480
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "c4v8VKf93nLw1Ove",
+          "name": "StudioMZT.EvolutionAPI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "Esta imagem é, na maior parte das vezes, uma foto de joia ou semijoias. Descreva a imagem nos seus mínimos detalhes, descrevendo cada parte visível da melhor maneira possível.",
+        "inputType": "base64",
+        "options": {
+          "maxTokens": 800
+        }
+      },
+      "id": "fe22697c-f42b-40c9-9e54-4c5afed37e98",
+      "name": "OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.5,
+      "position": [
+        1280,
+        900
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "PZCMjct51rl9RnLJ",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Envio",
+        "height": 579.4414915918951,
+        "width": 1266.2930113418695,
+        "color": 5
+      },
+      "id": "d35b41aa-6deb-40ef-9d9c-19b72a5f989f",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4780,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# AI Agent",
+        "height": 418.8043245992546,
+        "width": 373.8643058272006,
+        "color": 3
+      },
+      "id": "3d5edb46-8ca3-4db1-8599-5aecbd4eae2e",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4280,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Debounce",
+        "height": 550.683254129306,
+        "width": 1810.4438702171399,
+        "color": 5
+      },
+      "id": "92d96a42-f64b-455a-a3f1-275f72bfe9a0",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2340,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Transcript",
+        "height": 365.6227653312134,
+        "width": 1273.2543957893467,
+        "color": 5
+      },
+      "id": "90bfd57a-3fb6-4ac8-9cf0-86b87acfa21e",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        880,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Image Analysis",
+        "height": 352.5138846344356,
+        "width": 1064.6011391841664
+      },
+      "id": "4e5a797c-a965-4d88-b7cb-b48d4f191770",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        960,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "jwevxalXe069MV6j",
+          "mode": "list",
+          "cachedResultName": "Whatsapp.Donna Assistente"
+        },
+        "options": {}
+      },
+      "id": "89f290e9-9677-472f-a18d-a918d8aea968",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        4440,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Webhook",
+        "height": 280.4050968580267,
+        "width": 490.70650304684983
+      },
+      "id": "659dad5a-00db-4859-b664-a2b9ff3dfc45",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        -20
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "e5058223-8b52-4008-90f0-7ced0f766d2d",
+      "name": "AI Agent",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        -380,
+        1640
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "id": "ecaf999f-2895-43cd-8136-6192761000b9",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        260,
+        1860
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "PZCMjct51rl9RnLJ",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "7f82f6e5-fee2-437e-bbcc-f6ad2fbb9d15",
+      "name": "Chat Memory Manager",
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "typeVersion": 1.1,
+      "position": [
+        -160,
+        1640
+      ]
+    },
+    {
+      "parameters": {
+        "tableName": "chat_histories"
+      },
+      "id": "150eb6b3-1a4c-4821-a933-92d374ec761c",
+      "name": "Postgres Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.1,
+      "position": [
+        -160,
+        1860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "aqc73Y68LRWpxqQC",
+          "name": "Donna Doro Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('AI Agent').item.json.sessionId }}",
+        "tableName": "chat_histories"
+      },
+      "id": "6a38549c-74a7-43d6-a4e1-868a74b7ed7c",
+      "name": "Postgres Chat Memory1",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.1,
+      "position": [
+        940,
+        2180
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "aqc73Y68LRWpxqQC",
+          "name": "Donna Doro Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "id": "8f1e4d5c-378c-4dad-9dac-654980da5b18",
+      "name": "OpenAI Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        800,
+        2180
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "PZCMjct51rl9RnLJ",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Esta ferramenta vai pegar a mensagem/pergunta do usuário e vai enviar ao Perplexity, que vai consultar a Internet para responder a pergunta e retornar o resultado em linguagem natural.",
+        "method": "POST",
+        "url": "https://api.perplexity.ai/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Content-Type",
+              "valueProvider": "fieldValue",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"llama-3.1-sonar-small-128k-online\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Seja preciso e eficaz em sua pesquisa. Foque em resultados em Português do Brasil.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{{ $('AI Agent').item.json.message }}\"\n    }\n  ],\n  \"max_tokens\": \"Optional\",\n  \"temperature\": 0.2,\n  \"top_p\": 0.9,\n  \"return_citations\": true,\n  \"search_domain_filter\": [\n    \"perplexity.ai\"\n  ],\n  \"return_images\": false,\n  \"return_related_questions\": false,\n  \"search_recency_filter\": \"month\",\n  \"top_k\": 0,\n  \"stream\": false,\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 1\n}"
+      },
+      "id": "8a67ad15-9ac9-43a9-be21-0d6a53c541eb",
+      "name": "Perplexity",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        1080,
+        2180
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "viZhPcDbyRSmpoW4",
+          "name": "Perplexity"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.messages.map(({ human, ai }) => `human: ${human}\\nai: ${ai}`)\n    .join('\\n\\n') }}\n\n{{ $('AI Agent').item.json.message }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "Gerenciar Contatos",
+              "description": "Quando o contexto da conversa estiver relacionado a qualquer operação que envolva gerenciamento do banco de dados de contatos de clientes: Criar um contato, modificar um contato (ou detalhe de um contato), consultar histórico de compras dos clientes e seus valors em aberto."
+            },
+            {
+              "category": "Consulta Internet",
+              "description": "Quando o contexto da conversa ou ação/pergunta enviada pelo usuário requer uma consulta a dados atualizados na Internet. Sempre que achar que a resposta a requisição do usuário pode ter melhor qualidade se utilizar consultas à Internet."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b15b5fda-3ffa-44ca-bc8f-76f16432a50a",
+      "name": "Text Classifier",
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1,
+      "position": [
+        240,
+        1640
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.messages.map(({ human, ai }) => `human: ${human}\\nai: ${ai}`)\n    .join('\\n\\n') }}\n\n{{ $('AI Agent').item.json.message }}\n\nUse ",
+        "options": {
+          "systemMessage": "Seu nome é Donna. Você é a assitente pessoal da Donna D'Oro semijoias, a loja de semijoias de Campo Grande MS. Apenas interaja com o usuário de maneira simples e cortez. Sempre identifique o usuário e trate-o pelo nome. Responda sempre com mensagens humanizadas: mensagens curtas, com quebras de linhas, como as pessoas conversam em aplicativos de mensagens."
+        }
+      },
+      "id": "f425e47b-7f4e-4505-bb4d-fd150c2877fb",
+      "name": "Internet Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        800,
+        1920
+      ]
     }
   ],
   "pinData": {},
@@ -1356,6 +1782,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2024-10-31T02:02:28.572Z",
-  "versionId": "935fa430-e97f-4751-bdd7-415725dbebfd"
+  "updatedAt": "2024-11-02T16:43:35.581Z",
+  "versionId": "0baf682b-da2f-4e81-b186-b1affd50c80d"
 }
