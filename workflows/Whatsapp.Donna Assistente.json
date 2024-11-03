@@ -217,7 +217,7 @@
       "main": [
         [
           {
-            "node": "Loop Over Items",
+            "node": "Filter2",
             "type": "main",
             "index": 0
           }
@@ -444,9 +444,92 @@
         ]
       ]
     },
+    "Filter2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Clients Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory2": {
+      "ai_memory": [
+        [
+          {
+            "node": "Clients Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Consulta Clientes",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres PGVector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Consulta Clientes",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Postgres PGVector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consulta Clientes": {
+      "ai_tool": [
+        [
+          {
+            "node": "Clients Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Text Classifier": {
       "main": [
-        [],
+        [
+          {
+            "node": "Clients Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
         [
           {
             "node": "Internet Agent",
@@ -1058,7 +1141,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        5320,
+        5600,
         480
       ]
     },
@@ -1088,7 +1171,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        5620,
+        5900,
         580
       ],
       "credentials": {
@@ -1100,14 +1183,14 @@
     },
     {
       "parameters": {
-        "amount": "={{ $('Loop Over Items').item.json.messages.length / 15 }}"
+        "amount": "={{ $('Loop Over Items').item.json.messages.length / 20 }}"
       },
       "id": "37103577-7fd1-4f6c-9b88-531f92d30955",
       "name": "Wait1",
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        5820,
+        6100,
         620
       ],
       "webhookId": "7a7430fc-20d2-4d91-9dcf-bcedd50ed850"
@@ -1420,7 +1503,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://whatsapp.studiomzt.com.br/chat/sendPresence/Donna67992903483",
+        "url": "https://whatsapp.studiomzt.com.br/chat/sendPresence/DonnaAssistente",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -1478,7 +1561,7 @@
       "parameters": {
         "content": "# Envio",
         "height": 579.4414915918951,
-        "width": 1266.2930113418695,
+        "width": 1601.9063508784056,
         "color": 5
       },
       "id": "d35b41aa-6deb-40ef-9d9c-19b72a5f989f",
@@ -1663,8 +1746,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1.1,
       "position": [
-        940,
-        2180
+        1200,
+        2460
       ],
       "credentials": {
         "postgres": {
@@ -1685,8 +1768,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        800,
-        2180
+        1060,
+        2460
       ],
       "credentials": {
         "openAiApi": {
@@ -1697,7 +1780,7 @@
     },
     {
       "parameters": {
-        "toolDescription": "Esta ferramenta vai pegar a mensagem/pergunta do usuário e vai enviar ao Perplexity, que vai consultar a Internet para responder a pergunta e retornar o resultado em linguagem natural.",
+        "toolDescription": "Essa é a ferramenta PERPLEXITY. Ela permite enviar a pergunta do usuário à API do Perplexity para que seja feita uma pesquisa na Internet.",
         "method": "POST",
         "url": "https://api.perplexity.ai/chat/completions",
         "authentication": "genericCredentialType",
@@ -1714,15 +1797,26 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"model\": \"llama-3.1-sonar-small-128k-online\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Seja preciso e eficaz em sua pesquisa. Foque em resultados em Português do Brasil.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{{ $('AI Agent').item.json.message }}\"\n    }\n  ],\n  \"max_tokens\": \"Optional\",\n  \"temperature\": 0.2,\n  \"top_p\": 0.9,\n  \"return_citations\": true,\n  \"search_domain_filter\": [\n    \"perplexity.ai\"\n  ],\n  \"return_images\": false,\n  \"return_related_questions\": false,\n  \"search_recency_filter\": \"month\",\n  \"top_k\": 0,\n  \"stream\": false,\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 1\n}"
+        "jsonBody": "={\n  \"model\": \"llama-3.1-sonar-small-128k-online\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Seja preciso e eficaz em sua pesquisa. Foque em resultados em Português do Brasil.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{pergunta}\"\n    }\n  ],\n  \"temperature\": 0.2,\n  \"top_p\": 0.9,\n  \"return_citations\": true,\n  \"search_domain_filter\": [\n    \"perplexity.ai\"\n  ],\n  \"return_images\": false,\n  \"return_related_questions\": false,\n  \"search_recency_filter\": \"month\",\n  \"top_k\": 0,\n  \"stream\": false,\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 1\n}",
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "pergunta",
+              "description": "A pergunta do usuário a ser enviado ao Perplexity para ser pesquisada",
+              "type": "string"
+            }
+          ]
+        },
+        "optimizeResponse": true,
+        "responseType": "text"
       },
       "id": "8a67ad15-9ac9-43a9-be21-0d6a53c541eb",
       "name": "Perplexity",
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1.1,
       "position": [
-        1080,
-        2180
+        1340,
+        2460
       ],
       "credentials": {
         "httpHeaderAuth": {
@@ -1733,12 +1827,217 @@
     },
     {
       "parameters": {
-        "inputText": "={{ $json.messages.map(({ human, ai }) => `human: ${human}\\nai: ${ai}`)\n    .join('\\n\\n') }}\n\n{{ $('AI Agent').item.json.message }}",
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "366418d2-8607-4e00-8186-ceda060df1bb",
+              "leftValue": "={{ $json.messages }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "241414ac-d38a-4a0f-b4c2-9a07a5ad3aa8",
+      "name": "Filter2",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        5320,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('AI Agent').item.json.message }}\n\nUse a ferramenta PERPLEXITY para pesquisar na Internet. Entenda a pergunta do usuário acima e formule um prompt que gere resultados precisos e confiáveis no Perplexity.",
+        "options": {
+          "systemMessage": "Seu nome é Donna. Você é a assitente pessoal da Donna D'Oro semijoias, a loja de semijoias de Campo Grande MS. Apenas interaja com o usuário de maneira simples e cortez. Sempre identifique o usuário e trate-o pelo nome. Responda sempre com mensagens humanizadas: mensagens curtas, com quebras de linhas, como as pessoas conversam em aplicativos de mensagens."
+        }
+      },
+      "id": "f425e47b-7f4e-4505-bb4d-fd150c2877fb",
+      "name": "Internet Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1060,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Internet Agent",
+        "height": 528.845642267015,
+        "width": 472.79602011934423
+      },
+      "id": "df7a8bc0-1493-40c1-bdc5-5d64ac9207e6",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        980,
+        2120
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {}
+      },
+      "id": "56c6b40c-5c9b-4488-ad1a-b2f4eb63dce4",
+      "name": "OpenAI Chat Model2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        1540
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "PZCMjct51rl9RnLJ",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "{{ $('AI Agent').item.json.sessionId }}",
+        "tableName": "chat_histories"
+      },
+      "id": "23f5c969-010c-4972-976b-4776c78cc5c9",
+      "name": "Postgres Chat Memory2",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.1,
+      "position": [
+        1140,
+        1540
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "aqc73Y68LRWpxqQC",
+          "name": "Donna Doro Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {}
+      },
+      "id": "5dc97111-a669-497c-9313-aad89eaca469",
+      "name": "OpenAI Chat Model3",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        1720
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "PZCMjct51rl9RnLJ",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableName": "contatos_documents",
+        "options": {
+          "distanceStrategy": "cosine",
+          "columnNames": {
+            "values": {
+              "contentColumnName": "content"
+            }
+          }
+        }
+      },
+      "id": "d3e2b1aa-7331-4b5d-b522-cd832dd7989f",
+      "name": "Postgres PGVector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePGVector",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        1660
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "aqc73Y68LRWpxqQC",
+          "name": "Donna Doro Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "options": {}
+      },
+      "id": "cb0a1a18-da58-419b-877c-ca819dae355f",
+      "name": "Embeddings OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        1800
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "PZCMjct51rl9RnLJ",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "clients",
+        "description": "Toda informação sobre os clientes da loja de semijoias Donna D'Oro. Inclui o historico de vendas e valores em aberto.",
+        "topK": 10
+      },
+      "id": "5815eaa6-8c99-4baf-8962-5d1b03543137",
+      "name": "Consulta Clientes",
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Clients Agent",
+        "height": 723.5477641290349,
+        "width": 646.5683856835844,
+        "color": 4
+      },
+      "id": "f6e98fa7-778b-465b-904d-fff15265bfa5",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        960,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.messages.slice(-5).map(({ human, ai }) => `human: ${human}\\nai: ${ai}`)\n    .join('\\n\\n') }}\n\n{{ $('AI Agent').item.json.message }}",
         "categories": {
           "categories": [
             {
               "category": "Gerenciar Contatos",
-              "description": "Quando o contexto da conversa estiver relacionado a qualquer operação que envolva gerenciamento do banco de dados de contatos de clientes: Criar um contato, modificar um contato (ou detalhe de um contato), consultar histórico de compras dos clientes e seus valors em aberto."
+              "description": "Quando o contexto da conversa estiver relacionado a qualquer operação que envolva gerenciamento do banco de dados de contatos de clientes: Criar um contato, modificar um contato (ou detalhe de um contato), consultar histórico de compras dos clientes e seus valors em aberto. \n\nNas mensagens desta categoria também se enquadram pedidos de consultas diversas aos clientes (Ex. quais clientes compraram pulseiras da pandora? quais são as clientes que trabalham na SAD?)\n\nSEMPRE QUE SE TIVER QUALQUER TIPO DE CONTEXTO LIGADO A CLIENTES OU CONTATOS, SELECIONE ESTA CATEGORIA.\n"
             },
             {
               "category": "Consulta Internet",
@@ -1760,18 +2059,18 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "={{ $json.messages.map(({ human, ai }) => `human: ${human}\\nai: ${ai}`)\n    .join('\\n\\n') }}\n\n{{ $('AI Agent').item.json.message }}\n\nUse ",
+        "text": "Você é responsável por pesquisar, analisar e fornecer detalhes e informações pessoais de nossos clientes. \n\nPara fornecer as respostas, você deve utilizar os dados contidos em nosso banco de dados de clientes.\n\nAnalise a lista de clientes fornecida pela ferramenta e forneça respostas com muita precisão e livres de erros.",
         "options": {
-          "systemMessage": "Seu nome é Donna. Você é a assitente pessoal da Donna D'Oro semijoias, a loja de semijoias de Campo Grande MS. Apenas interaja com o usuário de maneira simples e cortez. Sempre identifique o usuário e trate-o pelo nome. Responda sempre com mensagens humanizadas: mensagens curtas, com quebras de linhas, como as pessoas conversam em aplicativos de mensagens."
+          "systemMessage": "Seu nome é Donna. Você é uma assistente pessoal muito dedicada e simpática. Você é responsável por pesquisar informações pessoas de clientes/fornecedores em nosso banco de dados. Seja sempre simpática, direta e eficaz."
         }
       },
-      "id": "f425e47b-7f4e-4505-bb4d-fd150c2877fb",
-      "name": "Internet Agent",
+      "id": "21852eb5-51da-4f40-8e69-2dd2bded45eb",
+      "name": "Clients Agent",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        800,
-        1920
+        1020,
+        1340
       ]
     }
   ],
@@ -1782,6 +2081,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2024-11-02T16:43:35.581Z",
-  "versionId": "0baf682b-da2f-4e81-b186-b1affd50c80d"
+  "updatedAt": "2024-11-03T03:16:18.014Z",
+  "versionId": "fa0671b4-2cab-43f3-b1d5-9037b7ac459f"
 }
