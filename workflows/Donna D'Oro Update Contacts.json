@@ -713,17 +713,6 @@
         ]
       ]
     },
-    "HTTP Request6": {
-      "main": [
-        [
-          {
-            "node": "If1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Directus2": {
       "main": [
         [
@@ -758,6 +747,17 @@
         [
           {
             "node": "Loop Over Items for photo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "If1",
             "type": "main",
             "index": 0
           }
@@ -2425,7 +2425,7 @@
       "credentials": {
         "postgres": {
           "id": "aqc73Y68LRWpxqQC",
-          "name": "Postgres account"
+          "name": "Donna Doro Postgres"
         }
       }
     },
@@ -2463,7 +2463,7 @@
       "credentials": {
         "postgres": {
           "id": "aqc73Y68LRWpxqQC",
-          "name": "Postgres account"
+          "name": "Donna Doro Postgres"
         }
       }
     },
@@ -2486,7 +2486,7 @@
       "credentials": {
         "postgres": {
           "id": "aqc73Y68LRWpxqQC",
-          "name": "Postgres account"
+          "name": "Donna Doro Postgres"
         }
       }
     },
@@ -2628,38 +2628,6 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://whatsapp.studiomzt.com.br/chat/fetchProfile/Donna67992903483",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "number",
-              "value": "={{ $json.whatsappID }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "02cce7c8-fdd3-4837-874c-cac832ebfba5",
-      "name": "HTTP Request6",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        3560,
-        2740
-      ],
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "c4v8VKf93nLw1Ove",
-          "name": "StudioMZT.EvolutionAPI"
-        }
-      }
-    },
-    {
-      "parameters": {
         "operation": "get",
         "id": "={{ $json.id }}",
         "collection": "Contatos",
@@ -2796,6 +2764,40 @@
         3780,
         2740
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://whatsapp.studiomzt.com.br/chat/fetchProfile/Donna67992903483",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $json.whatsappID.split(\"@\")[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "02cce7c8-fdd3-4837-874c-cac832ebfba5",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3560,
+        2740
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "c4v8VKf93nLw1Ove",
+          "name": "StudioMZT.EvolutionAPI"
+        }
+      },
+      "onError": "continueRegularOutput"
     }
   ],
   "pinData": {},
@@ -2805,6 +2807,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-11-01T00:55:17.957Z",
-  "versionId": "eeb557cc-59a1-4e46-a6b6-9892951edbe9"
+  "updatedAt": "2024-11-05T01:12:33.586Z",
+  "versionId": "1cc0e5dd-55c4-4efe-a8e2-c8dea98eb182"
 }
