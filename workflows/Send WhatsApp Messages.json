@@ -1,0 +1,633 @@
+{
+  "active": false,
+  "connections": {
+    "Is Single Contact": {
+      "main": [
+        [
+          {
+            "node": "Get Contato",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Trigger List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Get Contatos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Trigger List": {
+      "main": [
+        [
+          {
+            "node": "Get List Members",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get List Members": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Contato": {
+      "main": [
+        [
+          {
+            "node": "Set Contatos Array",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Contatos": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Contatos Array": {
+      "main": [
+        [
+          {
+            "node": "Set Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Set Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Payload": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Is Single Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-12T21:19:23.196Z",
+  "id": "gID2UUApR9FosqBG",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Send WhatsApp Messages",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## /send-whatsapp-messages\n\nExpected Payload:\n```\n{\n  date: Date for the message to be sent,\n  message: Message content,\n  trigger_collection: Either Contatos or client_lists,\n  ids: Array of clients ids\n  instance: EvolutionApi Instance Name\n}\n```",
+        "height": 230,
+        "width": 684,
+        "color": 5
+      },
+      "id": "ef58dc5b-6951-488c-9ffd-0858874042a3",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        300,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bf523469-4be9-4abf-ad1e-f214c0c6cb00",
+              "leftValue": "={{ $json.body.trigger_collection }}",
+              "rightValue": "Contatos",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "eea3f06e-2411-499b-b34e-e46fad97c429",
+      "name": "Is Single Contact",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1060,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "Contatos_id",
+              "renameField": true,
+              "outputFieldName": "ids"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8a296131-19d2-460e-a667-a24b3782f8b7",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "id": "={{ $json.body.ids[0] }}",
+        "collection": "=client_lists",
+        "returnAll": false,
+        "limit": 1,
+        "additionalFields": {}
+      },
+      "id": "dc09a933-e78b-429d-9da6-8290f4efe567",
+      "name": "Get Trigger List",
+      "type": "@flagbit/n8n-nodes-directus.directus",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        500
+      ],
+      "credentials": {
+        "directusApi": {
+          "id": "iw821PMJLt3Ug3fH",
+          "name": "Donna.Doro.Backend"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "collection": "=client_lists_Contatos",
+        "additionalFields": {
+          "filter": "={\n\t\"id\": {\n\t\t\"_in\": {{ JSON.stringify($json.clients) }}\n\t}\n}"
+        }
+      },
+      "id": "c4a729d2-ffa7-4aa8-9303-e4374ce367d5",
+      "name": "Get List Members",
+      "type": "@flagbit/n8n-nodes-directus.directus",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        500
+      ],
+      "credentials": {
+        "directusApi": {
+          "id": "iw821PMJLt3Ug3fH",
+          "name": "Donna.Doro.Backend"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "collection": "=Contatos",
+        "additionalFields": {
+          "filter": "={\n\t\"id\": {\n\t\t\"_in\": {{ JSON.stringify($json.ids) }}\n\t}\n}"
+        }
+      },
+      "id": "f2bbae0a-d090-41df-82cf-ae6c7a41da73",
+      "name": "Get Contatos",
+      "type": "@flagbit/n8n-nodes-directus.directus",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        500
+      ],
+      "credentials": {
+        "directusApi": {
+          "id": "iw821PMJLt3Ug3fH",
+          "name": "Donna.Doro.Backend"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "id": "={{ $json.body.ids[0] }}",
+        "collection": "=Contatos",
+        "additionalFields": {}
+      },
+      "id": "19d2932a-b43a-4d28-bf8a-142d37433ccd",
+      "name": "Get Contato",
+      "type": "@flagbit/n8n-nodes-directus.directus",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        280
+      ],
+      "credentials": {
+        "directusApi": {
+          "id": "iw821PMJLt3Ug3fH",
+          "name": "Donna.Doro.Backend"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "\nreturn ({contatos: [$input.item.json]});"
+      },
+      "id": "9bc45f4d-1897-4bc2-b321-306f011fcf85",
+      "name": "Set Contatos Array",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2060,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://whatsapp.studiomzt.com.br/message/sendText/{{ $('Set Payload').item.json.instance }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Loop Over Items').item.json.whatsappID }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.messages }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6a4c0c1e-b122-43d9-895a-e887cc9429e4",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3580,
+        860
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "c4v8VKf93nLw1Ove",
+          "name": "StudioMZT.EvolutionAPI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": "={{ $('Loop Over Items1').item.json.messages.length / 15 }}"
+      },
+      "id": "9c557d68-51b1-4fd8-bfee-ee52df306486",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3760,
+        860
+      ],
+      "webhookId": "7a7430fc-20d2-4d91-9dcf-bcedd50ed850"
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": "={{ $(\"Loop Over Items1\").context[\"done\"] }}"
+        }
+      },
+      "id": "e331c939-da33-443f-b4a0-034e58116f52",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3400,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "id": "2b251fbe-db81-4d77-9001-695d44a1c08a",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3580,
+        480
+      ],
+      "webhookId": "7e810a90-77c0-4418-8a94-e3e2d3b770d8"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n\nreturn {contatos: $input.all().map(i => i.json)}"
+      },
+      "id": "3ff4de11-2937-439d-b952-808c2885e497",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2060,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "contatos",
+        "options": {}
+      },
+      "id": "d98d60bf-4de7-4f32-b874-000baef9712f",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2520,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "f9432e75-1de4-4bd1-a7c2-3e18f0726628",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2720,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ca5eba1d-ff7d-407a-b5e8-eb172b93e337",
+              "name": "messages",
+              "value": "={{ $('Set Payload').item.json.messages }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0d4d42af-bbf9-4a37-879f-6ffbfffe470e",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3020,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "messages",
+        "options": {}
+      },
+      "id": "191c7dd9-0f0b-4688-b375-3444fb88e10e",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3220,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d602090f-0a80-41b4-8bfd-47f358c2c045",
+              "name": "send_date",
+              "value": "={{ $('Webhook').first().json.body.date }}",
+              "type": "string"
+            },
+            {
+              "id": "f8040ad9-8aae-41b5-ac5a-e61cbc324468",
+              "name": "instance",
+              "value": "={{ $('Webhook').first().json.body.instance }}",
+              "type": "string"
+            },
+            {
+              "id": "98f02c21-92a4-4e10-b443-16f80f863673",
+              "name": "messages",
+              "value": "={{ $('Webhook').first().json.body.message.split(\"\\n\").filter(m => m) }}",
+              "type": "array"
+            },
+            {
+              "id": "8433f8b1-54b1-4855-8bf8-d2e46e429990",
+              "name": "contatos",
+              "value": "={{ $json.contatos }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "695bc039-a082-42bd-b148-4559092582c9",
+      "name": "Set Payload",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2340,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "send-whatsapp-messages",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "id": "d83a121a-3c84-4f9f-b7c8-efefee864143",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        820,
+        400
+      ],
+      "webhookId": "2bf13b40-07a1-4255-bfc3-f51beefdef61",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "2iaR32ovU8dTOWaq",
+          "name": "Send WhatsApp Message Webhook"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-11-13T02:14:26.129Z",
+  "versionId": "33f92953-9ceb-404b-a777-3d9516938584"
+}
