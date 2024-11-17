@@ -1,24 +1,6 @@
 {
   "active": true,
   "connections": {
-    "Is Single Contact": {
-      "main": [
-        [
-          {
-            "node": "Get Contato",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get Trigger List",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Aggregate": {
       "main": [
         [
@@ -52,17 +34,6 @@
         ]
       ]
     },
-    "Get Contato": {
-      "main": [
-        [
-          {
-            "node": "Set Contatos Array",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "HTTP Request": {
       "main": [
         [
@@ -78,25 +49,7 @@
       "main": [
         [
           {
-            "node": "Loop Over Items1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop Over Items1": {
-      "main": [
-        [
-          {
-            "node": "Wait1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "HTTP Request",
+            "node": "Loop Over Messages",
             "type": "main",
             "index": 0
           }
@@ -108,17 +61,6 @@
         [
           {
             "node": "Code",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Set Contatos Array": {
-      "main": [
-        [
-          {
-            "node": "Set Payload",
             "type": "main",
             "index": 0
           }
@@ -140,19 +82,7 @@
       "main": [
         [
           {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop Over Items": {
-      "main": [
-        [],
-        [
-          {
-            "node": "Edit Fields1",
+            "node": "Loop Over Contatos",
             "type": "main",
             "index": 0
           }
@@ -163,7 +93,7 @@
       "main": [
         [
           {
-            "node": "Loop Over Items",
+            "node": "Loop Over Contatos",
             "type": "main",
             "index": 0
           }
@@ -185,18 +115,7 @@
       "main": [
         [
           {
-            "node": "Loop Over Items1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Webhook": {
-      "main": [
-        [
-          {
-            "node": "Is Single Contact",
+            "node": "Loop Over Messages",
             "type": "main",
             "index": 0
           }
@@ -221,6 +140,143 @@
             "node": "Directus1",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Triggered From Contacts": {
+      "main": [
+        [
+          {
+            "node": "Get Contatos1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Trigger List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Contatos1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Queue Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Directus": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Contatos": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Queue Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Messages": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Queue Items": {
+      "main": [
+        [
+          {
+            "node": "Directus2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Triggered From Contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Payload1": {
+      "main": [
+        []
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Queue Items",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -235,8 +291,8 @@
   "nodes": [
     {
       "parameters": {
-        "content": "## /send-whatsapp-messages\n\nExpected Payload:\n```\n{\n  date: Date for the message to be sent,\n  message: Message content,\n  trigger_collection: Either Contatos or client_lists,\n  ids: Array of clients ids\n  instance: EvolutionApi Instance Name\n}\n```",
-        "height": 230,
+        "content": "## /send-whatsapp-messages\n\n### Create and save an execution queue item on whatsapp_queue table\n\nExpected Payload:\n```\n{\n  date: Date for the message to be sent,\n  message: Message content,\n  trigger_collection: Either Contatos or client_lists,\n  ids: Array of clients ids\n  instance: EvolutionApi Instance Name\n}\n```",
+        "height": 286.7303896307891,
         "width": 684,
         "color": 5
       },
@@ -246,41 +302,7 @@
       "typeVersion": 1,
       "position": [
         300,
-        340
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "bf523469-4be9-4abf-ad1e-f214c0c6cb00",
-              "leftValue": "={{ $json.body.trigger_collection }}",
-              "rightValue": "Contatos",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "eea3f06e-2411-499b-b34e-e46fad97c429",
-      "name": "Is Single Contact",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        1060,
-        400
+        283.26961036921085
       ]
     },
     {
@@ -375,44 +397,8 @@
     },
     {
       "parameters": {
-        "operation": "get",
-        "id": "={{ $json.body.ids[0] }}",
-        "collection": "=Contatos",
-        "additionalFields": {}
-      },
-      "id": "19d2932a-b43a-4d28-bf8a-142d37433ccd",
-      "name": "Get Contato",
-      "type": "@flagbit/n8n-nodes-directus.directus",
-      "typeVersion": 1,
-      "position": [
-        1880,
-        280
-      ],
-      "credentials": {
-        "directusApi": {
-          "id": "iw821PMJLt3Ug3fH",
-          "name": "Donna.Doro.Backend"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "\nreturn ({contatos: [{\n  id: $json.id,\n  nome: $json.nome,\n  whatsappID: $json.whatsappID\n}]});"
-      },
-      "id": "9bc45f4d-1897-4bc2-b321-306f011fcf85",
-      "name": "Set Contatos Array",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        2060,
-        280
-      ]
-    },
-    {
-      "parameters": {
         "method": "POST",
-        "url": "=https://whatsapp.studiomzt.com.br/message/sendText/{{ $('Set Payload').item.json.instance }}",
+        "url": "=https://whatsapp.studiomzt.com.br/message/sendText/{{ $('Execute Workflow Trigger').item.json.instance }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -420,7 +406,7 @@
           "parameters": [
             {
               "name": "number",
-              "value": "={{ $('Loop Over Items').item.json.whatsappID }}"
+              "value": "={{ $('Loop Over Contatos').item.json.whatsappID }}"
             },
             {
               "name": "text",
@@ -435,8 +421,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2440,
-        1740
+        2820,
+        1520
       ],
       "credentials": {
         "httpHeaderAuth": {
@@ -447,32 +433,17 @@
     },
     {
       "parameters": {
-        "amount": "={{ $('Loop Over Items1').item.json.messages.length / 15 }}"
+        "amount": "={{ $('Loop Over Messages').item.json.messages.length / 15 }}"
       },
       "id": "9c557d68-51b1-4fd8-bfee-ee52df306486",
       "name": "Wait",
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2620,
-        1740
+        3000,
+        1520
       ],
       "webhookId": "7a7430fc-20d2-4d91-9dcf-bcedd50ed850"
-    },
-    {
-      "parameters": {
-        "options": {
-          "reset": "={{ $(\"Loop Over Items1\").context[\"done\"] }}"
-        }
-      },
-      "id": "e331c939-da33-443f-b4a0-034e58116f52",
-      "name": "Loop Over Items1",
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        2260,
-        1600
-      ]
     },
     {
       "parameters": {
@@ -483,8 +454,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2440,
-        1360
+        2820,
+        1140
       ],
       "webhookId": "7e810a90-77c0-4418-8a94-e3e2d3b770d8"
     },
@@ -497,8 +468,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2060,
-        500
+        2160,
+        400
       ]
     },
     {
@@ -511,23 +482,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        1380,
-        1280
-      ]
-    },
-    {
-      "parameters": {
-        "options": {
-          "reset": false
-        }
-      },
-      "id": "f9432e75-1de4-4bd1-a7c2-3e18f0726628",
-      "name": "Loop Over Items",
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        1580,
-        1280
+        1840,
+        1100
       ]
     },
     {
@@ -537,7 +493,7 @@
             {
               "id": "ca5eba1d-ff7d-407a-b5e8-eb172b93e337",
               "name": "messages",
-              "value": "={{ $('Set Payload').item.json.messages }}",
+              "value": "={{ $('Loop Over Queue Items').item.json.messages }}",
               "type": "array"
             }
           ]
@@ -549,8 +505,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1880,
-        1600
+        2260,
+        1380
       ]
     },
     {
@@ -563,8 +519,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        2080,
-        1600
+        2460,
+        1380
       ]
     },
     {
@@ -609,6 +565,275 @@
       ]
     },
     {
+      "parameters": {},
+      "id": "a4ee4c1a-a0e9-4cd6-840f-3ea4f5fa704a",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 10
+            }
+          ]
+        }
+      },
+      "id": "32e3405d-8f56-4877-a43e-e448f414673b",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        800,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "collection": "=whatsapp_queue",
+        "additionalFields": {
+          "filter": "={\n  \"_and\": [\n    {\n      \"status\": {\n        \"_eq\": \"scheduled\"\n      }\n    },\n    {\n      \"send_date\": {\n        \"_lte\": \"$NOW\"\n      }\n    }\n  ]\n}"
+        }
+      },
+      "id": "86f1c750-6729-429a-a9e2-7fccbeff0c5a",
+      "name": "Directus",
+      "type": "@flagbit/n8n-nodes-directus.directus",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        1120
+      ],
+      "credentials": {
+        "directusApi": {
+          "id": "iw821PMJLt3Ug3fH",
+          "name": "Donna.Doro.Backend"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "collection": "=whatsapp_queue",
+        "data": "={\n  \"send_date\": \"{{ $json.send_date }}\",\n  \"status\": \"scheduled\",\n  \"messages\": {{ JSON.stringify($json.messages) }},\n  \"contatos\": {{ JSON.stringify($json.contatos) }}\n}"
+      },
+      "id": "c8c43410-0034-4cc5-9952-da74a9a53271",
+      "name": "Directus1",
+      "type": "@flagbit/n8n-nodes-directus.directus",
+      "typeVersion": 1,
+      "position": [
+        2660,
+        320
+      ],
+      "credentials": {
+        "directusApi": {
+          "id": "iw821PMJLt3Ug3fH",
+          "name": "Donna.Doro.Backend"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bf523469-4be9-4abf-ad1e-f214c0c6cb00",
+              "leftValue": "={{ $json.body.trigger_collection }}",
+              "rightValue": "Contatos",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "eea3f06e-2411-499b-b34e-e46fad97c429",
+      "name": "Triggered From Contacts",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1060,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "collection": "=Contatos",
+        "additionalFields": {
+          "filter": "={\n\t\"id\": {\n\t\t\"_in\": {{ JSON.stringify($json.body.ids) }}\n\t}\n}"
+        }
+      },
+      "id": "19d2932a-b43a-4d28-bf8a-142d37433ccd",
+      "name": "Get Contatos1",
+      "type": "@flagbit/n8n-nodes-directus.directus",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        280
+      ],
+      "credentials": {
+        "directusApi": {
+          "id": "iw821PMJLt3Ug3fH",
+          "name": "Donna.Doro.Backend"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "gID2UUApR9FosqBG",
+          "mode": "list",
+          "cachedResultName": "Send WhatsApp Messages"
+        },
+        "options": {}
+      },
+      "id": "8d692933-ffa9-4629-a822-65e7749682cb",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        2660,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "4a81bec6-f4db-4989-95f4-6058b9172698",
+      "name": "Loop Over Queue Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1580,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": "={{ $(\"Loop Over Contatos\").context[\"done\"] }}"
+        }
+      },
+      "id": "f9432e75-1de4-4bd1-a7c2-3e18f0726628",
+      "name": "Loop Over Contatos",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2060,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": "={{ $(\"Loop Over Messages\").context[\"done\"] }}"
+        }
+      },
+      "id": "e331c939-da33-443f-b4a0-034e58116f52",
+      "name": "Loop Over Messages",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2640,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "updateMultiple",
+        "data": "=",
+        "collection": "=whatsaapp_queue"
+      },
+      "id": "96bae02a-9ef4-49f7-bc12-b6bee2da1991",
+      "name": "Directus2",
+      "type": "@flagbit/n8n-nodes-directus.directus",
+      "typeVersion": 1,
+      "position": [
+        1840,
+        900
+      ],
+      "credentials": {
+        "directusApi": {
+          "id": "iw821PMJLt3Ug3fH",
+          "name": "Donna.Doro.Backend"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n## Execution Workflow\n\n### Runs every 10 minutes. Takes items from the whatsapp_queue table and executing sending the messages to WhatsApp\n\n",
+        "height": 1009.819341126461,
+        "width": 2887.3538788522856
+      },
+      "id": "890354c5-74db-4a3c-b714-7b0910d29da7",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        320,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d602090f-0a80-41b4-8bfd-47f358c2c045",
+              "name": "send_date",
+              "value": "={{ $('Webhook').first().json.body.date }}",
+              "type": "string"
+            },
+            {
+              "id": "f8040ad9-8aae-41b5-ac5a-e61cbc324468",
+              "name": "instance",
+              "value": "={{ $('Webhook').first().json.body.instance }}",
+              "type": "string"
+            },
+            {
+              "id": "98f02c21-92a4-4e10-b443-16f80f863673",
+              "name": "messages",
+              "value": "={{ $('Webhook').first().json.body.message.split(\"\\n\").filter(m => m) }}",
+              "type": "array"
+            },
+            {
+              "id": "8433f8b1-54b1-4855-8bf8-d2e46e429990",
+              "name": "contatos",
+              "value": "={{ $json.contatos }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4ef0081c-2029-4837-bf89-38da7689d4d8",
+      "name": "Set Payload1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1160,
+        1560
+      ]
+    },
+    {
       "parameters": {
         "httpMethod": "POST",
         "path": "send-whatsapp-messages",
@@ -632,112 +857,37 @@
       }
     },
     {
-      "parameters": {},
-      "id": "a4ee4c1a-a0e9-4cd6-840f-3ea4f5fa704a",
-      "name": "Execute Workflow Trigger",
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1,
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\n$input.item.json.instance = \"Donna67992903483\";\n\nreturn $input.item;"
+      },
+      "id": "ca78f764-1f0d-41cd-98d0-7a200bbfe2fe",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
-        820,
-        940
+        1220,
+        1120
       ]
-    },
-    {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "field": "minutes",
-              "minutesInterval": 10
-            }
-          ]
-        }
-      },
-      "id": "32e3405d-8f56-4877-a43e-e448f414673b",
-      "name": "Schedule Trigger",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
-      "position": [
-        800,
-        1440
-      ]
-    },
-    {
-      "parameters": {
-        "collection": "=whatsapp_queue",
-        "additionalFields": {
-          "filter": "={\n  \"_and\": [\n    {\n      \"status\": {\n        \"_eq\": \"scheduled\"\n      }\n    },\n    {\n      \"send_date\": {\n        \"_lte\": \"$NOW\"\n      }\n    }\n  ]\n}"
-        }
-      },
-      "id": "86f1c750-6729-429a-a9e2-7fccbeff0c5a",
-      "name": "Directus",
-      "type": "@flagbit/n8n-nodes-directus.directus",
-      "typeVersion": 1,
-      "position": [
-        1020,
-        1440
-      ],
-      "credentials": {
-        "directusApi": {
-          "id": "iw821PMJLt3Ug3fH",
-          "name": "Donna.Doro.Backend"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "create",
-        "collection": "=whatsapp_queue",
-        "data": "={\n  \"send_date\": \"{{ $json.send_date }}\",\n  \"status\": \"scheduled\",\n  \"messages\": {{ JSON.stringify($json.messages) }},\n  \"contatos\": {{ JSON.stringify($json.contatos) }}\n}"
-      },
-      "id": "c8c43410-0034-4cc5-9952-da74a9a53271",
-      "name": "Directus1",
-      "type": "@flagbit/n8n-nodes-directus.directus",
-      "typeVersion": 1,
-      "position": [
-        2560,
-        400
-      ],
-      "credentials": {
-        "directusApi": {
-          "id": "iw821PMJLt3Ug3fH",
-          "name": "Donna.Doro.Backend"
-        }
-      }
     }
   ],
   "pinData": {
-    "Webhook": [
+    "Execute Workflow Trigger": [
       {
         "json": {
-          "headers": {
-            "host": "n8n-webhook.studiomzt.com.br",
-            "user-agent": "axios/1.7.7",
-            "content-length": "172",
-            "accept": "application/json, text/plain, */*",
-            "accept-encoding": "gzip, compress, deflate, br",
-            "authorization": "Bearer JU9R6g0x4W8wOOB4AlrH4mdSWdsLTKKI",
-            "content-type": "application/json",
-            "x-forwarded-for": "192.168.160.1",
-            "x-forwarded-host": "n8n-webhook.studiomzt.com.br",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "efa03eb01cf4",
-            "x-real-ip": "192.168.160.1"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "date": "2024-11-17T12:00:00",
-            "message": "Test message\nHey!!!",
-            "trigger_collection": "Contatos",
-            "ids": [
-              "c6c12886-e4cf-4b26-8a6a-327e6c86c02c"
-            ],
-            "instance": "Donna67992903483"
-          },
-          "webhookUrl": "https://n8n-webhook.studiomzt.com.br/webhook/send-whatsapp-messages",
-          "executionMode": "production"
+          "send_date": "2024-11-15T12:00:00",
+          "instance": "Donna67992903483",
+          "messages": [
+            "teste 1",
+            "teste 2"
+          ],
+          "contatos": [
+            {
+              "id": "c6c12886-e4cf-4b26-8a6a-327e6c86c02c",
+              "nome": "Marcio Teste",
+              "whatsappID": "556781435828@s.whatsapp.net"
+            }
+          ]
         }
       }
     ]
@@ -752,6 +902,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2024-11-16T14:27:40.412Z",
-  "versionId": "f4561e91-ba00-4e01-9ae2-f8f761915a11"
+  "updatedAt": "2024-11-16T17:32:23.043Z",
+  "versionId": "3deccda9-ff92-478b-a420-8ceb9af1443d"
 }
