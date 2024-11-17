@@ -178,17 +178,6 @@
         ]
       ]
     },
-    "Execute Workflow Trigger": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Queue Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Directus": {
       "main": [
         [
@@ -265,16 +254,33 @@
         ]
       ]
     },
-    "Set Payload1": {
-      "main": [
-        []
-      ]
-    },
     "Code1": {
       "main": [
         [
           {
+            "node": "Set Payload2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Payload2": {
+      "main": [
+        [
+          {
             "node": "Loop Over Queue Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set Payload2",
             "type": "main",
             "index": 0
           }
@@ -398,7 +404,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=https://whatsapp.studiomzt.com.br/message/sendText/{{ $('Execute Workflow Trigger').item.json.instance }}",
+        "url": "=https://whatsapp.studiomzt.com.br/message/sendText/{{ $('Loop Over Queue Items').item.json.instance }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -571,8 +577,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        1220,
-        920
+        1060,
+        940
       ]
     },
     {
@@ -591,8 +597,8 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        800,
-        1120
+        640,
+        1140
       ]
     },
     {
@@ -607,8 +613,8 @@
       "type": "@flagbit/n8n-nodes-directus.directus",
       "typeVersion": 1,
       "position": [
-        1000,
-        1120
+        840,
+        1140
       ],
       "credentials": {
         "directusApi": {
@@ -759,7 +765,7 @@
     {
       "parameters": {
         "operation": "updateMultiple",
-        "data": "=",
+        "data": "={\n\t\"keys\": \n\t\"data\": {\n\t\t\"status\": \"published\"\n\t}\n}",
         "collection": "=whatsaapp_queue"
       },
       "id": "96bae02a-9ef4-49f7-bc12-b6bee2da1991",
@@ -866,8 +872,21 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1220,
-        1120
+        1060,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all();"
+      },
+      "id": "507eb078-915b-4d6a-b58d-1d1a9c61f66e",
+      "name": "Set Payload2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        1000
       ]
     }
   ],
@@ -890,6 +909,23 @@
           ]
         }
       }
+    ],
+    "Schedule Trigger": [
+      {
+        "json": {
+          "timestamp": "2024-11-17T11:40:57.010-04:00",
+          "Readable date": "November 17th 2024, 11:40:57 am",
+          "Readable time": "11:40:57 am",
+          "Day of week": "Sunday",
+          "Year": "2024",
+          "Month": "November",
+          "Day of month": "17",
+          "Hour": "11",
+          "Minute": "40",
+          "Second": "57",
+          "Timezone": "America/Campo_Grande (UTC-04:00)"
+        }
+      }
     ]
   },
   "settings": {
@@ -902,6 +938,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2024-11-16T17:32:23.043Z",
-  "versionId": "3deccda9-ff92-478b-a420-8ceb9af1443d"
+  "updatedAt": "2024-11-17T16:22:45.944Z",
+  "versionId": "251ea176-72f6-415b-95b2-1eccc6801858"
 }
