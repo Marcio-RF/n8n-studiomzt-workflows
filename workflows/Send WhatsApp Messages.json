@@ -142,7 +142,7 @@
             "index": 0
           },
           {
-            "node": "Execute Workflow",
+            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
@@ -229,7 +229,7 @@
       "main": [
         [
           {
-            "node": "Directus2",
+            "node": "HTTP Request1",
             "type": "main",
             "index": 0
           }
@@ -237,17 +237,6 @@
         [
           {
             "node": "Split Out",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Webhook": {
-      "main": [
-        [
-          {
-            "node": "Triggered From Contacts",
             "type": "main",
             "index": 0
           }
@@ -277,6 +266,72 @@
       ]
     },
     "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Directus1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set Date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Date": {
+      "main": [
+        [
+          {
+            "node": "Triggered From Contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
       "main": [
         [
           {
@@ -329,7 +384,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        1700,
+        1920,
         500
       ]
     },
@@ -347,7 +402,7 @@
       "type": "@flagbit/n8n-nodes-directus.directus",
       "typeVersion": 1,
       "position": [
-        1340,
+        1560,
         500
       ],
       "credentials": {
@@ -369,7 +424,7 @@
       "type": "@flagbit/n8n-nodes-directus.directus",
       "typeVersion": 1,
       "position": [
-        1520,
+        1740,
         500
       ],
       "credentials": {
@@ -391,7 +446,7 @@
       "type": "@flagbit/n8n-nodes-directus.directus",
       "typeVersion": 1,
       "position": [
-        1880,
+        2100,
         500
       ],
       "credentials": {
@@ -427,7 +482,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2820,
+        3040,
         1520
       ],
       "credentials": {
@@ -446,7 +501,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        3000,
+        3220,
         1520
       ],
       "webhookId": "7a7430fc-20d2-4d91-9dcf-bcedd50ed850"
@@ -460,7 +515,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2820,
+        3040,
         1140
       ],
       "webhookId": "7e810a90-77c0-4418-8a94-e3e2d3b770d8"
@@ -474,7 +529,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2160,
+        2380,
         400
       ]
     },
@@ -488,7 +543,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        1840,
+        2020,
         1100
       ]
     },
@@ -511,7 +566,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2260,
+        2480,
         1380
       ]
     },
@@ -525,7 +580,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        2460,
+        2680,
         1380
       ]
     },
@@ -536,7 +591,7 @@
             {
               "id": "d602090f-0a80-41b4-8bfd-47f358c2c045",
               "name": "send_date",
-              "value": "={{ $('Webhook').first().json.body.date }}",
+              "value": "={{ $('Set Date').first().json.body.date }}",
               "type": "string"
             },
             {
@@ -566,7 +621,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2340,
+        2560,
         400
       ]
     },
@@ -577,7 +632,7 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        1060,
+        840,
         940
       ]
     },
@@ -634,8 +689,8 @@
       "type": "@flagbit/n8n-nodes-directus.directus",
       "typeVersion": 1,
       "position": [
-        2660,
-        320
+        2780,
+        280
       ],
       "credentials": {
         "directusApi": {
@@ -674,7 +729,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1060,
+        1360,
         400
       ]
     },
@@ -690,7 +745,7 @@
       "type": "@flagbit/n8n-nodes-directus.directus",
       "typeVersion": 1,
       "position": [
-        1880,
+        2100,
         280
       ],
       "credentials": {
@@ -715,8 +770,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.1,
       "position": [
-        2660,
-        480
+        3240,
+        380
       ]
     },
     {
@@ -743,7 +798,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2060,
+        2280,
         1100
       ]
     },
@@ -758,14 +813,14 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2640,
+        2860,
         1380
       ]
     },
     {
       "parameters": {
         "operation": "updateMultiple",
-        "data": "={\n\t\"keys\": \n\t\"data\": {\n\t\t\"status\": \"published\"\n\t}\n}",
+        "data": "={\n\t\"keys\": {{ JSON.stringify($('Set Payload2').all().map(i => i.json.id)) }},\n\t\"data\": {\n\t\t\"status\": \"sent\"\n\t}\n}",
         "collection": "=whatsaapp_queue"
       },
       "id": "96bae02a-9ef4-49f7-bc12-b6bee2da1991",
@@ -773,8 +828,8 @@
       "type": "@flagbit/n8n-nodes-directus.directus",
       "typeVersion": 1,
       "position": [
-        1840,
-        900
+        1900,
+        800
       ],
       "credentials": {
         "directusApi": {
@@ -787,7 +842,7 @@
       "parameters": {
         "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n## Execution Workflow\n\n### Runs every 10 minutes. Takes items from the whatsapp_queue table and executing sending the messages to WhatsApp\n\n",
         "height": 1009.819341126461,
-        "width": 2887.3538788522856
+        "width": 3079.2009054262576
       },
       "id": "890354c5-74db-4a3c-b714-7b0910d29da7",
       "name": "Sticky Note1",
@@ -797,70 +852,6 @@
         320,
         780
       ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "d602090f-0a80-41b4-8bfd-47f358c2c045",
-              "name": "send_date",
-              "value": "={{ $('Webhook').first().json.body.date }}",
-              "type": "string"
-            },
-            {
-              "id": "f8040ad9-8aae-41b5-ac5a-e61cbc324468",
-              "name": "instance",
-              "value": "={{ $('Webhook').first().json.body.instance }}",
-              "type": "string"
-            },
-            {
-              "id": "98f02c21-92a4-4e10-b443-16f80f863673",
-              "name": "messages",
-              "value": "={{ $('Webhook').first().json.body.message.split(\"\\n\").filter(m => m) }}",
-              "type": "array"
-            },
-            {
-              "id": "8433f8b1-54b1-4855-8bf8-d2e46e429990",
-              "name": "contatos",
-              "value": "={{ $json.contatos }}",
-              "type": "array"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "4ef0081c-2029-4837-bf89-38da7689d4d8",
-      "name": "Set Payload1",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1160,
-        1560
-      ]
-    },
-    {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "send-whatsapp-messages",
-        "authentication": "headerAuth",
-        "options": {}
-      },
-      "id": "d83a121a-3c84-4f9f-b7c8-efefee864143",
-      "name": "Webhook",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        820,
-        400
-      ],
-      "webhookId": "2bf13b40-07a1-4255-bfc3-f51beefdef61",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "2iaR32ovU8dTOWaq",
-          "name": "Send WhatsApp Message Webhook"
-        }
-      }
     },
     {
       "parameters": {
@@ -888,42 +879,175 @@
         1360,
         1000
       ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b5ba38d8-c054-4edf-af32-f14f381044c5",
+              "name": "instance",
+              "value": "Donna67992903483",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5e7eafca-a9e5-4239-8865-cf9c1df30ae6",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2780,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "69da213e-7685-49fc-abc7-2f7adb22e6d0",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3040,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "https://backend.donnadoro.com.br/items/whatsapp_queue",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\t\"keys\": {{ JSON.stringify($('Set Payload2').all().map(i => i.json.id)) }},\n\t\"data\": {\n\t\t\"status\": \"sent\"\n\t}\n}",
+        "options": {}
+      },
+      "id": "bbafe94a-39f4-4a15-b5a4-8bd98c08e2f1",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2280,
+        920
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gv2igb7M3jLaZsnR",
+          "name": "Donna.Doro.API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "send-whatsapp-messages",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "id": "d83a121a-3c84-4f9f-b7c8-efefee864143",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        820,
+        400
+      ],
+      "webhookId": "2bf13b40-07a1-4255-bfc3-f51beefdef61",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "2iaR32ovU8dTOWaq",
+          "name": "Send WhatsApp Message Webhook"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\n$input.item.json.body.date = $now.toISO();\n\nreturn $input.item;"
+      },
+      "id": "b5ba15b5-0c27-49a2-8200-120245ca2468",
+      "name": "Set Date",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cc213177-627a-4e74-ae73-542004b0427c",
+              "leftValue": "={{ $json.send_date }}",
+              "rightValue": "={{ $now }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "before"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e0b74700-fca4-4913-9722-55df4857a0fa",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        1060,
+        940
+      ]
     }
   ],
   "pinData": {
-    "Execute Workflow Trigger": [
+    "Webhook": [
       {
         "json": {
-          "send_date": "2024-11-15T12:00:00",
-          "instance": "Donna67992903483",
-          "messages": [
-            "teste 1",
-            "teste 2"
-          ],
-          "contatos": [
-            {
-              "id": "c6c12886-e4cf-4b26-8a6a-327e6c86c02c",
-              "nome": "Marcio Teste",
-              "whatsappID": "556781435828@s.whatsapp.net"
-            }
-          ]
-        }
-      }
-    ],
-    "Schedule Trigger": [
-      {
-        "json": {
-          "timestamp": "2024-11-17T11:40:57.010-04:00",
-          "Readable date": "November 17th 2024, 11:40:57 am",
-          "Readable time": "11:40:57 am",
-          "Day of week": "Sunday",
-          "Year": "2024",
-          "Month": "November",
-          "Day of month": "17",
-          "Hour": "11",
-          "Minute": "40",
-          "Second": "57",
-          "Timezone": "America/Campo_Grande (UTC-04:00)"
+          "headers": {
+            "host": "n8n-webhook.studiomzt.com.br",
+            "user-agent": "axios/1.7.7",
+            "content-length": "212",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, compress, deflate, br",
+            "authorization": "Bearer JU9R6g0x4W8wOOB4AlrH4mdSWdsLTKKI",
+            "content-type": "application/json",
+            "x-forwarded-for": "192.168.160.1",
+            "x-forwarded-host": "n8n-webhook.studiomzt.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "efa03eb01cf4",
+            "x-real-ip": "192.168.160.1"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "date": null,
+            "message": "test 1\ntest 2\nAnd finally, test 3!!!",
+            "trigger_collection": "Contatos",
+            "ids": [
+              "c6c12886-e4cf-4b26-8a6a-327e6c86c02c",
+              "f1bb5b12-893a-4302-9a1f-e3976cdb9120"
+            ],
+            "instance": "Donna67992903483"
+          },
+          "webhookUrl": "https://n8n-webhook.studiomzt.com.br/webhook/send-whatsapp-messages",
+          "executionMode": "production"
         }
       }
     ]
@@ -938,6 +1062,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2024-11-17T16:22:45.944Z",
-  "versionId": "251ea176-72f6-415b-95b2-1eccc6801858"
+  "updatedAt": "2024-11-18T02:00:31.516Z",
+  "versionId": "195599ad-f6b8-4c1c-a960-af77e6fdbeaf"
 }
