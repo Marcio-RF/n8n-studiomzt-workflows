@@ -16,11 +16,6 @@
       "main": [
         [
           {
-            "node": "Contests Test",
-            "type": "main",
-            "index": 0
-          },
-          {
             "node": "Contests Prod",
             "type": "main",
             "index": 0
@@ -257,6 +252,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2024-10-29T19:11:54.507Z",
-  "versionId": "9a2e2da2-1098-4bda-ae90-cd25dfa22d9c"
+  "updatedAt": "2024-11-18T19:39:43.777Z",
+  "versionId": "6b2cf161-ae89-490e-bdb0-f3f05fc95c79"
 }
