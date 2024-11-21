@@ -1,0 +1,483 @@
+{
+  "active": true,
+  "connections": {
+    "Executa às 7:00 e 13:00 Todos os Dias (Exceto Domingos)": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Filter2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-21T02:33:08.033Z",
+  "id": "LMGwgfAYi7pR0esJ",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Donna.Assistente - Tarefas Agendadas",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 7,13 * * 1-6"
+            }
+          ]
+        }
+      },
+      "id": "af449654-009b-4afc-9ea9-11cfcb4d0a45",
+      "name": "Executa às 7:00 e 13:00 Todos os Dias (Exceto Domingos)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        820,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://backend.donnadoro.com.br/items/tasks?filter[done][_eq]=false&sort[]=-priority",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "id": "584343f6-b4ca-432c-9e3e-3c32725b3426",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        400
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gv2igb7M3jLaZsnR",
+          "name": "Donna.Doro.API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "65821ea3-e42e-4508-8cac-d7f3bc404b9b",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c15334d0-c484-45e5-aba3-cccb9b0f8156",
+              "name": "task",
+              "value": "={{ $json.description }}",
+              "type": "string"
+            },
+            {
+              "id": "f243aa1b-1372-45a9-bdc7-7a11dffbb262",
+              "name": "priority",
+              "value": "={{ $json.priority }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a0436955-fc87-4ead-80a5-1294c3aed008",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1480,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "tasks",
+        "options": {}
+      },
+      "id": "a9259891-0dab-4acf-9ffc-e8a8f93349ed",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "let tasks = \"\"\n\nfor (const task of $input.all().map(i => i.json)[0].tasks) {\n  tasks = tasks + task.task + \"\\n\" + \"Prioridade: \" + task.priority + \"\\n\\n\"\n}\n\nreturn { tasks }"
+      },
+      "id": "7c294bc1-3e4c-4938-8108-6bee64d5be9e",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1920,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.9
+        }
+      },
+      "id": "a7d9f5bd-ab4b-49bf-9dd6-56cb117488f2",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        600
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "PZCMjct51rl9RnLJ",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "agent": "conversationalAgent",
+        "promptType": "define",
+        "text": "=Tarefas atuais:\n\n{{ $json.tasks }}\n\nData Atual: {{ $now.format('yyyy-MM-dd HH:MM') }}",
+        "options": {
+          "systemMessage": "=Seu nome é Donna. Você é a espirituosa, divertida e eficiente influencer de moda virtual, assistente da Taíla, proprietária da Donna D'Oro semijoias. Vc tem um jeito positivo de se comunicar e usa emojis para adicionar contexto.\n\nSeu trabalho é:\n\n- De acordo com o horário, criar mensagens motivacionais com um toque cristão de: bom dia (próximo às 7h); força pra trabalhar (próximo às 13h)\n\n- Analisar a lista de tarefas (coisas a fazer) da Taíla e criar uma mensagem com a lista das tarefas, ordenando primeiro as urgentes\n\nNosso programa de envio de mensagens pelo whatsapp usa quebra de linhas para criar mensagens individuais. Por isso, gere respostas com frases curtas separadas linha a linha, para que as mensagens fiquem naturais, como as pessoas falam em apps de mensagens.\n\nEXECUTE SEMPRE SEUS TRABALHOS LISTADOS ACIMA À RISCA!!!"
+        }
+      },
+      "id": "b70190c1-4a7b-4397-af13-ac15107122e3",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        2120,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "4decbdbf-2900-4725-87e0-f426cef0ef88",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3280,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://whatsapp.studiomzt.com.br/message/sendText/DonnaAssistente",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "=556792903483@s.whatsapp.net"
+            },
+            {
+              "name": "text",
+              "value": "={{ $json.messages }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d5e6ad4f-59f5-4e6b-975d-5d4ed1c90965",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3580,
+        500
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "c4v8VKf93nLw1Ove",
+          "name": "StudioMZT.EvolutionAPI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": "={{ $('Loop Over Items').item.json.messages.length / 20 }}"
+      },
+      "id": "3c0b17ce-4655-4ddc-8842-259caf5a2a87",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3780,
+        540
+      ],
+      "webhookId": "7a7430fc-20d2-4d91-9dcf-bcedd50ed850"
+    },
+    {
+      "parameters": {
+        "content": "# Envio",
+        "height": 579.4414915918951,
+        "width": 1601.9063508784056,
+        "color": 5
+      },
+      "id": "3b73b38e-94a9-46f6-9528-958c7acec135",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2460,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "366418d2-8607-4e00-8186-ceda060df1bb",
+              "leftValue": "={{ $json.messages }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2f52e7e9-1906-46fc-8b82-3064bd1ea507",
+      "name": "Filter2",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        3000,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "messages",
+        "options": {}
+      },
+      "id": "5cba069c-c971-4b4c-a9be-8e6cac9bd0ab",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2780,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e7ca0797-e2fa-40c5-a903-a80d391edc17",
+              "name": "messages",
+              "value": "={{ $json.output.split(\"\\n\") }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6b2e6acf-664b-4685-ac78-05093afac50f",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2560,
+        400
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Executa às 7:00 e 13:00 Todos os Dias (Exceto Domingos)": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-11-21T03:28:48.982Z",
+  "versionId": "4d1bed32-fc19-4a43-949b-f38c078d1e2e"
+}
