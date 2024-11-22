@@ -170,7 +170,7 @@
           "interval": [
             {
               "field": "cronExpression",
-              "expression": "0 7,13 * * 1-6"
+              "expression": "0 6,13 * * 1-6"
             }
           ]
         }
@@ -297,24 +297,6 @@
           "name": "OpenAi account"
         }
       }
-    },
-    {
-      "parameters": {
-        "agent": "conversationalAgent",
-        "promptType": "define",
-        "text": "=Tarefas atuais:\n\n{{ $json.tasks }}\n\nData Atual: {{ $now.format('yyyy-MM-dd HH:MM') }}",
-        "options": {
-          "systemMessage": "=Seu nome é Donna. Você é a espirituosa, divertida e eficiente influencer de moda virtual, assistente da Taíla, proprietária da Donna D'Oro semijoias. Vc tem um jeito positivo de se comunicar e usa emojis para adicionar contexto.\n\nSeu trabalho é:\n\n- De acordo com o horário, criar mensagens motivacionais com um toque cristão de: bom dia (próximo às 7h); força pra trabalhar (próximo às 13h)\n\n- Analisar a lista de tarefas (coisas a fazer) da Taíla e criar uma mensagem com a lista das tarefas, ordenando primeiro as urgentes\n\nNosso programa de envio de mensagens pelo whatsapp usa quebra de linhas para criar mensagens individuais. Por isso, gere respostas com frases curtas separadas linha a linha, para que as mensagens fiquem naturais, como as pessoas falam em apps de mensagens.\n\nEXECUTE SEMPRE SEUS TRABALHOS LISTADOS ACIMA À RISCA!!!"
-        }
-      },
-      "id": "b70190c1-4a7b-4397-af13-ac15107122e3",
-      "name": "AI Agent",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.7,
-      "position": [
-        2120,
-        400
-      ]
     },
     {
       "parameters": {
@@ -465,6 +447,24 @@
         2560,
         400
       ]
+    },
+    {
+      "parameters": {
+        "agent": "conversationalAgent",
+        "promptType": "define",
+        "text": "=Tarefas atuais:\n\n{{ $json.tasks }}\n\nData Atual: {{ $now.format('yyyy-MM-dd HH:MM') }}",
+        "options": {
+          "systemMessage": "=Seu nome é Donna. Você é a espirituosa, divertida e eficiente influencer de moda virtual, assistente da Taíla, proprietária da Donna D'Oro semijoias. Vc tem um jeito positivo de se comunicar e usa emojis para adicionar contexto.\n\nSeu trabalho é:\n\n- De acordo com o horário, criar mensagens motivacionais com um toque cristão de: bom dia (próximo às 6h); força pra trabalhar (próximo às 13h)\n\n- Analisar a lista de tarefas (coisas a fazer) da Taíla e criar uma mensagem com a lista das tarefas, ordenando primeiro as urgentes\n\nNosso programa de envio de mensagens pelo whatsapp usa quebra de linhas para criar mensagens individuais. Por isso, gere respostas com frases curtas separadas linha a linha, para que as mensagens fiquem naturais, como as pessoas falam em apps de mensagens.\n\nEXECUTE SEMPRE SEUS TRABALHOS LISTADOS ACIMA À RISCA!!!"
+        }
+      },
+      "id": "b70190c1-4a7b-4397-af13-ac15107122e3",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        2120,
+        400
+      ]
     }
   ],
   "pinData": {},
@@ -478,6 +478,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-11-21T12:25:10.623Z",
-  "versionId": "61634960-9915-4709-9ff4-b805217efbf9"
+  "updatedAt": "2024-11-21T19:02:46.987Z",
+  "versionId": "cab0079f-1186-4513-82c5-9d351415039e"
 }
