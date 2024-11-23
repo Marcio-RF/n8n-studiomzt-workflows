@@ -557,12 +557,6 @@
               "name": "sessionId",
               "value": "={{ $('Message').item.json.remoteJid }}.memory",
               "type": "string"
-            },
-            {
-              "id": "5bf9eaeb-6e04-45e5-a8e6-98813a8d6b64",
-              "name": "name",
-              "value": "={{ $('Get Payload').item.json.body.data.pushName }}",
-              "type": "string"
             }
           ]
         },
@@ -1619,6 +1613,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2024-11-20T01:45:09.911Z",
-  "versionId": "98680cec-1df3-4810-a95e-dab52f7d8355"
+  "updatedAt": "2024-11-22T19:07:30.999Z",
+  "versionId": "4d9bb760-645a-46d6-86b7-d68b770a4680"
 }
