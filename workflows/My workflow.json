@@ -1,0 +1,187 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Directus1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Directus1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-26T01:40:11.164Z",
+  "id": "UJR5zbM0tbmOMC61",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "cbdc98d0-73b5-4621-8dcf-bf1047396bda",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        400,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/19XxQGZNC3gSvYS9kALUWzK4sInvqzc5jx13EO5_FoSM/",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1766800113,
+          "mode": "list",
+          "cachedResultName": "Copy of Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19XxQGZNC3gSvYS9kALUWzK4sInvqzc5jx13EO5_FoSM/edit#gid=1766800113"
+        },
+        "options": {}
+      },
+      "id": "910a69ff-6536-41ca-8547-a73e574dd814",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        600,
+        380
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ythyXADdvZu1Mj1B",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "d5858f2d-f43a-43a2-8aa1-f4ad0d15fb5e",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        820,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "collection": "=instagram_followers",
+        "data": "={\n  \"id\": \"{{ $json.id }}\",\n  \"username\": \"{{ $json.username }}\",\n  \"full_name\": \"{{ $json.full_name }}\"\n}"
+      },
+      "id": "dee936cc-03f4-406b-8e9f-696db3ef5875",
+      "name": "Directus",
+      "type": "@flagbit/n8n-nodes-directus.directus",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        680
+      ],
+      "credentials": {
+        "directusApi": {
+          "id": "iw821PMJLt3Ug3fH",
+          "name": "Donna.Doro.Backend"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "files",
+        "operation": "import",
+        "url": "={{ $json.profile_picture }}",
+        "additionalFields": {
+          "data": null
+        }
+      },
+      "id": "6e22809f-b1ec-419c-9115-403a4695271a",
+      "name": "Directus1",
+      "type": "@flagbit/n8n-nodes-directus.directus",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        500
+      ],
+      "credentials": {
+        "directusApi": {
+          "id": "iw821PMJLt3Ug3fH",
+          "name": "Donna.Doro.Backend"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "a780c35b-3b5d-4207-8c60-cb511ba72713",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1480,
+        680
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-11-26T01:46:52.891Z",
+  "versionId": "1ab30e61-9962-4b16-8a50-5233fb1fed45"
+}
