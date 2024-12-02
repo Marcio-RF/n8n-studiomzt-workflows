@@ -871,7 +871,7 @@
   "nodes": [
     {
       "parameters": {
-        "url": "https://backend.donnadoro.com.br/items/Contatos?limit=10&filter[erpID][_nempty]",
+        "url": "https://backend.donnadoro.com.br/items/Contatos?limit=10000&filter[erpID][_nempty]",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "options": {}
@@ -2947,6 +2947,6 @@
   },
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2024-11-01T23:44:04.360Z",
-  "versionId": "c10d8957-02d8-4e58-a0f6-88be3bf1471b"
+  "updatedAt": "2024-12-02T13:19:58.353Z",
+  "versionId": "95d15d2c-9dd6-4e42-a689-f395f44f158d"
 }
