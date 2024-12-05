@@ -25,11 +25,6 @@
             "index": 0
           },
           {
-            "node": "Loop over clients to update vector store",
-            "type": "main",
-            "index": 0
-          },
-          {
             "node": "Loop Over Items for photo",
             "type": "main",
             "index": 0
@@ -578,13 +573,7 @@
     },
     "Split Out2": {
       "main": [
-        [
-          {
-            "node": "Loop over clients to update vector store",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Loop over clients to update vector store": {
@@ -788,7 +777,6 @@
     },
     {
       "parameters": {
-        "model": "gpt-4o-mini",
         "options": {
           "temperature": 0.2
         }
@@ -2807,6 +2795,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-11-05T01:12:33.586Z",
-  "versionId": "1cc0e5dd-55c4-4efe-a8e2-c8dea98eb182"
+  "updatedAt": "2024-12-05T14:36:06.998Z",
+  "versionId": "a6ef2cbd-d05c-4334-b86c-670de6657bf7"
 }
