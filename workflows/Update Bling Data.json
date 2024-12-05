@@ -85,7 +85,7 @@
       "main": [
         [
           {
-            "node": "Aggregate6",
+            "node": "getVendaDetails",
             "type": "main",
             "index": 0
           }
@@ -737,17 +737,6 @@
         ]
       ]
     },
-    "Aggregate6": {
-      "main": [
-        [
-          {
-            "node": "getVendaDetails",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Aggregate5": {
       "main": [
         [
@@ -895,7 +884,7 @@
       "parameters": {
         "content": "## UpdateSales History into clients' records",
         "height": 879.8842667379272,
-        "width": 3151.4745042808718
+        "width": 2889.243026982794
       },
       "id": "e3696cfd-3c06-4113-ac65-25c4918fd841",
       "name": "Sticky Note",
@@ -1135,7 +1124,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3700,
+        3460,
         1020
       ]
     },
@@ -1164,7 +1153,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3900,
+        3660,
         1020
       ]
     },
@@ -2706,28 +2695,6 @@
     },
     {
       "parameters": {
-        "fieldsToAggregate": {
-          "fieldToAggregate": [
-            {
-              "fieldToAggregate": "data"
-            }
-          ]
-        },
-        "options": {
-          "mergeLists": true
-        }
-      },
-      "id": "1bb1c23e-b08e-4d96-94bb-f5395647e0a4",
-      "name": "Aggregate6",
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        3500,
-        1020
-      ]
-    },
-    {
-      "parameters": {
         "mode": "runOnceForEachItem",
         "jsCode": "return {\n  id: $('Webhook').item.json.query.id,\n  historico_de_compras: $input.item.json.historico_de_vendas.join('\\n\\n----------------------\\n')\n}\n"
       },
@@ -2948,6 +2915,6 @@
   },
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2024-12-04T20:41:14.449Z",
-  "versionId": "95499807-491d-4aec-bc89-34bbdbee906c"
+  "updatedAt": "2024-12-05T15:44:55.894Z",
+  "versionId": "0c7961db-0fc8-4494-90a2-8e546731a020"
 }
