@@ -1505,7 +1505,8 @@
         "options": {
           "batching": {
             "batch": {
-              "batchSize": 1
+              "batchSize": 1,
+              "batchInterval": 1200
             }
           }
         }
@@ -2947,6 +2948,6 @@
   },
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2024-12-02T13:19:58.353Z",
-  "versionId": "95d15d2c-9dd6-4e42-a689-f395f44f158d"
+  "updatedAt": "2024-12-04T20:41:14.449Z",
+  "versionId": "95499807-491d-4aec-bc89-34bbdbee906c"
 }
