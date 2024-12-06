@@ -1296,7 +1296,7 @@
         "rule": {
           "interval": [
             {
-              "triggerAtHour": 4
+              "triggerAtHour": 3
             }
           ]
         }
@@ -2063,8 +2063,7 @@
         "rule": {
           "interval": [
             {
-              "triggerAtHour": 4,
-              "triggerAtMinute": 20
+              "triggerAtHour": 4
             }
           ]
         }
@@ -2915,6 +2914,6 @@
   },
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2024-12-05T15:44:55.894Z",
-  "versionId": "0c7961db-0fc8-4494-90a2-8e546731a020"
+  "updatedAt": "2024-12-06T12:00:39.283Z",
+  "versionId": "aedc4e84-5557-43ee-a31b-4f0521c3dc0f"
 }
