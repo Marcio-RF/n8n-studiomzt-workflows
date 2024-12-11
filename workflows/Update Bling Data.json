@@ -81,17 +81,6 @@
         ]
       ]
     },
-    "HTTP Request29": {
-      "main": [
-        [
-          {
-            "node": "getVendaDetails",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "vendas": {
       "main": [
         [
@@ -121,33 +110,11 @@
         ]
       ]
     },
-    "getVendaDetails": {
-      "main": [
-        [
-          {
-            "node": "getVendaSummary",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "getVendaSummary": {
       "main": [
         [
           {
             "node": "Loop Over Items7",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Edit Fields3": {
-      "main": [
-        [
-          {
-            "node": "Aggregate1",
             "type": "main",
             "index": 0
           }
@@ -849,6 +816,46 @@
           }
         ]
       ]
+    },
+    "HTTP Request29": {
+      "main": [
+        [
+          {
+            "node": "getVendaDetails",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getVendaDetails": {
+      "main": [
+        [
+          {
+            "node": "getVendaSummary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-10-15T02:08:31.086Z",
@@ -1025,40 +1032,6 @@
     },
     {
       "parameters": {
-        "url": "=https://api.bling.com.br/Api/v3/pedidos/vendas/{{ $json.id }}",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "=Bearer {{ $('blingToken').last().json.access_token }}"
-            }
-          ]
-        },
-        "options": {
-          "batching": {
-            "batch": {
-              "batchSize": 1
-            }
-          },
-          "pagination": {
-            "pagination": {
-              "paginationMode": "off"
-            }
-          }
-        }
-      },
-      "id": "fcbf2e99-820f-497a-b81a-c02278976508",
-      "name": "HTTP Request29",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        3280,
-        1020
-      ]
-    },
-    {
-      "parameters": {
         "fieldToSplitOut": "data",
         "options": {}
       },
@@ -1092,47 +1065,6 @@
         "assignments": {
           "assignments": [
             {
-              "id": "6c278a4c-70e4-4998-b69c-7a031dec2e1a",
-              "name": "numero",
-              "value": "={{ $json.data.numero }}",
-              "type": "number"
-            },
-            {
-              "id": "06fba608-c9c4-46bc-835a-40dbb184cb60",
-              "name": "total",
-              "value": "={{ $json.data.total }}",
-              "type": "number"
-            },
-            {
-              "id": "c1494b69-90f6-456f-8138-8afa681065db",
-              "name": "data",
-              "value": "={{ $json.data.data }}",
-              "type": "string"
-            },
-            {
-              "id": "add31efe-4c85-4559-8781-b117a67febbe",
-              "name": "itens",
-              "value": "=| **Código** | **Qtde** | **Descrição**                                           | **Preço** |\n|--------|------|-----------------------------------------------------|------------|\n{{ $json.data.itens.map(i => '| ' + i.codigo + ' | ' + i.quantidade + ' | ' + i.descricao + ' | ' + i.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + ' |').join('\\n') }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "279c0611-0384-4ac2-8c0a-856d5516a7a0",
-      "name": "getVendaDetails",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        3460,
-        1020
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
               "id": "09aa6459-6ba4-425f-8d1a-1c88b974cab8",
               "name": "historico_de_vendas",
               "value": "=### Venda {{ $json.numero }} - {{ $json.data }}\n\n{{ $json.itens }}\n\n**Total: {{ $json.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}**",
@@ -1155,35 +1087,6 @@
       "position": [
         3660,
         1020
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "883c1f3e-917f-406a-aece-6cae0994d70a",
-              "name": "id",
-              "value": "={{ $('Loop Over Items6').item.json.id }}",
-              "type": "string"
-            },
-            {
-              "id": "11de5a19-b838-4aa8-b792-d2324b80dccc",
-              "name": "historico_de_vendas",
-              "value": "={{ $json.historico_de_vendas }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "691545ce-c8d5-4134-a505-ce60a9d9708c",
-      "name": "Edit Fields3",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        3040,
-        760
       ]
     },
     {
@@ -2895,6 +2798,111 @@
           "name": "Update Bling Data Webhook"
         }
       }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.bling.com.br/Api/v3/pedidos/vendas/{{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('blingToken').last().json.access_token }}"
+            }
+          ]
+        },
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1
+            }
+          },
+          "pagination": {
+            "pagination": {
+              "paginationMode": "off"
+            }
+          }
+        }
+      },
+      "id": "fcbf2e99-820f-497a-b81a-c02278976508",
+      "name": "HTTP Request29",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3280,
+        1020
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "883c1f3e-917f-406a-aece-6cae0994d70a",
+              "name": "id",
+              "value": "={{ $('Loop Over Items6').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "11de5a19-b838-4aa8-b792-d2324b80dccc",
+              "name": "historico_de_vendas",
+              "value": "={{ $json.historico_de_vendas }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "691545ce-c8d5-4134-a505-ce60a9d9708c",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3040,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6c278a4c-70e4-4998-b69c-7a031dec2e1a",
+              "name": "numero",
+              "value": "={{ $json.data.numero }}",
+              "type": "number"
+            },
+            {
+              "id": "06fba608-c9c4-46bc-835a-40dbb184cb60",
+              "name": "total",
+              "value": "={{ $json.data.total }}",
+              "type": "number"
+            },
+            {
+              "id": "c1494b69-90f6-456f-8138-8afa681065db",
+              "name": "data",
+              "value": "={{ $json.data.data }}",
+              "type": "string"
+            },
+            {
+              "id": "add31efe-4c85-4559-8781-b117a67febbe",
+              "name": "itens",
+              "value": "=| **Código** | **Qtde** | **Descrição**                                           | **Preço** |\n|--------|------|-----------------------------------------------------|------------|\n{{ $json.data.itens.map(i => '| ' + i.codigo + ' | ' + i.quantidade + ' | ' + i.descricao + ' | ' + i.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) + ' |').join('\\n') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "279c0611-0384-4ac2-8c0a-856d5516a7a0",
+      "name": "getVendaDetails",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3460,
+        1020
+      ]
     }
   ],
   "pinData": {},
@@ -2914,6 +2922,6 @@
   },
   "tags": [],
   "triggerCount": 3,
-  "updatedAt": "2024-12-06T12:00:39.283Z",
-  "versionId": "aedc4e84-5557-43ee-a31b-4f0521c3dc0f"
+  "updatedAt": "2024-12-10T19:59:56.873Z",
+  "versionId": "02a60ab9-3b0a-42b9-8d43-2346db12f08e"
 }
