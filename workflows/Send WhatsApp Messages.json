@@ -229,7 +229,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request1",
+            "node": "No Operation, do nothing",
             "type": "main",
             "index": 0
           }
@@ -257,6 +257,11 @@
     "Set Payload2": {
       "main": [
         [
+          {
+            "node": "Disable queue items",
+            "type": "main",
+            "index": 0
+          },
           {
             "node": "Loop Over Queue Items",
             "type": "main",
@@ -340,6 +345,16 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        []
+      ]
+    },
+    "Disable queue items": {
+      "main": [
+        []
       ]
     }
   },
@@ -482,7 +497,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3040,
+        3260,
         1520
       ],
       "credentials": {
@@ -501,7 +516,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        3220,
+        3440,
         1520
       ],
       "webhookId": "7a7430fc-20d2-4d91-9dcf-bcedd50ed850"
@@ -515,7 +530,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        3040,
+        3260,
         1140
       ],
       "webhookId": "7e810a90-77c0-4418-8a94-e3e2d3b770d8"
@@ -543,7 +558,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        2020,
+        2240,
         1100
       ]
     },
@@ -566,7 +581,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2480,
+        2700,
         1380
       ]
     },
@@ -580,7 +595,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        2680,
+        2900,
         1380
       ]
     },
@@ -783,8 +798,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        1580,
-        1000
+        1820,
+        1020
       ]
     },
     {
@@ -798,7 +813,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2280,
+        2500,
         1100
       ]
     },
@@ -813,7 +828,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2860,
+        3080,
         1380
       ]
     },
@@ -841,15 +856,15 @@
     {
       "parameters": {
         "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n## Execution Workflow\n\n### Runs every 10 minutes. Takes items from the whatsapp_queue table and executing sending the messages to WhatsApp\n\n",
-        "height": 1009.819341126461,
-        "width": 3079.2009054262576
+        "height": 1010,
+        "width": 3079
       },
       "id": "890354c5-74db-4a3c-b714-7b0910d29da7",
       "name": "Sticky Note1",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        320,
+        580,
         780
       ]
     },
@@ -877,7 +892,7 @@
       "typeVersion": 2,
       "position": [
         1360,
-        1000
+        1020
       ]
     },
     {
@@ -917,32 +932,6 @@
         3040,
         380
       ]
-    },
-    {
-      "parameters": {
-        "method": "PATCH",
-        "url": "https://backend.donnadoro.com.br/items/whatsapp_queue",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n\t\"keys\": {{ JSON.stringify($('Set Payload2').all().map(i => i.json.id)) }},\n\t\"data\": {\n\t\t\"status\": \"sent\"\n\t}\n}",
-        "options": {}
-      },
-      "id": "bbafe94a-39f4-4a15-b5a4-8bd98c08e2f1",
-      "name": "HTTP Request1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        2280,
-        920
-      ],
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "gv2igb7M3jLaZsnR",
-          "name": "Donna.Doro.API"
-        }
-      }
     },
     {
       "parameters": {
@@ -1013,6 +1002,43 @@
         1060,
         940
       ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        920
+      ],
+      "id": "bca3f307-ff72-4c45-9ccd-9d312f932fdf",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "https://backend.donnadoro.com.br/items/whatsapp_queue",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\t\"keys\": {{ JSON.stringify($('Set Payload2').all().map(i => i.json.id)) }},\n\t\"data\": {\n\t\t\"status\": \"sent\"\n\t}\n}",
+        "options": {}
+      },
+      "id": "bbafe94a-39f4-4a15-b5a4-8bd98c08e2f1",
+      "name": "Disable queue items",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1600,
+        840
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "gv2igb7M3jLaZsnR",
+          "name": "Donna.Doro.API"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1062,6 +1088,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2024-11-18T02:00:31.516Z",
-  "versionId": "195599ad-f6b8-4c1c-a960-af77e6fdbeaf"
+  "updatedAt": "2024-12-17T19:19:16.193Z",
+  "versionId": "689c774b-1d2d-456e-84fd-87743e16770b"
 }
